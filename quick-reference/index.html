@@ -1,0 +1,410 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Reference &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Instructor’s guide" href="../guide/" />
+    <link rel="prev" title="Scenario III: Full Agentic Code Development" href="../scenario-agentic/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-three-scenarios">The three scenarios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-checklist">Security checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-any-ai-interaction">Before any AI interaction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-ai-suggests-a-package">When AI suggests a package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#when-ai-generates-code">When AI generates code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#effective-prompting">Effective prompting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#two-modes-of-prompting">Two modes of prompting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#do-be-specific-with-function-signatures">Do: Be specific with function signatures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#don-t-be-vague">Don’t: Be vague</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structure-of-prompts-for-coding">Structure of prompts for coding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#remember-it-s-a-conversation">Remember: It’s a conversation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ide-integration-settings">IDE integration settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vs-code-settings-json">VS Code settings.json</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copilotignore">.copilotignore</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#sandboxing-commands">Sandboxing commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-basic-isolation">Docker (basic isolation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bubblewrap-linux">Bubblewrap (Linux)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-vulnerabilities-in-ai-code">Common vulnerabilities in AI code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-injection">SQL Injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#path-traversal">Path Traversal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-injection">Command Injection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#package-verification-script">Package verification script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Quick Reference</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/quick-reference.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quick-reference">
+<h1>Quick Reference<a class="headerlink" href="#quick-reference" title="Link to this heading"></a></h1>
+<p>A condensed reference for the lesson on responsible AI-assisted coding.</p>
+<section id="the-three-scenarios">
+<h2>The three scenarios<a class="headerlink" href="#the-three-scenarios" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Scenario</p></th>
+<th class="head"><p>Control</p></th>
+<th class="head"><p>Risk</p></th>
+<th class="head"><p>Best for</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>I: Chat</p></td>
+<td><p>Full</p></td>
+<td><p>Low</p></td>
+<td><p>Learning, design, sensitive work</p></td>
+</tr>
+<tr class="row-odd"><td><p>II: IDE integration</p></td>
+<td><p>Medium</p></td>
+<td><p>Medium</p></td>
+<td><p>Routine coding, boilerplate</p></td>
+</tr>
+<tr class="row-even"><td><p>III: Agentic</p></td>
+<td><p>Limited</p></td>
+<td><p>High</p></td>
+<td><p>Refactoring, test generation</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="security-checklist">
+<h2>Security checklist<a class="headerlink" href="#security-checklist" title="Link to this heading"></a></h2>
+<section id="before-any-ai-interaction">
+<h3>Before any AI interaction<a class="headerlink" href="#before-any-ai-interaction" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Remove credentials from files</p></li>
+<li><p>[ ] Use synthetic data, not real data</p></li>
+<li><p>[ ] Close sensitive tabs (IDE integration)</p></li>
+</ul>
+</section>
+<section id="when-ai-suggests-a-package">
+<h3>When AI suggests a package<a class="headerlink" href="#when-ai-suggests-a-package" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify it exists before installing</span>
+pip<span class="w"> </span>index<span class="w"> </span>versions<span class="w"> </span>&lt;package-name&gt;
+<span class="c1"># Or, even better, check https://pypi.org/project/&lt;package-name&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="when-ai-generates-code">
+<h3>When AI generates code<a class="headerlink" href="#when-ai-generates-code" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>[ ] Read and understand all code</p></li>
+<li><p>[ ] Check for injection vulnerabilities (SQL, command, path)</p></li>
+<li><p>[ ] Test edge cases (e.g.: empty input, None, negative numbers)</p></li>
+<li><p>[ ] Run security linter like <a class="reference external" href="https://github.com/PyCQA/bandit">Bandit</a>: <code class="docutils literal notranslate"><span class="pre">bandit</span> <span class="pre">-r</span> <span class="pre">your_code/</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="effective-prompting">
+<h2>Effective prompting<a class="headerlink" href="#effective-prompting" title="Link to this heading"></a></h2>
+<section id="two-modes-of-prompting">
+<h3>Two modes of prompting<a class="headerlink" href="#two-modes-of-prompting" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Mode</p></th>
+<th class="head"><p>When</p></th>
+<th class="head"><p>How</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Exploration</strong></p></td>
+<td><p>Starting, researching</p></td>
+<td><p>“What are options for doing X?”</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Planning</strong></p></td>
+<td><p>Designing a stable workflow</p></td>
+<td><p>“I want to do task X using Y and Z, please plan each script and function needed for designing the workflow.”</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Production</strong></p></td>
+<td><p>Implementing</p></td>
+<td><p>Provide exact function signatures</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="do-be-specific-with-function-signatures">
+<h3>Do: Be specific with function signatures<a class="headerlink" href="#do-be-specific-with-function-signatures" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">function</span> <span class="k">with</span> <span class="n">this</span> <span class="n">signature</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_email</span><span class="p">(</span><span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate email using a well-tested library.</span>
+<span class="sd">    Return True if valid, False otherwise.</span>
+<span class="sd">    Raise TypeError if address is not a string.&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="don-t-be-vague">
+<h3>Don’t: Be vague<a class="headerlink" href="#don-t-be-vague" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Write code to handle emails&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="structure-of-prompts-for-coding">
+<h3>Structure of prompts for coding<a class="headerlink" href="#structure-of-prompts-for-coding" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Context (programming language, libraries, environment)</p></li>
+<li><p>Task (what you want)</p></li>
+<li><p>Constraints (what to avoid, requirements)</p></li>
+<li><p>Format (documentation, tests, explanations)</p></li>
+</ol>
+</section>
+<section id="remember-it-s-a-conversation">
+<h3>Remember: It’s a conversation<a class="headerlink" href="#remember-it-s-a-conversation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>First response is a starting point, not the answer</p></li>
+<li><p>Iterate: “Break that out into a function”, “Split this long script into independent units”</p></li>
+<li><p>Ask follow-ups: “What could go wrong with this?”</p></li>
+</ul>
+</section>
+</section>
+<section id="ide-integration-settings">
+<h2>IDE integration settings<a class="headerlink" href="#ide-integration-settings" title="Link to this heading"></a></h2>
+<section id="vs-code-settings-json">
+<h3>VS Code settings.json<a class="headerlink" href="#vs-code-settings-json" title="Link to this heading"></a></h3>
+<p>Example to make sure some configurations yaml files are not accessed by copilot (uncertain if copilot respects this).</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;github.copilot.enable&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  		</span><span class="nt">&quot;*&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">          </span><span class="c1">// enable Copilot for all languages by default</span>
+<span class="w">  		</span><span class="nt">&quot;yaml&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">      </span><span class="c1">// disable for YAML files</span>
+<span class="w">		</span><span class="nt">&quot;plaintext&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">  </span><span class="c1">// disable for plain text files</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="copilotignore">
+<h3>.copilotignore<a class="headerlink" href="#copilotignore" title="Link to this heading"></a></h3>
+<div class="highlight-gitignore notranslate"><div class="highlight"><pre><span></span>.env
+.env.*
+secrets/
+credentials.*
+*.pem
+*.key
+data/
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sandboxing-commands">
+<h2>Sandboxing commands<a class="headerlink" href="#sandboxing-commands" title="Link to this heading"></a></h2>
+<section id="docker-basic-isolation">
+<h3>Docker (basic isolation)<a class="headerlink" href="#docker-basic-isolation" title="Link to this heading"></a></h3>
+<p>TODO: Needs testing on multiple systems</p>
+<p>Gets a basic python container and starts bash:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--network<span class="w"> </span>none<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--read-only<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tmpfs<span class="w"> </span>/tmp<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/project<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>python:3.11<span class="w"> </span>bash
+</pre></div>
+</div>
+</section>
+<section id="bubblewrap-linux">
+<h3>Bubblewrap (Linux)<a class="headerlink" href="#bubblewrap-linux" title="Link to this heading"></a></h3>
+<p>TODO: Needs testing and limitations on where it works</p>
+<p>Limits the command “your_command” to certain places in your Linux computer.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bwrap<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ro-bind<span class="w"> </span>/usr<span class="w"> </span>/usr<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ro-bind<span class="w"> </span>/lib<span class="w"> </span>/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--bind<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--unshare-net<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>your_command
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-vulnerabilities-in-ai-code">
+<h2>Common vulnerabilities in AI code<a class="headerlink" href="#common-vulnerabilities-in-ai-code" title="Link to this heading"></a></h2>
+<p>TODO: this list is not exhaistive. We should add more links / further readings.</p>
+<section id="sql-injection">
+<h3>SQL Injection<a class="headerlink" href="#sql-injection" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bad (AI often generates this)</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SELECT * FROM users WHERE id = </span><span class="si">{</span><span class="n">user_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Good</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE id = ?&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">user_id</span><span class="p">,))</span>
+</pre></div>
+</div>
+</section>
+<section id="path-traversal">
+<h3>Path Traversal<a class="headerlink" href="#path-traversal" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bad</span>
+<span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/data/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Good</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/data&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="n">filename</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">is_relative_to</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/data&quot;</span><span class="p">)):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid path&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="command-injection">
+<h3>Command Injection<a class="headerlink" href="#command-injection" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Bad</span>
+<span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ping </span><span class="si">{</span><span class="n">hostname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Good</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">&quot;ping&quot;</span><span class="p">,</span> <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">hostname</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="package-verification-script">
+<h2>Package verification script<a class="headerlink" href="#package-verification-script" title="Link to this heading"></a></h2>
+<p>TODO: this was generated with Claude. To be tested.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verify_package</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a package exists on PyPI.&quot;&quot;&quot;</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://pypi.org/pypi/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">/json&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;WARNING: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> not found!&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;info&quot;</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Author: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Home: </span><span class="si">{</span><span class="n">info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;home_page&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">OWASP LLM Top 10</a></p></li>
+<li><p><a class="reference external" href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">OpenSSF AI Code Assistant Guide</a></p></li>
+<li><p><a class="reference external" href="https://bandit.readthedocs.io/">Bandit security linter</a></p></li>
+<li><p><a class="reference external" href="https://pypi.org/">PyPI package search</a></p></li>
+<li><p><a class="reference external" href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">Simon Willison: How I use LLMs for code</a></p></li>
+<li><p><a class="reference external" href="https://addyosmani.com/blog/ai-coding-workflow/">Addy Osmani: My LLM coding workflow</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../scenario-agentic/" class="btn btn-neutral float-left" title="Scenario III: Full Agentic Code Development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../guide/" class="btn btn-neutral float-right" title="Instructor’s guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

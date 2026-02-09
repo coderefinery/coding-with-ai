@@ -1,0 +1,851 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenario I: Full Control (Chat-Based Coding) &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Scenario II: IDE Integration (Tab Completion and Inline Suggestions)" href="../scenario-ide-integration/" />
+    <link rel="prev" title="Introduction to LLMs for Code" href="../introduction/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scenario I: Full Control (Chat-Based Coding)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-full-control-scenario">The full control scenario</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-this-is-the-lowest-risk-approach">Why this is the lowest-risk approach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-information-leaves-your-machine">What information leaves your machine?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-not-to-share">What NOT to share</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#three-modes-of-ai-assisted-coding">Three modes of AI-assisted coding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exploration-mode-ask-for-options">Exploration mode: Ask for options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#planning-mode-design-the-workflow">Planning mode: Design the workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#production-mode-tell-them-exactly-what-to-do">Production mode: Tell them exactly what to do</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#managing-context-effectively">Managing context effectively</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-goes-into-context">What goes into context</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practical-context-management">Practical context management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#effective-prompting-strategies">Effective prompting strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-1-start-with-architecture-not-implementation">Strategy 1: Start with architecture, not implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-2-provide-context-about-your-environment">Strategy 2: Provide context about your environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-3-ask-for-explanations-not-just-code">Strategy 3: Ask for explanations, not just code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-4-iterate-incrementally">Strategy 4: Iterate incrementally</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strategy-5-remember-it-s-a-conversation">Strategy 5: Remember it’s a conversation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-research-pipeline-worked-example">Building a research pipeline: Worked example</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-define-the-task">Step 1: Define the task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-review-and-test">Step 2: Review and test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-iterate-based-on-testing">Step 3: Iterate based on testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-continue-to-next-module">Step 4: Continue to next module</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-pitfalls-and-how-to-avoid-them">Common pitfalls and how to avoid them</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pitfall-1-accepting-code-without-understanding-it">Pitfall 1: Accepting code without understanding it</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pitfall-2-not-testing-edge-cases">Pitfall 2: Not testing edge cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pitfall-3-accumulating-technical-debt">Pitfall 3: Accumulating technical debt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pitfall-4-hallucinated-packages-or-functions">Pitfall 4: Hallucinated packages or functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#when-to-relax-the-rules-learning-and-exploration">When to relax the rules: Learning and exploration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-ai-to-understand-existing-code">Using AI to understand existing code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-this-is-valuable-for-researchers">Why this is valuable for researchers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#workflow-for-code-understanding">Workflow for code understanding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-prompts-for-code-understanding">Example prompts for code understanding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#best-practices-checklist">Best practices checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-real-benefit-enabling-more-ambitious-projects">The real benefit: Enabling more ambitious projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Scenario I: Full Control (Chat-Based Coding)</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/scenario-full-control.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scenario-i-full-control-chat-based-coding">
+<h1>Scenario I: Full Control (Chat-Based Coding)<a class="headerlink" href="#scenario-i-full-control-chat-based-coding" title="Link to this heading"></a></h1>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>How can I use generative AI chatbots effectively for coding tasks?</p></li>
+<li><p>What are the risks and benefits of manual copy/paste workflows?</p></li>
+<li><p>What prompting strategies work best for research code?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Learn effective prompting techniques for code generation</p></li>
+<li><p>Understand what information is shared when using chatbots</p></li>
+<li><p>Develop a modular approach to building research pipelines with AI assistance</p></li>
+<li><p>Practice critical evaluation of AI-generated code</p></li>
+</ul>
+</div>
+<section id="the-full-control-scenario">
+<h2>The full control scenario<a class="headerlink" href="#the-full-control-scenario" title="Link to this heading"></a></h2>
+<p>In this scenario, you interact with an AI assistant through a web interface
+(like ChatGPT, Claude, or Gemini) and manually copy code between the chatbot
+and your development environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------+</span>                    <span class="o">+------------------+</span>
+<span class="o">|</span>                  <span class="o">|</span>   <span class="n">Your</span> <span class="n">prompts</span>     <span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>    <span class="n">AI</span> <span class="n">Chatbot</span>    <span class="o">|</span> <span class="o">&lt;-----------------</span> <span class="o">|</span>       <span class="n">You</span>        <span class="o">|</span>
+<span class="o">|</span>    <span class="p">(</span><span class="n">Web</span> <span class="n">UI</span><span class="p">)</span>      <span class="o">|</span>                    <span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span> <span class="o">-----------------&gt;</span> <span class="o">|</span>                  <span class="o">|</span>
+<span class="o">+------------------+</span>   <span class="n">Generated</span> <span class="n">code</span>   <span class="o">+--------+---------+</span>
+                                                 <span class="o">|</span>
+                                        <span class="n">manual</span>   <span class="o">|</span>
+                                       <span class="n">copy</span><span class="o">/</span><span class="n">paste</span><span class="o">|</span>
+                                                 <span class="n">v</span>
+                                        <span class="o">+--------+---------+</span>
+                                        <span class="o">|</span>    <span class="n">Your</span> <span class="n">IDE</span>      <span class="o">|</span>
+                                        <span class="o">|</span> <span class="p">(</span><span class="n">VS</span> <span class="n">Code</span><span class="o">/</span><span class="n">Jupyter</span><span class="p">)</span><span class="o">|</span>
+                                        <span class="o">|</span>                  <span class="o">|</span>
+                                        <span class="o">|</span> <span class="o">-</span> <span class="n">Review</span> <span class="n">code</span>    <span class="o">|</span>
+                                        <span class="o">|</span> <span class="o">-</span> <span class="n">Run</span> <span class="n">manually</span>   <span class="o">|</span>
+                                        <span class="o">|</span> <span class="o">-</span> <span class="n">Debug</span> <span class="n">yourself</span> <span class="o">|</span>
+                                        <span class="o">+------------------+</span>
+</pre></div>
+</div>
+<p><strong>ASCII chart generated with Claude, it should be replaced with a block diagram</strong></p>
+<section id="why-this-is-the-lowest-risk-approach">
+<h3>Why this is the lowest-risk approach<a class="headerlink" href="#why-this-is-the-lowest-risk-approach" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>You see everything</strong>: Every piece of code goes through your eyes and clipboard</p></li>
+<li><p><strong>Nothing runs automatically</strong>: You decide when and how to execute code</p></li>
+<li><p><strong>Clear boundaries</strong>: The AI cannot access your files, run commands, or modify anything</p></li>
+<li><p><strong>Explicit data sharing</strong>: You control exactly what context the AI receives</p></li>
+</ol>
+</section>
+</section>
+<section id="what-information-leaves-your-machine">
+<h2>What information leaves your machine?<a class="headerlink" href="#what-information-leaves-your-machine" title="Link to this heading"></a></h2>
+<p>When you use a chat interface, the following is typically sent to the provider’s servers:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>What you send</p></th>
+<th class="head"><p>Considerations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Your prompts</p></td>
+<td><p>May contain sensitive project details</p></td>
+</tr>
+<tr class="row-odd"><td><p>Code you paste</p></td>
+<td><p>Could include proprietary algorithms</p></td>
+</tr>
+<tr class="row-even"><td><p>Error messages</p></td>
+<td><p>May reveal system configuration, usernames, local paths, filenames</p></td>
+</tr>
+<tr class="row-odd"><td><p>Data samples</p></td>
+<td><p>Never paste real research data!</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-data-handling-policies-vary callout admonition" id="callout-0">
+<p class="admonition-title">Data handling policies vary</p>
+<p>Different providers have different policies:</p>
+<ul class="simple">
+<li><p>Some use your conversations to train future models</p></li>
+<li><p>Some offer enterprise tiers with data isolation (e.g. Microsoft Azure)</p></li>
+<li><p>Read the terms of service for your chosen tool</p></li>
+<li><p>When in doubt, assume your input may be retained</p></li>
+<li><p>Most providers still retain all your activities for 30 days, even if you opted out.</p></li>
+</ul>
+</div>
+<section id="what-not-to-share">
+<h3>What NOT to share<a class="headerlink" href="#what-not-to-share" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Real research data (use synthetic examples instead)</p></li>
+<li><p>API keys, passwords, or credentials</p></li>
+<li><p>Proprietary algorithms or research/trade/IPR secrets</p></li>
+<li><p>Patient/participant identifiable information</p></li>
+<li><p>Unpublished results or embargoed data</p></li>
+</ul>
+</section>
+</section>
+<section id="three-modes-of-ai-assisted-coding">
+<h2>Three modes of AI-assisted coding<a class="headerlink" href="#three-modes-of-ai-assisted-coding" title="Link to this heading"></a></h2>
+<p>Effective AI-assisted coding involves switching between three distinct modes
+depending on where you are in the development process.</p>
+<section id="exploration-mode-ask-for-options">
+<h3>Exploration mode: Ask for options<a class="headerlink" href="#exploration-mode-ask-for-options" title="Link to this heading"></a></h3>
+<p>When starting a project or evaluating approaches, use the AI for research:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;What are options for parsing XML in Python? Include pros/cons of each.&quot;</span>
+
+<span class="s2">&quot;What approaches could I use for parallelizing this computation?&quot;</span>
+
+<span class="s2">&quot;What are some useful drag-and-drop libraries in JavaScript?</span>
+<span class="n">Build</span> <span class="n">me</span> <span class="n">an</span> <span class="n">example</span> <span class="n">demonstrating</span> <span class="n">each</span> <span class="n">one</span><span class="o">.</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>This helps you understand the landscape before committing to an approach.
+The AI’s training cut-off means newer libraries won’t be suggested, but
+for established options this is often fine—you want stability anyway.</p>
+</section>
+<section id="planning-mode-design-the-workflow">
+<h3>Planning mode: Design the workflow<a class="headerlink" href="#planning-mode-design-the-workflow" title="Link to this heading"></a></h3>
+<p>Once you have explored your options, good planning makes sure you have the workflow sketched out,
+dependencies are considered, and your system has the right setup for starting the actual work
+(folder strcuture, version control, environment and other dependencies).</p>
+<p>If the first stage was about brainstorming, this is about project management. A good well written plan
+makes it easier later for adding or removing components in your workflow. This is the equivalent
+of writing down all the comments, before writing your code.</p>
+<p>Example of useful prompts:</p>
+<p><strong>TODO ENRICO TO FINISH THIS</strong></p>
+</section>
+<section id="production-mode-tell-them-exactly-what-to-do">
+<h3>Production mode: Tell them exactly what to do<a class="headerlink" href="#production-mode-tell-them-exactly-what-to-do" title="Link to this heading"></a></h3>
+<p>Once you’ve decided on an approach, switch to authoritarian prompting.
+Provide precise specifications:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">Python</span> <span class="n">function</span> <span class="k">with</span> <span class="n">this</span> <span class="n">signature</span><span class="p">:</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">validate_participant_id</span><span class="p">(</span><span class="n">pid</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Validate a participant ID matches our format: P followed by 3 digits.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    pid : str</span>
+<span class="sd">        The participant ID to validate</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    bool</span>
+<span class="sd">        True if valid, False otherwise</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    TypeError</span>
+<span class="sd">        If pid is not a string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>You act as the function designer; the AI implements to your specification.</p>
+<div class="tip admonition">
+<p class="admonition-title">Practitioner’s perspective: Function signatures as prompts</p>
+<p><em>“I find LLMs respond extremely well to function signatures. I get to act as
+the function designer, the LLM does the work of building the body to my
+specification.</em></p>
+<p><em>If your reaction to this is ‘surely typing out the code is faster than
+typing out an English instruction of it’, all I can tell you is that it
+really isn’t for me any more. Code needs to be correct. English has enormous
+room for shortcuts, and vagaries, and typos, and saying things like ‘use
+that popular HTTP library’ if you can’t remember the name off the top of
+your head.</em></p>
+<p><em>The good coding LLMs are excellent at filling in the gaps. They’re also
+much less lazy than me—they’ll remember to catch likely exceptions, add
+accurate docstrings, and annotate code with the relevant types.”</em></p>
+<p>— Simon Willison</p>
+</div>
+</section>
+</section>
+<section id="managing-context-effectively">
+<h2>Managing context effectively<a class="headerlink" href="#managing-context-effectively" title="Link to this heading"></a></h2>
+<p>The key skill in AI-assisted coding is managing <strong>context</strong>—the accumulated
+text in your conversation that influences the AI’s responses.</p>
+<section id="what-goes-into-context">
+<h3>What goes into context<a class="headerlink" href="#what-goes-into-context" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Element</p></th>
+<th class="head"><p>Impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Your prompts</p></td>
+<td><p>Directly shape the response</p></td>
+</tr>
+<tr class="row-odd"><td><p>AI’s previous responses</p></td>
+<td><p>Become part of the “memory”</p></td>
+</tr>
+<tr class="row-even"><td><p>Code you paste</p></td>
+<td><p>Provides examples and patterns</p></td>
+</tr>
+<tr class="row-odd"><td><p>Error messages shared</p></td>
+<td><p>Help with debugging</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>TODO insert a box about context windows in popular AI systems, also talk about “memory” features which can influence the context</strong></p>
+</section>
+<section id="practical-context-management">
+<h3>Practical context management<a class="headerlink" href="#practical-context-management" title="Link to this heading"></a></h3>
+<p><strong>Tips for context management:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Start fresh when stuck</strong>: If a conversation isn’t productive, begin a new one</p></li>
+<li><p><strong>Build iteratively</strong>: Get simple versions working, then add complexity</p></li>
+<li><p><strong>Seed with examples</strong>: Paste working code as context for new but similar tasks</p></li>
+<li><p><strong>Provide multiple examples</strong>: “Here are three similar functions I’ve written.
+Use them as inspiration for this new one.”</p></li>
+</ol>
+</section>
+</section>
+<section id="effective-prompting-strategies">
+<h2>Effective prompting strategies<a class="headerlink" href="#effective-prompting-strategies" title="Link to this heading"></a></h2>
+<p>The quality of AI-generated code depends heavily on how you ask for it.</p>
+<p><strong>TODO: this is a collection of promopts in no particilar order from an initial list expanded by claude. It needs refining, citations, sorting, what works well…</strong></p>
+<section id="strategy-1-start-with-architecture-not-implementation">
+<h3>Strategy 1: Start with architecture, not implementation<a class="headerlink" href="#strategy-1-start-with-architecture-not-implementation" title="Link to this heading"></a></h3>
+<p>Instead of asking for 500 lines of code at once, begin with structure:</p>
+<p><strong>Poor approach:</strong></p>
+<blockquote>
+<div><p>“Write a complete Python script to analyze my fMRI data, including
+preprocessing, statistical analysis, and visualization.”</p>
+</div></blockquote>
+<p><strong>Better approach:</strong></p>
+<blockquote>
+<div><p>“I need to build a pipeline for fMRI analysis. What would be a good
+modular structure? I’m thinking separate functions for:</p>
+<ol class="arabic simple">
+<li><p>Loading data</p></li>
+<li><p>Preprocessing</p></li>
+<li><p>Statistical analysis</p></li>
+<li><p>Visualization</p></li>
+</ol>
+<p>Can you outline what each module should do and what the interfaces
+between them should look like?”</p>
+</div></blockquote>
+</section>
+<section id="strategy-2-provide-context-about-your-environment">
+<h3>Strategy 2: Provide context about your environment<a class="headerlink" href="#strategy-2-provide-context-about-your-environment" title="Link to this heading"></a></h3>
+<p>Help the AI understand your constraints:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span><span class="s1">&#39;m working on:</span>
+<span class="o">-</span> <span class="n">Python</span> <span class="mf">3.11</span>
+<span class="o">-</span> <span class="n">Ubuntu</span> <span class="mf">22.04</span>
+<span class="o">-</span> <span class="n">Using</span> <span class="n">NumPy</span><span class="p">,</span> <span class="n">SciPy</span><span class="p">,</span> <span class="ow">and</span> <span class="n">Matplotlib</span> <span class="p">(</span><span class="n">prefer</span> <span class="ow">not</span> <span class="n">to</span> <span class="n">add</span> <span class="n">new</span> <span class="n">dependencies</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Data</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">HDF5</span> <span class="nb">format</span>
+
+<span class="n">I</span> <span class="n">need</span> <span class="n">a</span> <span class="n">function</span> <span class="n">to</span><span class="o">...</span>
+</pre></div>
+</div>
+</section>
+<section id="strategy-3-ask-for-explanations-not-just-code">
+<h3>Strategy 3: Ask for explanations, not just code<a class="headerlink" href="#strategy-3-ask-for-explanations-not-just-code" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Write</span> <span class="n">a</span> <span class="n">function</span> <span class="n">to</span> <span class="n">perform</span> <span class="n">bootstrap</span> <span class="n">resampling</span><span class="o">.</span> <span class="n">Please</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Explain</span> <span class="n">the</span> <span class="n">statistical</span> <span class="n">principle</span> <span class="n">first</span>
+<span class="mf">2.</span> <span class="n">Show</span> <span class="n">the</span> <span class="n">implementation</span>
+<span class="mf">3.</span> <span class="n">Include</span> <span class="n">comments</span> <span class="n">explaining</span> <span class="n">each</span> <span class="n">step</span>
+<span class="mf">4.</span> <span class="n">Note</span> <span class="nb">any</span> <span class="n">assumptions</span> <span class="n">the</span> <span class="n">code</span> <span class="n">makes</span>
+</pre></div>
+</div>
+</section>
+<section id="strategy-4-iterate-incrementally">
+<h3>Strategy 4: Iterate incrementally<a class="headerlink" href="#strategy-4-iterate-incrementally" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Session</span> <span class="n">flow</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="s2">&quot;Write a function to load CSV data with error handling&quot;</span>
+<span class="mf">2.</span> <span class="p">[</span><span class="n">Test</span> <span class="n">it</span><span class="p">,</span> <span class="n">find</span> <span class="n">an</span> <span class="n">issue</span><span class="p">]</span>
+<span class="mf">3.</span> <span class="s2">&quot;This fails when the file has a BOM. Can you fix that?&quot;</span>
+<span class="mf">4.</span> <span class="p">[</span><span class="n">Works</span> <span class="n">now</span><span class="p">]</span>
+<span class="mf">5.</span> <span class="s2">&quot;Now let&#39;s add support for gzipped files...&quot;</span>
+</pre></div>
+</div>
+<div class="admonition-discussion discussion important admonition" id="discussion-0">
+<p class="admonition-title">Discussion</p>
+<p><strong>Why modular development matters even more with AI</strong></p>
+<p>When you generate code in small, testable pieces:</p>
+<ul class="simple">
+<li><p>You can verify each piece works before moving on</p></li>
+<li><p>Errors are easier to localize and fix</p></li>
+<li><p>You maintain understanding of what each part does</p></li>
+<li><p>The AI has clearer context for each request</p></li>
+</ul>
+</div>
+</section>
+<section id="strategy-5-remember-it-s-a-conversation">
+<h3>Strategy 5: Remember it’s a conversation<a class="headerlink" href="#strategy-5-remember-it-s-a-conversation" title="Link to this heading"></a></h3>
+<p>The first response is rarely the final answer. Use follow-up prompts freely:</p>
+<ul class="simple">
+<li><p>“Break that repetitive code out into a function”</p></li>
+<li><p>“Use string manipulation methods rather than a regular expression”</p></li>
+<li><p>“Write that better!”</p></li>
+<li><p>“Now write tests for this using pytest”</p></li>
+<li><p>“Can you explain what line 15 does?”</p></li>
+</ul>
+</section>
+</section>
+<section id="building-a-research-pipeline-worked-example">
+<h2>Building a research pipeline: Worked example<a class="headerlink" href="#building-a-research-pipeline-worked-example" title="Link to this heading"></a></h2>
+<p>Let’s walk through how to build a simple analysis pipeline using the
+chat-based approach.</p>
+<section id="step-1-define-the-task">
+<h3>Step 1: Define the task<a class="headerlink" href="#step-1-define-the-task" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>“I have a CSV file with columns: participant_id, condition, reaction_time, accuracy.
+I need to:</p>
+<ol class="arabic simple">
+<li><p>Load and validate the data</p></li>
+<li><p>Calculate summary statistics per condition</p></li>
+<li><p>Run a statistical test comparing conditions</p></li>
+<li><p>Create a visualization</p></li>
+</ol>
+<p>Let’s start with step 1. Write a Python function to load the CSV and
+validate that all expected columns are present.”</p>
+</div></blockquote>
+</section>
+<section id="step-2-review-and-test">
+<h3>Step 2: Review and test<a class="headerlink" href="#step-2-review-and-test" title="Link to this heading"></a></h3>
+<p>The AI might respond with:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">load_and_validate_data</span><span class="p">(</span><span class="n">filepath</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load experimental data and validate required columns.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    filepath : str</span>
+<span class="sd">        Path to the CSV file</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pd.DataFrame</span>
+<span class="sd">        Validated dataframe</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If required columns are missing</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">required_columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;participant_id&#39;</span><span class="p">,</span> <span class="s1">&#39;condition&#39;</span><span class="p">,</span> <span class="s1">&#39;reaction_time&#39;</span><span class="p">,</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">}</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">required_columns</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing required columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+<p><strong>Your review checklist:</strong></p>
+<ul class="simple">
+<li><p>Does it handle the file not existing?</p></li>
+<li><p>What about encoding issues?</p></li>
+<li><p>Is the error message helpful?</p></li>
+</ul>
+</section>
+<section id="step-3-iterate-based-on-testing">
+<h3>Step 3: Iterate based on testing<a class="headerlink" href="#step-3-iterate-based-on-testing" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>“This works, but I’d like to add:</p>
+<ol class="arabic simple">
+<li><p>Check for missing values in critical columns</p></li>
+<li><p>Validate that reaction_time is positive</p></li>
+<li><p>Log warnings instead of failing for recoverable issues”</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="step-4-continue-to-next-module">
+<h3>Step 4: Continue to next module<a class="headerlink" href="#step-4-continue-to-next-module" title="Link to this heading"></a></h3>
+<p>Once satisfied with data loading, move to summary statistics:</p>
+<blockquote>
+<div><p>“Great, that function is working. Now write a function that takes
+the validated dataframe and returns summary statistics (mean, std, n)
+for reaction_time and accuracy, grouped by condition.”</p>
+</div></blockquote>
+</section>
+</section>
+<section id="common-pitfalls-and-how-to-avoid-them">
+<h2>Common pitfalls and how to avoid them<a class="headerlink" href="#common-pitfalls-and-how-to-avoid-them" title="Link to this heading"></a></h2>
+<section id="pitfall-1-accepting-code-without-understanding-it">
+<h3>Pitfall 1: Accepting code without understanding it<a class="headerlink" href="#pitfall-1-accepting-code-without-understanding-it" title="Link to this heading"></a></h3>
+<p><strong>Problem</strong>: You paste code and it works, but you don’t understand why.</p>
+<p><strong>Solution</strong>: Always ask “Can you explain how this works?” If you can’t
+explain the code to a colleague, you shouldn’t use it.</p>
+</section>
+<section id="pitfall-2-not-testing-edge-cases">
+<h3>Pitfall 2: Not testing edge cases<a class="headerlink" href="#pitfall-2-not-testing-edge-cases" title="Link to this heading"></a></h3>
+<p><strong>Problem</strong>: Code works for your test case but fails on real data.</p>
+<p><strong>Solution</strong>: Explicitly ask about edge cases:</p>
+<blockquote>
+<div><p>“What edge cases should I test for this function? What inputs might break it?”</p>
+</div></blockquote>
+</section>
+<section id="pitfall-3-accumulating-technical-debt">
+<h3>Pitfall 3: Accumulating technical debt<a class="headerlink" href="#pitfall-3-accumulating-technical-debt" title="Link to this heading"></a></h3>
+<p><strong>Problem</strong>: Quick solutions that are hard to maintain long-term.</p>
+<p><strong>Solution</strong>: Ask for production-quality code:</p>
+<blockquote>
+<div><p>“Write this function following best practices: include docstrings,
+type hints, and error handling.”</p>
+</div></blockquote>
+</section>
+<section id="pitfall-4-hallucinated-packages-or-functions">
+<h3>Pitfall 4: Hallucinated packages or functions<a class="headerlink" href="#pitfall-4-hallucinated-packages-or-functions" title="Link to this heading"></a></h3>
+<p><strong>Problem</strong>: AI suggests importing a package that doesn’t exist.</p>
+<p><strong>Solution</strong>: Before running <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code>, verify the package exists:</p>
+<ul class="simple">
+<li><p>Check on <a class="reference external" href="https://pypi.org/">PyPI</a></p></li>
+<li><p>Search GitHub for the repository</p></li>
+<li><p>Be especially suspicious of packages you’ve never heard of</p></li>
+</ul>
+</section>
+</section>
+<section id="when-to-relax-the-rules-learning-and-exploration">
+<h2>When to relax the rules: Learning and exploration<a class="headerlink" href="#when-to-relax-the-rules-learning-and-exploration" title="Link to this heading"></a></h2>
+<p>The careful, verify-everything approach described above is essential for
+production code. But for <strong>learning and exploration</strong>, a looser approach
+can accelerate your understanding of what AI can do.</p>
+<div class="tip admonition">
+<p class="admonition-title">Practitioner’s perspective: Vibe-coding for learning</p>
+<p>Andrej Karpathy coined the term “vibe-coding” for a more relaxed approach:</p>
+<p><em>“There’s a new kind of coding I call ‘vibe coding’, where you fully give in
+to the vibes, embrace exponentials, and forget that the code even exists.
+[…] I ask for the dumbest things like ‘decrease the padding on the sidebar
+by half’ because I’m too lazy to find it. I ‘Accept All’ always, I don’t
+read the diffs anymore.”</em></p>
+<p>Simon Willison’s take:</p>
+<p><em>“Andrej suggests this is ‘not too bad for throwaway weekend projects’. It’s
+also a fantastic way to explore the capabilities of these models—and really
+fun. The best way to learn LLMs is to play with them. Throwing absurd ideas
+at them and vibe-coding until they almost sort-of work is a genuinely useful
+way to accelerate the rate at which you build intuition for what works and
+what doesn’t.”</em></p>
+</div>
+<p><strong>When vibe-coding is appropriate:</strong></p>
+<ul class="simple">
+<li><p>Learning a new library or framework</p></li>
+<li><p>Prototyping ideas quickly</p></li>
+<li><p>Building throwaway demonstrations</p></li>
+<li><p>Exploring what’s possible</p></li>
+</ul>
+<p><strong>When to be rigorous:</strong></p>
+<ul class="simple">
+<li><p>Research code that will be published</p></li>
+<li><p>Code that processes real data</p></li>
+<li><p>Anything that will be shared or maintained</p></li>
+<li><p>Security-sensitive applications</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The distinction matters: vibe-coding is for <strong>learning</strong>, not for
+<strong>production</strong>. Don’t let the ease of accepting suggestions lead you to
+deploy code you don’t understand.</p>
+</div>
+</section>
+<section id="using-ai-to-understand-existing-code">
+<h2>Using AI to understand existing code<a class="headerlink" href="#using-ai-to-understand-existing-code" title="Link to this heading"></a></h2>
+<p>One of the lowest-risk, highest-value use cases for AI: asking it to explain
+code you didn’t write.</p>
+<section id="why-this-is-valuable-for-researchers">
+<h3>Why this is valuable for researchers<a class="headerlink" href="#why-this-is-valuable-for-researchers" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Onboarding to inherited codebases</p></li>
+<li><p>Understanding library internals</p></li>
+<li><p>Code review preparation</p></li>
+<li><p>Learning from others’ implementations</p></li>
+</ul>
+</section>
+<section id="workflow-for-code-understanding">
+<h3>Workflow for code understanding<a class="headerlink" href="#workflow-for-code-understanding" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Paste the code</strong> (or relevant portions) into a chat</p></li>
+<li><p><strong>Ask for an overview</strong>: “Give me an architectural overview of this code”</p></li>
+<li><p><strong>Drill down</strong>: “Explain what this specific function does”</p></li>
+<li><p><strong>Identify issues</strong>: “What could go wrong with this implementation?”</p></li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">Practitioner’s perspective: Questions are low-stakes</p>
+<p><em>“If the idea of using LLMs to write code for you still feels deeply
+unappealing, there’s another use-case for them which you may find more
+compelling. Good LLMs are great at answering questions about code.</em></p>
+<p><em>This is also very low stakes: the worst that can happen is they might get
+something wrong, which may take you a tiny bit longer to figure out. It’s
+still likely to save you time compared to digging through thousands of lines
+of code entirely by yourself.</em></p>
+<p><em>The trick here is to dump the code into a long context model and start
+asking questions.”</em></p>
+<p>— Simon Willison</p>
+</div>
+</section>
+<section id="example-prompts-for-code-understanding">
+<h3>Example prompts for code understanding<a class="headerlink" href="#example-prompts-for-code-understanding" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;What is the main purpose of this module?&quot;</span>
+
+<span class="s2">&quot;Trace the data flow from input to output.&quot;</span>
+
+<span class="s2">&quot;What external dependencies does this code have?&quot;</span>
+
+<span class="s2">&quot;Where might this code fail with unexpected input?&quot;</span>
+
+<span class="s2">&quot;Explain the algorithm in step 3 of this function.&quot;</span>
+</pre></div>
+</div>
+<p>This is a great starting point for researchers who are hesitant about
+AI-generated code—you remain in full control, and you’re using the AI
+to augment your understanding rather than replace your work.</p>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-exercise-chat-1-build-a-data-loader exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise Chat-1: Build a data loader</p>
+<p>Using <a class="reference external" href="https://duck.ai">duck.ai</a> (or your preferred AI chatbot):</p>
+<ol class="arabic">
+<li><p>Ask it to write a function that loads JSON files containing experimental
+results with this structure:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;participant&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;P01&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;scores&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">85</span><span class="p">,</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="mi">78</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;completed&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Ask it to add validation for:</p>
+<ul class="simple">
+<li><p>Required fields</p></li>
+<li><p>Score values between 0-100</p></li>
+<li><p>Proper data types</p></li>
+</ul>
+</li>
+<li><p>Test the resulting function with valid and invalid inputs</p></li>
+<li><p>Ask the AI: “What could still go wrong with this function?”</p></li>
+</ol>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<p>The key learning points:</p>
+<ul class="simple">
+<li><p>Starting with structure before asking for implementation</p></li>
+<li><p>Iterating to add validation</p></li>
+<li><p>Explicitly asking about failure modes</p></li>
+</ul>
+<p>Your final function should handle:</p>
+<ul class="simple">
+<li><p>Missing files</p></li>
+<li><p>Invalid JSON syntax</p></li>
+<li><p>Missing required fields</p></li>
+<li><p>Out-of-range values</p></li>
+<li><p>Wrong data types</p></li>
+</ul>
+</div>
+<div class="admonition-exercise-chat-2-debug-with-ai-assistance exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise Chat-2: Debug with AI assistance</p>
+<p>Take this buggy code and use <a class="reference external" href="https://duck.ai">duck.ai</a> to help fix it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_statistics</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">std</span> <span class="o">=</span> <span class="n">variance</span> <span class="o">**</span> <span class="mf">0.5</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">mean</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">std</span><span class="p">,</span> <span class="s2">&quot;variance&quot;</span><span class="p">:</span> <span class="n">variance</span><span class="p">}</span>
+
+<span class="c1"># This crashes:</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">calculate_statistics</span><span class="p">([])</span>
+</pre></div>
+</div>
+<p>Practice:</p>
+<ol class="arabic simple">
+<li><p>Describe the error to the chatbot</p></li>
+<li><p>Ask it to fix the bug</p></li>
+<li><p>Ask what other edge cases might cause problems</p></li>
+</ol>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<p>The function fails on empty lists (division by zero). A proper fix handles:</p>
+<ul class="simple">
+<li><p>Empty lists</p></li>
+<li><p>Single-element lists (variance undefined or requires Bessel’s correction)</p></li>
+<li><p>The difference between population and sample variance</p></li>
+</ul>
+<p>Good prompting would reveal these statistical subtleties.</p>
+</div>
+</section>
+<section id="best-practices-checklist">
+<h2>Best practices checklist<a class="headerlink" href="#best-practices-checklist" title="Link to this heading"></a></h2>
+<p>When using chat-based AI coding:</p>
+<ul class="simple">
+<li><p>[ ] <strong>Never paste sensitive data</strong> - use synthetic examples</p></li>
+<li><p>[ ] <strong>Start with architecture</strong> - outline before implementation</p></li>
+<li><p>[ ] <strong>Work modularly</strong> - small functions you can test</p></li>
+<li><p>[ ] <strong>Verify packages exist</strong> - check PyPI before installing</p></li>
+<li><p>[ ] <strong>Test thoroughly</strong> - include edge cases</p></li>
+<li><p>[ ] <strong>Understand the code</strong> - if you can’t explain it, don’t use it</p></li>
+<li><p>[ ] <strong>Document your process</strong> - note which parts were AI-generated</p></li>
+</ul>
+</section>
+<section id="the-real-benefit-enabling-more-ambitious-projects">
+<h2>The real benefit: Enabling more ambitious projects<a class="headerlink" href="#the-real-benefit-enabling-more-ambitious-projects" title="Link to this heading"></a></h2>
+<p>It’s tempting to think of AI coding assistants purely in terms of speed.
+But the deeper benefit is different.</p>
+<div class="tip admonition">
+<p class="admonition-title">Practitioner’s perspective: Speed enables ambition</p>
+<p><em>“This is why I care so much about the productivity boost I get from LLMs:
+it’s not about getting work done faster, it’s about being able to ship
+projects that I wouldn’t have been able to justify spending time on at all.</em></p>
+<p><em>The fact that LLMs let me execute my ideas faster means I can implement
+more of them, which means I can learn even more.”</em></p>
+<p>— Simon Willison</p>
+</div>
+<p>For researchers, this might mean:</p>
+<ul class="simple">
+<li><p>Building a quick visualization tool you wouldn’t have time to code manually</p></li>
+<li><p>Prototyping analysis approaches before committing to one</p></li>
+<li><p>Creating small utilities that improve your workflow</p></li>
+<li><p>Exploring “what if” questions through rapid implementation</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Managing expectations</strong>: LLMs amplify existing expertise. An experienced
+developer will get better results than a beginner because they:</p>
+<ul class="simple">
+<li><p>Know what to ask for</p></li>
+<li><p>Can evaluate whether the output is correct</p></li>
+<li><p>Understand which follow-up questions to ask</p></li>
+<li><p>Recognize when the AI is wrong</p></li>
+</ul>
+<p>This doesn’t mean beginners can’t benefit—they can. But don’t expect AI to
+instantly give you expert-level results if you’re still learning the
+fundamentals.</p>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>The chat-based approach offers maximum control over AI-assisted coding:</p>
+<ul class="simple">
+<li><p>You explicitly choose what information to share</p></li>
+<li><p>You review all code before it runs</p></li>
+<li><p>You maintain full understanding of your codebase</p></li>
+</ul>
+<p>The trade-off is speed: manually copying code and context takes time. For
+many research applications, this trade-off is worthwhile, as the control and
+transparency support reproducibility and scientific integrity.</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.promptingguide.ai/">Prompting Guide</a> - General prompting techniques</p></li>
+<li><p><a class="reference external" href="https://cloud.google.com/blog/topics/developers-practitioners/five-best-practices-for-using-ai-coding-assistants">Google: Best Practices for AI Coding Assistants</a></p></li>
+<li><p><a class="reference external" href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">Simon Willison: How I use LLMs to help me write code</a> - Detailed practical workflow</p></li>
+<li><p><a class="reference external" href="https://zerotomastery.io/blog/how-to-use-chatgpt-for-coding/">Zero To Mastery: How to Use ChatGPT to 10x Your Coding</a> - Prompt engineering techniques</p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Chat-based AI coding gives you maximum control over data and execution</p></li>
+<li><p>Use <strong>exploration mode</strong> (ask for options) when researching, <strong>production mode</strong> (precise specs) when implementing</p></li>
+<li><p>Context management is the key skill: start fresh when stuck, build iteratively, provide examples</p></li>
+<li><p>Work in small, testable modules rather than generating large code blocks</p></li>
+<li><p>Iterate freely: the first response is a starting point, not the final answer</p></li>
+<li><p>AI is also valuable for understanding existing code, not just generating new code</p></li>
+<li><p>The real benefit is enabling projects you wouldn’t otherwise have time for</p></li>
+<li><p>Never share sensitive research data with AI chatbots</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../introduction/" class="btn btn-neutral float-left" title="Introduction to LLMs for Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../scenario-ide-integration/" class="btn btn-neutral float-right" title="Scenario II: IDE Integration (Tab Completion and Inline Suggestions)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

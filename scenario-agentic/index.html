@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scenario III: Full Agentic Code Development &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Quick Reference" href="../quick-reference/" />
+    <link rel="prev" title="Scenario II: IDE Integration (Tab Completion and Inline Suggestions)" href="../scenario-ide-integration/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Scenario III: Full Agentic Code Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-agentic-scenario">The agentic scenario</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-this-is-the-highest-risk-approach">Why this is the highest-risk approach</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#landscape-of-agentic-coding-tools">Landscape of agentic coding tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#claude-code-anthropic">Claude Code (Anthropic)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#openai-codex">OpenAI Codex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cursor-ai-native-ide">Cursor (AI-native IDE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-tools">Other tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-can-go-wrong">What can go wrong?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#file-system-risks">File system risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#command-execution-risks">Command execution risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-exfiltration-risks">Data exfiltration risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-installation-risks-hallucination-attacks">Package installation risks (Hallucination attacks)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#permission-models-and-controls">Permission models and controls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#claude-code-permission-system">Claude Code permission system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sandboxing-levels">Sandboxing levels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practical-sandboxing-with-docker">Practical sandboxing with Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supervision-strategies">Supervision strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#start-with-read-only-mode">1. Start with read-only mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#review-all-proposed-changes">2. Review all proposed changes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-version-control-religiously">3. Use version control religiously</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-monitoring">4. Set up monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#limit-scope">5. Limit scope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#when-agentic-tools-make-sense-and-when-they-don-t">When agentic tools make sense (and when they don’t)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#appropriate-use-cases">Appropriate use cases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inappropriate-use-cases">Inappropriate use cases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#be-ready-to-take-over">Be ready to take over</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-when-to-use-each-scenario">Comparison: When to use each scenario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Scenario III: Full Agentic Code Development</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/scenario-agentic.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scenario-iii-full-agentic-code-development">
+<h1>Scenario III: Full Agentic Code Development<a class="headerlink" href="#scenario-iii-full-agentic-code-development" title="Link to this heading"></a></h1>
+<p><strong>TODO this changed again in early february and needs updating…</strong></p>
+<div class="admonition-questions questions admonition" id="questions-0">
+<p class="admonition-title">Questions</p>
+<ul class="simple">
+<li><p>What are agentic coding tools and how do they differ from other approaches?</p></li>
+<li><p>What risks come with giving an AI agent access to your system?</p></li>
+<li><p>How can I use these tools while maintaining appropriate oversight?</p></li>
+</ul>
+</div>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Understand how agentic AI coding tools work</p></li>
+<li><p>Recognize the risks of autonomous code modification and command execution</p></li>
+<li><p>Learn about sandboxing and permission controls</p></li>
+<li><p>Develop strategies for supervising AI agents in coding tasks</p></li>
+</ul>
+</div>
+<section id="the-agentic-scenario">
+<h2>The agentic scenario<a class="headerlink" href="#the-agentic-scenario" title="Link to this heading"></a></h2>
+<p>In this scenario, you give an AI agent a high-level task, and it autonomously
+writes code, executes commands, runs tests, and modifies files to accomplish
+the goal. You basically become a project manager rather than a coder; depending
+on the level of automation, you might not even see any of the code that is generated and run.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+--------+</span>                              <span class="o">+---------------------+</span>
+<span class="o">|</span>  <span class="n">You</span>   <span class="o">|</span>   <span class="s2">&quot;Add user authentication  |                     |</span>
+<span class="o">|</span>        <span class="o">|</span>    <span class="n">to</span> <span class="n">this</span> <span class="n">Flask</span> <span class="n">app</span><span class="s2">&quot;       |    AI Agent         |</span>
+<span class="o">|</span>        <span class="o">|</span> <span class="o">--------------------------&gt;</span> <span class="o">|</span>                     <span class="o">|</span>
+<span class="o">+--------+</span>                              <span class="o">|</span>  <span class="n">Plans</span> <span class="n">approach</span>     <span class="o">|</span>
+    <span class="o">^</span>                                   <span class="o">|</span>  <span class="n">Reads</span> <span class="n">your</span> <span class="n">files</span>   <span class="o">|</span>
+    <span class="o">|</span>                                   <span class="o">|</span>  <span class="n">Writes</span> <span class="n">new</span> <span class="n">code</span>    <span class="o">|</span>
+    <span class="o">|</span>  <span class="s2">&quot;Done. I&#39;ve added login,        |  Runs tests         |</span>
+    <span class="o">|</span>   <span class="n">registration</span><span class="p">,</span> <span class="ow">and</span> <span class="n">session</span>      <span class="o">|</span>  <span class="n">Installs</span> <span class="n">packages</span>  <span class="o">|</span>
+    <span class="o">|</span>   <span class="n">management</span><span class="o">.</span> <span class="n">Here</span><span class="s1">&#39;s what        |  Makes git commits  |</span>
+    <span class="o">|</span>   <span class="n">I</span> <span class="n">changed</span><span class="o">...</span><span class="s2">&quot;                  |                     |</span>
+    <span class="o">+----------------------------------</span> <span class="o">+---------------------+</span>
+                                               <span class="o">|</span>
+              <span class="o">+--------------------------------+--------------------------------+</span>
+              <span class="o">|</span>                <span class="o">|</span>               <span class="o">|</span>               <span class="o">|</span>                <span class="o">|</span>
+              <span class="n">v</span>                <span class="n">v</span>               <span class="n">v</span>               <span class="n">v</span>                <span class="n">v</span>
+        <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>
+        <span class="o">|</span> <span class="n">Read</span>    <span class="o">|</span>     <span class="o">|</span> <span class="n">Write</span>   <span class="o">|</span>     <span class="o">|</span> <span class="n">Execute</span> <span class="o">|</span>     <span class="o">|</span> <span class="n">Install</span> <span class="o">|</span>     <span class="o">|</span> <span class="n">Git</span>     <span class="o">|</span>
+        <span class="o">|</span> <span class="n">Files</span>   <span class="o">|</span>     <span class="o">|</span> <span class="n">Files</span>   <span class="o">|</span>     <span class="o">|</span> <span class="n">Commands</span><span class="o">|</span>     <span class="o">|</span> <span class="n">Packages</span><span class="o">|</span>     <span class="o">|</span> <span class="n">Commit</span>  <span class="o">|</span>
+        <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>     <span class="o">+---------+</span>
+</pre></div>
+</div>
+<p><strong>ASCII chart generated with Claude, let’s make a nice block diagram</strong></p>
+<section id="why-this-is-the-highest-risk-approach">
+<h3>Why this is the highest-risk approach<a class="headerlink" href="#why-this-is-the-highest-risk-approach" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Autonomous execution</strong>: Agent runs commands without per-command approval</p></li>
+<li><p><strong>System access</strong>: May have access to your shell, files, network</p></li>
+<li><p><strong>Opaque decision-making</strong>: Hard to predict what the agent will do</p></li>
+<li><p><strong>Irreversible actions</strong>: Deleted files, pushed commits, installed packages</p></li>
+</ol>
+</section>
+</section>
+<section id="landscape-of-agentic-coding-tools">
+<h2>Landscape of agentic coding tools<a class="headerlink" href="#landscape-of-agentic-coding-tools" title="Link to this heading"></a></h2>
+<section id="claude-code-anthropic">
+<h3>Claude Code (Anthropic)<a class="headerlink" href="#claude-code-anthropic" title="Link to this heading"></a></h3>
+<p><strong>TODO: rewrite with the /plan command and mention skills and /learn commands</strong></p>
+<p>A terminal-based agent that lives in your shell:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install</span>
+npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@anthropic-ai/claude-code
+
+<span class="c1"># Run</span>
+claude
+</pre></div>
+</div>
+<p><strong>Capabilities:</strong></p>
+<ul class="simple">
+<li><p>Reads and writes files in your project</p></li>
+<li><p>Executes shell commands</p></li>
+<li><p>Understands git workflows</p></li>
+<li><p>Can work across multiple files</p></li>
+</ul>
+<p><strong>Safety features:</strong></p>
+<ul class="simple">
+<li><p>Sandboxing via Bubblewrap (Linux) or Seatbelt (macOS)</p></li>
+<li><p>Asks for permission before potentially dangerous operations</p></li>
+<li><p>Shows proposed changes before applying</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Practitioner’s perspective: A real Claude Code session</p>
+<p>Simon Willison documented a real project built with Claude Code—a colophon
+page showing the commit history of tools he’d built. The session took 17
+minutes and cost $0.61 in API calls.</p>
+<p>His prompting sequence:</p>
+<ol class="arabic simple">
+<li><p>“Build a Python script that checks the commit history for each HTML file
+and extracts any URLs from those commit messages…”</p></li>
+<li><p>[Inspected output, found issues] “It looks like it just got the start of
+the URLs, it should be getting the whole URLs…”</p></li>
+<li><p>“Update the script—I want to capture the full commit messages AND the URLs…”</p></li>
+<li><p>“This is working great. Write me a new script called build_colophon.py…”</p></li>
+<li><p>[Got wrong output] “It’s not working right. ocr.html had a bunch of
+commits but there is only one link…”</p></li>
+<li><p>“It’s almost perfect, but each page should have the commits displayed in
+the opposite order—oldest first”</p></li>
+<li><p>“One last change—the pages are currently listed alphabetically, let’s
+instead list them with the most recently modified at the top”</p></li>
+</ol>
+<p>Key observations:</p>
+<ul class="simple">
+<li><p>Started with vibe-coding (didn’t look at the code it wrote)</p></li>
+<li><p>Iterated based on observable output</p></li>
+<li><p>Gave specific, concrete feedback when things were wrong</p></li>
+<li><p>Let the agent handle implementation details</p></li>
+</ul>
+<p><em>“I was expecting that ‘Test’ job, but why were there two separate deploys?
+[…] It was time to ditch the LLMs and read some documentation!”</em></p>
+<p>Even experienced practitioners reach points where they need to take over.</p>
+</div>
+</section>
+<section id="openai-codex">
+<h3>OpenAI Codex<a class="headerlink" href="#openai-codex" title="Link to this heading"></a></h3>
+<p><strong>REDO</strong> Erased old stuff, need to check the updates.</p>
+</section>
+<section id="cursor-ai-native-ide">
+<h3>Cursor (AI-native IDE)<a class="headerlink" href="#cursor-ai-native-ide" title="Link to this heading"></a></h3>
+<p><strong>TODO: this below is AI generated, I don’t have cursor to test this</strong></p>
+<p>A VS Code-based editor with deep AI integration:</p>
+<p><strong>Agent mode:</strong></p>
+<ul class="simple">
+<li><p>Plans multi-file changes</p></li>
+<li><p>Executes changes autonomously</p></li>
+<li><p>Runs up to 8 parallel agents</p></li>
+<li><p>Shows combined diff views</p></li>
+</ul>
+<p><strong>Safety features:</strong></p>
+<ul class="simple">
+<li><p>Sandboxed terminal by default</p></li>
+<li><p>Shows changes before committing</p></li>
+<li><p>SOC 2 compliant privacy mode</p></li>
+</ul>
+</section>
+<section id="other-tools">
+<h3>Other tools<a class="headerlink" href="#other-tools" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Tool</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Key Characteristic</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Aider</p></td>
+<td><p>Terminal</p></td>
+<td><p>Open source, multiple model support</p></td>
+</tr>
+<tr class="row-odd"><td><p>GitHub Copilot Workspace</p></td>
+<td><p>Web</p></td>
+<td><p>PR-centric workflow</p></td>
+</tr>
+<tr class="row-even"><td><p>Continue</p></td>
+<td><p>IDE extension</p></td>
+<td><p>Open source, customizable</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="what-can-go-wrong">
+<h2>What can go wrong?<a class="headerlink" href="#what-can-go-wrong" title="Link to this heading"></a></h2>
+<p><strong>TODO: add links to reddit and other horror stories</strong></p>
+<p>Agentic tools can cause serious problems if not properly supervised.</p>
+<section id="file-system-risks">
+<h3>File system risks<a class="headerlink" href="#file-system-risks" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Potential</span> <span class="n">agent</span> <span class="n">actions</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Delete</span> <span class="n">important</span> <span class="n">files</span> <span class="p">(</span><span class="n">rm</span><span class="p">,</span> <span class="n">unlink</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">Overwrite</span> <span class="n">configurations</span>
+<span class="o">-</span> <span class="n">Modify</span> <span class="n">files</span> <span class="n">outside</span> <span class="n">project</span> <span class="n">directory</span>
+<span class="o">-</span> <span class="n">Fill</span> <span class="n">disk</span> <span class="k">with</span> <span class="n">generated</span> <span class="n">content</span>
+</pre></div>
+</div>
+<p><strong>Real example</strong>: Agents have been observed attempting commands like
+<code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">-rf</span> <span class="pre">/</span></code> when confused about cleanup tasks.</p>
+</section>
+<section id="command-execution-risks">
+<h3>Command execution risks<a class="headerlink" href="#command-execution-risks" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dangerous</span> <span class="n">commands</span> <span class="n">an</span> <span class="n">agent</span> <span class="n">might</span> <span class="n">run</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">curl</span> <span class="o">...</span> <span class="o">|</span> <span class="n">bash</span>          <span class="p">(</span><span class="n">arbitrary</span> <span class="n">code</span> <span class="n">execution</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>    <span class="p">(</span><span class="n">supply</span> <span class="n">chain</span> <span class="n">risk</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">chmod</span> <span class="mi">777</span> <span class="o">...</span>            <span class="p">(</span><span class="n">security</span> <span class="n">weakening</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">ssh</span><span class="p">,</span> <span class="n">scp</span>                 <span class="p">(</span><span class="n">network</span> <span class="n">access</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="data-exfiltration-risks">
+<h3>Data exfiltration risks<a class="headerlink" href="#data-exfiltration-risks" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ways</span> <span class="n">agents</span> <span class="n">could</span> <span class="n">leak</span> <span class="n">data</span><span class="p">:</span>
+<span class="o">-</span> <span class="n">Include</span> <span class="ow">in</span> <span class="n">API</span> <span class="n">requests</span> <span class="n">to</span> <span class="n">the</span> <span class="n">AI</span> <span class="n">service</span>
+<span class="o">-</span> <span class="n">Execute</span> <span class="n">curl</span><span class="o">/</span><span class="n">wget</span> <span class="n">to</span> <span class="n">external</span> <span class="n">URLs</span>
+<span class="o">-</span> <span class="n">Write</span> <span class="n">to</span> <span class="n">network</span><span class="o">-</span><span class="n">accessible</span> <span class="n">locations</span>
+<span class="o">-</span> <span class="n">Include</span> <span class="ow">in</span> <span class="n">git</span> <span class="n">commits</span> <span class="n">pushed</span> <span class="n">to</span> <span class="n">public</span> <span class="n">repos</span>
+</pre></div>
+</div>
+</section>
+<section id="package-installation-risks-hallucination-attacks">
+<h3>Package installation risks (Hallucination attacks)<a class="headerlink" href="#package-installation-risks-hallucination-attacks" title="Link to this heading"></a></h3>
+<p>AI models sometimes suggest packages that don’t exist. Attackers can:</p>
+<ol class="arabic simple">
+<li><p>Monitor AI suggestions for hallucinated package names</p></li>
+<li><p>Register those packages on PyPI/npm with malicious code</p></li>
+<li><p>Wait for developers to install them</p></li>
+</ol>
+<p>This is called “slopsquatting”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AI</span> <span class="n">suggests</span><span class="p">:</span>    <span class="n">pip</span> <span class="n">install</span> <span class="n">flask</span><span class="o">-</span><span class="n">security</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">Reality</span><span class="p">:</span>        <span class="n">This</span> <span class="n">package</span> <span class="n">doesn</span><span class="s1">&#39;t exist... or does it now?</span>
+                <span class="n">An</span> <span class="n">attacker</span> <span class="n">may</span> <span class="n">have</span> <span class="n">registered</span> <span class="n">it</span> <span class="k">with</span> <span class="n">malware</span>
+</pre></div>
+</div>
+<div class="admonition-supply-chain-attacks-are-real callout admonition" id="callout-0">
+<p class="admonition-title">Supply chain attacks are real</p>
+<p>The 2024 xz-utils backdoor showed how sophisticated supply chain attacks
+can be. Agentic tools that install packages without verification increase
+this attack surface significantly.</p>
+</div>
+</section>
+</section>
+<section id="permission-models-and-controls">
+<h2>Permission models and controls<a class="headerlink" href="#permission-models-and-controls" title="Link to this heading"></a></h2>
+<p>Different tools offer different levels of control:</p>
+<section id="claude-code-permission-system">
+<h3>Claude Code permission system<a class="headerlink" href="#claude-code-permission-system" title="Link to this heading"></a></h3>
+<p><strong>TODO: this needs to be updated</strong></p>
+<p>Claude Code asks for permission before certain operations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Claude wants to run: pip install pandas
+Allow? [y/n/always/never]
+</pre></div>
+</div>
+<p>You can configure default permissions:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="c1">// .claude/settings.json</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;permissions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;allow_file_read&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allow_file_write&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ask&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allow_shell_commands&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ask&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allow_network&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="sandboxing-levels">
+<h3>Sandboxing levels<a class="headerlink" href="#sandboxing-levels" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Level</p></th>
+<th class="head"><p>What it restricts</p></th>
+<th class="head"><p>Tools</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>None</strong></p></td>
+<td><p>Full system access</p></td>
+<td><p>Dangerous!</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Process</strong></p></td>
+<td><p>Network, some syscalls</p></td>
+<td><p>Bubblewrap, Seatbelt</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Container</strong></p></td>
+<td><p>Filesystem, network</p></td>
+<td><p>Docker</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>VM</strong></p></td>
+<td><p>Everything</p></td>
+<td><p>Firecracker microVM</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="practical-sandboxing-with-docker">
+<h3>Practical sandboxing with Docker<a class="headerlink" href="#practical-sandboxing-with-docker" title="Link to this heading"></a></h3>
+<p>Run your agent inside a container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Dockerfile for your project</span>
+FROM<span class="w"> </span>python:3.11-slim
+
+WORKDIR<span class="w"> </span>/project
+COPY<span class="w"> </span>.<span class="w"> </span>.
+
+<span class="c1"># Install dependencies</span>
+RUN<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+
+<span class="c1"># Run agent inside container</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run with limited access</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--network<span class="w"> </span>none<span class="w"> </span><span class="se">\ </span><span class="w">         </span><span class="c1"># No network access</span>
+<span class="w">  </span>--read-only<span class="w"> </span><span class="se">\ </span><span class="w">            </span><span class="c1"># Read-only root filesystem</span>
+<span class="w">  </span>--tmpfs<span class="w"> </span>/tmp<span class="w"> </span><span class="se">\ </span><span class="w">           </span><span class="c1"># Writable tmp only</span>
+<span class="w">  </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/project<span class="w"> </span><span class="se">\ </span><span class="w">     </span><span class="c1"># Mount project directory</span>
+<span class="w">  </span>my-agent-container
+</pre></div>
+</div>
+</section>
+</section>
+<section id="supervision-strategies">
+<h2>Supervision strategies<a class="headerlink" href="#supervision-strategies" title="Link to this heading"></a></h2>
+<p>If you choose to use agentic tools, implement these safeguards:</p>
+<section id="start-with-read-only-mode">
+<h3>1. Start with read-only mode<a class="headerlink" href="#start-with-read-only-mode" title="Link to this heading"></a></h3>
+<p>Many tools have modes where they can only suggest, not execute:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Claude Code in plan-only mode</span>
+claude<span class="w"> </span>--plan-only<span class="w"> </span><span class="s2">&quot;Add error handling to main.py&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="review-all-proposed-changes">
+<h3>2. Review all proposed changes<a class="headerlink" href="#review-all-proposed-changes" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Agent proposes changes to 3 files:
+  [M] src/main.py      (+15, -3)
+  [M] src/utils.py     (+8, -0)
+  [A] tests/test_main.py (+45)
+
+Review changes? [y/n]
+</pre></div>
+</div>
+<p><strong>Never skip this step.</strong> Read every change.</p>
+</section>
+<section id="use-version-control-religiously">
+<h3>3. Use version control religiously<a class="headerlink" href="#use-version-control-religiously" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Before any agentic session</span>
+git<span class="w"> </span>status<span class="w">                    </span><span class="c1"># Check clean state</span>
+git<span class="w"> </span>stash<span class="w">                     </span><span class="c1"># Stash any changes</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>ai-experiment<span class="w"> </span><span class="c1"># Work on a branch</span>
+
+<span class="c1"># After agent finishes</span>
+git<span class="w"> </span>diff<span class="w">                      </span><span class="c1"># Review all changes</span>
+git<span class="w"> </span>add<span class="w"> </span>-p<span class="w">                    </span><span class="c1"># Stage selectively</span>
+git<span class="w"> </span>commit<span class="w">                    </span><span class="c1"># Or git reset --hard to undo</span>
+</pre></div>
+</div>
+</section>
+<section id="set-up-monitoring">
+<h3>4. Set up monitoring<a class="headerlink" href="#set-up-monitoring" title="Link to this heading"></a></h3>
+<p>Watch what the agent is doing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># In another terminal, watch file changes</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="s1">&#39;git status&#39;</span>
+
+<span class="c1"># Or use a file system watcher</span>
+fswatch<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>f<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Modified: </span><span class="nv">$f</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</section>
+<section id="limit-scope">
+<h3>5. Limit scope<a class="headerlink" href="#limit-scope" title="Link to this heading"></a></h3>
+<p>Give agents minimal access:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Good</span><span class="p">:</span> <span class="s2">&quot;Fix the bug in parse_data() function in src/parser.py&quot;</span>
+<span class="n">Bad</span><span class="p">:</span>  <span class="s2">&quot;Fix all the bugs in the project&quot;</span>
+
+<span class="n">Good</span><span class="p">:</span> <span class="s2">&quot;Add a unit test for the validate_email function&quot;</span>
+<span class="n">Bad</span><span class="p">:</span>  <span class="s2">&quot;Set up the entire test infrastructure&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="when-agentic-tools-make-sense-and-when-they-don-t">
+<h2>When agentic tools make sense (and when they don’t)<a class="headerlink" href="#when-agentic-tools-make-sense-and-when-they-don-t" title="Link to this heading"></a></h2>
+<section id="appropriate-use-cases">
+<h3>Appropriate use cases<a class="headerlink" href="#appropriate-use-cases" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Boilerplate generation</strong>: “Create a Flask app skeleton”</p></li>
+<li><p><strong>Test generation</strong>: “Write unit tests for this module”</p></li>
+<li><p><strong>Documentation</strong>: “Generate docstrings for these functions”</p></li>
+<li><p><strong>Refactoring</strong>: “Rename this variable across all files”</p></li>
+<li><p><strong>Exploration</strong>: “Explain how this codebase handles authentication”</p></li>
+</ul>
+</section>
+<section id="inappropriate-use-cases">
+<h3>Inappropriate use cases<a class="headerlink" href="#inappropriate-use-cases" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Production deployments</strong>: Too much can go wrong</p></li>
+<li><p><strong>Database migrations</strong>: Need human review</p></li>
+<li><p><strong>Security-critical code</strong>: Don’t trust without verification</p></li>
+<li><p><strong>Code with sensitive data</strong>: Risk of exposure</p></li>
+<li><p><strong>Unfamiliar codebases</strong>: You can’t verify what you don’t understand</p></li>
+</ul>
+</section>
+</section>
+<section id="be-ready-to-take-over">
+<h2>Be ready to take over<a class="headerlink" href="#be-ready-to-take-over" title="Link to this heading"></a></h2>
+<p>Even with excellent tools, there comes a point where human expertise is needed.</p>
+<div class="warning admonition">
+<p class="admonition-title">Practitioner’s perspective: Know when to step in</p>
+<p><em>“LLMs are no replacement for human intuition and experience. I’ve spent
+enough time with GitHub Actions that I know what kind of things to look for,
+and in this case it was faster for me to step in and finish the project
+rather than keep on trying to get there with prompts.”</em></p>
+<p>— Simon Willison</p>
+<p>His colophon project worked, but something wasn’t right: there were two
+deploy jobs running. Rather than continue prompting, he read the documentation
+and found a settings switch that needed changing.</p>
+<p><strong>The skill is knowing when:</strong></p>
+<ul class="simple">
+<li><p>More prompting won’t help</p></li>
+<li><p>You need to understand the underlying system</p></li>
+<li><p>Reading documentation is faster than iterating</p></li>
+<li><p>The AI is confidently going in the wrong direction</p></li>
+</ul>
+</div>
+<p>The most effective approach combines AI speed with human oversight—not
+blind trust in either direction.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-exercise-agent-1-explore-an-agent-read-only exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise Agent-1: Explore an agent (read-only)</p>
+<p>If you have access to an agentic tool (Claude Code, Cursor, etc.):</p>
+<ol class="arabic simple">
+<li><p>Start it in read-only or plan-only mode</p></li>
+<li><p>Give it a task: “Explain the structure of this project”</p></li>
+<li><p>Observe:</p>
+<ul class="simple">
+<li><p>What files does it try to read?</p></li>
+<li><p>What is its reasoning process?</p></li>
+<li><p>How does it present findings?</p></li>
+</ul>
+</li>
+<li><p>Do NOT allow it to make any changes yet</p></li>
+</ol>
+<p>This helps you understand how the agent “thinks” before giving it write access.</p>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<p>Key observations to make:</p>
+<ul class="simple">
+<li><p>The agent typically starts by reading project structure (ls, tree)</p></li>
+<li><p>It then reads key files (README, main entry points, config)</p></li>
+<li><p>It may make assumptions that are wrong about your project</p></li>
+<li><p>Its explanation reveals its understanding (which may have gaps)</p></li>
+</ul>
+<p>This exploration builds trust incrementally before allowing modifications.</p>
+</div>
+<div class="admonition-exercise-agent-2-sandboxed-experiment exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise Agent-2: Sandboxed experiment</p>
+<p>Set up a sandboxed environment to safely experiment with agentic tools:</p>
+<ol class="arabic">
+<li><p>Create a test project directory with some simple Python files</p></li>
+<li><p>Initialize a git repository</p></li>
+<li><p>If using Docker:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--network<span class="w"> </span>none<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/project<span class="w"> </span>python:3.11<span class="w"> </span>bash
+</pre></div>
+</div>
+</li>
+<li><p>If not using Docker, at minimum:</p>
+<ul class="simple">
+<li><p>Work in a dedicated directory</p></li>
+<li><p>Keep version control active</p></li>
+<li><p>Don’t give the agent access to sensitive directories</p></li>
+</ul>
+</li>
+<li><p>Try giving the agent a simple task and observe its behavior</p></li>
+</ol>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<p>The exercise teaches:</p>
+<ul class="simple">
+<li><p>How to isolate experiments from important data</p></li>
+<li><p>The importance of version control as a safety net</p></li>
+<li><p>How agents behave when they have limited access</p></li>
+<li><p>The difficulty of truly sandboxing modern tools (they often need network access to function)</p></li>
+</ul>
+</div>
+<div class="admonition-exercise-agent-3-permission-audit exercise important admonition" id="exercise-2">
+<p class="admonition-title">Exercise Agent-3: Permission audit</p>
+<p>For an agentic tool you’re considering:</p>
+<ol class="arabic simple">
+<li><p>Find its documentation on permissions and data handling</p></li>
+<li><p>Answer these questions:</p>
+<ul class="simple">
+<li><p>What data is sent to remote servers?</p></li>
+<li><p>Can it be configured to work locally?</p></li>
+<li><p>What system resources can it access?</p></li>
+<li><p>How does it handle credentials in your project?</p></li>
+<li><p>Is there an audit log of actions taken?</p></li>
+</ul>
+</li>
+<li><p>Based on your findings, what safeguards would you implement before using it?</p></li>
+</ol>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-2">
+<p class="admonition-title">Solution</p>
+<p>This exercise builds security awareness. Key findings typically include:</p>
+<ul class="simple">
+<li><p>Most agentic tools require network access to the AI provider</p></li>
+<li><p>Few offer fully local operation</p></li>
+<li><p>Audit logs are often incomplete</p></li>
+<li><p>Credential handling varies widely</p></li>
+<li><p>Documentation may not cover all data flows</p></li>
+</ul>
+<p>Safeguards should include version control, network monitoring, and credential isolation.</p>
+</div>
+</section>
+<section id="comparison-when-to-use-each-scenario">
+<h2>Comparison: When to use each scenario<a class="headerlink" href="#comparison-when-to-use-each-scenario" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Factor</p></th>
+<th class="head"><p>Scenario I (Chat)</p></th>
+<th class="head"><p>Scenario II (IDE)</p></th>
+<th class="head"><p>Scenario III (Agent)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>User control</strong></p></td>
+<td><p>Full</p></td>
+<td><p>Moderate</p></td>
+<td><p>Limited</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Speed</strong></p></td>
+<td><p>Slow</p></td>
+<td><p>Fast</p></td>
+<td><p>Fastest</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Visibility</strong></p></td>
+<td><p>Complete</p></td>
+<td><p>Partial</p></td>
+<td><p>Low</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Risk level</strong></p></td>
+<td><p>Low</p></td>
+<td><p>Medium</p></td>
+<td><p>High</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Best for</strong></p></td>
+<td><p>Learning, design</p></td>
+<td><p>Routine coding</p></td>
+<td><p>Boilerplate, refactoring</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Avoid for</strong></p></td>
+<td><p>Large volumes</p></td>
+<td><p>Sensitive code</p></td>
+<td><p>Production systems</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>Agentic coding tools offer the most automation but also the highest risk:</p>
+<ul class="simple">
+<li><p>They can read files, execute commands, and modify your codebase</p></li>
+<li><p>Risks include data exposure, malicious packages, and destructive actions</p></li>
+<li><p>Sandboxing and permission controls provide some protection</p></li>
+<li><p>Version control is your essential safety net</p></li>
+<li><p>Always review all changes before accepting them</p></li>
+</ul>
+<p>The question isn’t “Should I ever use agentic tools?” but rather “For which
+tasks, with what safeguards, and how much supervision?”</p>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.anthropic.com/claude/docs/claude-code">Claude Code Documentation</a></p></li>
+<li><p><a class="reference external" href="https://cursor.com/features">Cursor Documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.docker.com/develop/security-best-practices/">Docker Security Best Practices</a></p></li>
+<li><p><a class="reference external" href="https://github.com/containers/bubblewrap">Bubblewrap (sandboxing tool)</a></p></li>
+<li><p><a class="reference external" href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">OpenSSF Guide for AI Code Assistants</a></p></li>
+<li><p><a class="reference external" href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/#a-detailed-example-using-claude-code">Simon Willison: Claude Code example with transcript</a> - Real-world agentic session</p></li>
+<li><p><a class="reference external" href="https://datanorth.ai/blog/claude-code-ai-coding-assistant-guide-2025">DataNorth: Claude Code Complete Guide</a> - Comprehensive comparison with other tools</p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Agentic tools can read, write, and execute without per-action approval</p></li>
+<li><p>Risks include file deletion, data exposure, and supply chain attacks</p></li>
+<li><p>Use sandboxing (Docker, Bubblewrap) to limit agent access</p></li>
+<li><p>Always use version control and review all changes</p></li>
+<li><p>Match tool autonomy to task risk, use agents for low-stakes tasks</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../scenario-ide-integration/" class="btn btn-neutral float-left" title="Scenario II: IDE Integration (Tab Completion and Inline Suggestions)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../quick-reference/" class="btn btn-neutral float-right" title="Quick Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
