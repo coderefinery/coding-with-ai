@@ -143,7 +143,7 @@ Understanding what data models are trained on helps us understand their
 capabilities and limitations.
 
 :::{warning}
-The summaries below were genrated with Claude. They need to be manually verified.
+The summaries below were generated with Claude. They need to be manually verified.
 :::
 
 ### The Stack (BigCode Project)
@@ -237,9 +237,14 @@ Tools that integrate directly into your development environment:
 
 | Tool | Pricing | Key Features |
 |------|---------|--------------|
-| GitHub Copilot | €XX/mo (free tier available) | Most mature, broad language support |
 | Amazon Q Developer | Free for individuals | AWS expertise, security scanning |
+| Claude Code | ¢XX/mo | Remote processing, large context window(depending on
+how much you will pay) |
 | Codeium | Free core features | 70+ languages, Windsurf IDE |
+| Codex | Pay-as-you-go | GPT-4, API access |
+| Gemini Pro 3 | 3 pricing levels | Multimodal, Google integration |
+| GitHub Copilot | €XX/mo (free tier available) | Most mature, broad language support |
+| OpenClaw | ¢XX/mo | Local-first, privacy-focused |
 | Tabnine | Free basic tier | Privacy-focused, local models available |
 
 **How IDE-integrated AI assistant works:**
@@ -261,6 +266,7 @@ Autonomous agents that can write, test, and modify code:
 |------|----------|--------------|
 | Claude Code | Anthropic | CLI-based, git integration, sandboxing |
 | OpenAI Codex | OpenAI | CLI-based, git integration, sandboxing |
+| Gemini Pro 3 | Google | Multimodal, Google integration |
 | GitHub Copilot Workspace | GitHub | PR-based workflow |
 | Cursor | Cursor Inc. | AI-native IDE with agent mode |
 | Aider | Open source | Terminal-based, multiple model support |
@@ -306,6 +312,9 @@ A typical generative AI system based on LLMs, without `toolcall` capabilities, c
 
 1. **Verify their own output**: They cannot run code or check if it works.
 2. **Access real-time information**: Knowledge is frozen at training cutoff
+    Comment: A agent can connect to a process for collecting
+    information/debugging. Is that considered "real-time
+    information"?
 3. **Understand your specific context**: They don't know your data, infrastructure, or requirements unless you tell them
 4. **Guarantee correctness**: They optimize for "plausible" not "correct"
 
@@ -326,6 +335,7 @@ Go to [duck.ai](https://duck.ai) (no account needed) and try the following:
    - Include documentation?
 
 3. Now ask: "What assumptions does this code make? What could go wrong?"
+4. Finally, ask: "How would you test this function to ensure it's correct?"
 :::
 
 :::{solution}
