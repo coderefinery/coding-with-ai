@@ -14,19 +14,11 @@ n Science](https://arxiv.org/abs/2510.22254). In other words, the
 better you under stand your (problem) domain, the more you understand about how these tools work
 and what they do with your data, the better you can use them effectively and responsibly. Note that the
 AI-tools are trained on general text and code. They lack true domain expertise.
+
+```{figure} img/scenarios.png
+:alt: three scenarios chat-based, IDE integration, and agentic use of AI
+:width: 100%
 ```
-+------------------+     +------------------+     +------------------+
-|  Scenario I      |     |  Scenario II     |     |  Scenario III    |
-|  Full Control    |     |  IDE Integration |     |  Agentic AI      |
-|                  |     |                  |     |                  |
-|  Chat + manual   |     |  Tab completion  |     |  Autonomous      |
-|  copy/paste      |     |  inline suggest  |     |  code agents     |
-|                  |     |                  |     |                  |
-|  LOW RISK        |     |  MEDIUM RISK     |     |  HIGH RISK       |
-|  HIGH CONTROL    |     |  MEDIUM CONTROL  |     |  LOW CONTROL     |
-+------------------+     +------------------+     +------------------+
-```
-*ASCII created with Claude. It should be replaced with an image*
 
 
 :::{prereq}

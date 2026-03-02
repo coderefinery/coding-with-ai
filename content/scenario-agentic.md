@@ -24,29 +24,10 @@ the goal. You basically become a project manager rather than a coder; depending
 on the level of automation, you might not even see any of the code that is generated and run.
 
 
+```{figure} img/agentic.png
+:alt: Example of using agentic AI for coding
+:width: 100%
 ```
-+--------+                              +---------------------+
-|  You   |   "Add user authentication  |                     |
-|        |    to this Flask app"       |    AI Agent         |
-|        | --------------------------> |                     |
-+--------+                              |  Plans approach     |
-    ^                                   |  Reads your files   |
-    |                                   |  Writes new code    |
-    |  "Done. I've added login,        |  Runs tests         |
-    |   registration, and session      |  Installs packages  |
-    |   management. Here's what        |  Makes git commits  |
-    |   I changed..."                  |                     |
-    +---------------------------------- +---------------------+
-                                               |
-              +--------------------------------+--------------------------------+
-              |                |               |               |                |
-              v                v               v               v                v
-        +---------+     +---------+     +---------+     +---------+     +---------+
-        | Read    |     | Write   |     | Execute |     | Install |     | Git     |
-        | Files   |     | Files   |     | Commands|     | Packages|     | Commit  |
-        +---------+     +---------+     +---------+     +---------+     +---------+
-```
-**ASCII chart generated with Claude, let's make a nice block diagram**
 
 
 ### Why this is the highest-risk approach

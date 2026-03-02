@@ -160,16 +160,9 @@ what context the model receives. This has implications:
 
 ### Example: Unintended context sharing
 
-```
-+------------------+     +------------------+     +------------------+
-|   main.py        |     |   config.py      |     |   secrets.env    |
-|   (you're here)  |     |   (open tab)     |     |   (open tab!)    |
-+------------------+     +------------------+     +------------------+
-         |                       |                       |
-         +-----------------------+-----------------------+
-                                 |
-                                 v
-                    All may be sent as context
+```{figure} img/hidden_context.png
+:alt: Example for unintended context sharing
+:width: 100%
 ```
 
 **The issue**: You might have a secrets file open in another tab, and parts

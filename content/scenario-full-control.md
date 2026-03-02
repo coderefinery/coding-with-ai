@@ -20,27 +20,10 @@ In this scenario, you interact with an AI assistant through a web interface
 (like ChatGPT, Claude, or Gemini) and manually copy code between the chatbot
 and your development environment.
 
+```{figure} img/full_control.png
+:alt: Example of using AI assistant via chat and manually copying
+:width: 100%
 ```
-+------------------+                    +------------------+
-|                  |   Your prompts     |                  |
-|    AI Chatbot    | <----------------- |       You        |
-|    (Web UI)      |                    |                  |
-|                  | -----------------> |                  |
-+------------------+   Generated code   +--------+---------+
-                                                 |
-                                        manual   |
-                                       copy/paste|
-                                                 v
-                                        +--------+---------+
-                                        |    Your IDE      |
-                                        | (VS Code/Jupyter)|
-                                        |                  |
-                                        | - Review code    |
-                                        | - Run manually   |
-                                        | - Debug yourself |
-                                        +------------------+
-```
-**ASCII chart generated with Claude, it should be replaced with a block diagram**
 
 ### Why this is the lowest-risk approach
 
