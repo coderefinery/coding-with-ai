@@ -265,7 +265,7 @@ def ping_host(hostname):
 
 ## Risk 4: Data exposure
 
-When using AI coding tools, your code and data may be exposed to third parties. While sometimes you might not care (it is just your work, all of it on public repository), often you need to work on projects that are considered confidential until publication OR you work with confidential data (e.g. personal data) which usually should never leave the storage/computing systems of your organisation.
+When using AI coding tools, your code and data may be exposed to third parties. While you sometimes might not care (it is just your work, all of it on a public repository), often you need to work on projects that are considered confidential until publication OR you work with confidential data (e.g. personal data) which usually should never leave the storage/computing systems of your organisation.
 
 ### What gets sent to AI providers
 
