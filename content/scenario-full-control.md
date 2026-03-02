@@ -180,12 +180,6 @@ text in your conversation that influences the AI's responses.
 3. **Seed with examples**: Paste working code as context for new but similar tasks
 4. **Provide multiple examples**: "Here are three similar functions I've written.
    Use them as inspiration for this new one."
-5. **Save context frequently**. With Claude Code you can ask Claude to save the
-   current context and task plan in a SCRATCHPAD.md in the current project subdirectory. This
-   file can be later reread if you have run out of context and need to start a
-   new conversation.
-6. **Consider one ore more SKILL.md** This is available in both Claude Code and
-   Codex. [It is best explained here](https://x.com/pdrmnvd/status/2020967757706297797?utm_source=codenewsletter.ai&utm_medium=newsletter&utm_campaign=warp-launches-oz-for-coding-agent-teams-alibaba-merges-image-generation-and-editing-into-one-model&_bhlid=9adf9df6272cc8040c2214e2c5e0cafc966f724a)
 
 
 ## Effective prompting strategies
