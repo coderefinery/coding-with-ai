@@ -19,33 +19,10 @@
 AI coding assistants introduce new attack surfaces to software development.
 Understanding these risks is essential for responsible use.
 
+```{figure} img/security.png
+:alt: The security landscape when using AI for coding with common risks
+:width: 100%
 ```
-+------------------+
-|     You          |
-+--------+---------+
-         |
-         | Prompts, code context
-         v
-+--------+---------+                +-------------------+
-|   AI Service     | - retrieval -> | Attackers:        |
-|                  |                | - Prompt injection|
-|  (processes your |                | - Training data   |
-|   code, returns  | <- response -  |   poisoning       |
-|   suggestions)   |                +-------------------+
-+--------+---------+
-         |
-         | Generated code
-         v
-+--------+---------+     +-------------------+
-|   Your System    | <-- | Risks:            |
-|                  |     | - Hallucinated    |
-|  (runs code,     |     |   packages        |
-|   installs pkgs, |     | - Vulnerable code |
-|   accesses data) |     | - Data exposure   |
-+------------------+     +-------------------+
-```
-*Note: the image was generated with Claude code*
-
 
 ## Risk 1: Hallucinated packages (Slopsquatting)
 
