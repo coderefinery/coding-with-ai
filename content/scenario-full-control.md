@@ -169,8 +169,7 @@ text in your conversation that influences the AI's responses.
 | Code you paste | Provides examples and patterns |
 | Error messages shared | Help with debugging |
 
-**TODO insert a box about context windows in popular AI systems, also talk about "memory" features which can influence the context**
-
+![Contex Windows sizes 2025](llm_context_windows_2025.png)
 
 ### Practical context management
 

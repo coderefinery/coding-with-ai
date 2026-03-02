@@ -8,6 +8,12 @@ This lesson provides a practical framework for researchers who want to use
 AI coding assistants in their day-to-day software work with research.  The framwork stresses on the importance of maintaining control, security, and research integrity. We will explore three  scenarios of increasing automation and decreasing
 user control, helping you make informed decisions about which approach fits your needs.
 
+We will point out:"The effectiveness of AI-assisted coding is fundamentally constrained by the clarity and completeness
+of what you bring to the interaction."[Ten Simple Rules for AI-assisted Coding
+n Science](https://arxiv.org/abs/2510.22254). In other words, the
+better you under stand your (problem) domain, the more you understand about how these tools work
+and what they do with your data, the better you can use them effectively and responsibly. Note that the
+AI-tools are trained on general text and code. They lack true domain expertise.
 
 ```{figure} img/scenarios.png
 :alt: three scenarios chat-based, IDE integration, and agentic use of AI
@@ -90,7 +96,7 @@ simply teaching you how to use these tools, we help you understand:
 - **What happens under the hood**: How do these tools work? What data were they trained on?
 - **What leaves your machine**: When you use these tools, what information is sent to remote servers?
 - **What risks exist**: From hallucinated packages to prompt injection attacks
-- **How to mitigate risks**: Sandboxing, verification strategies, and best practices
+- **How to mitigate risks**: Sandboxing, verification strategies, local models and best practices
 
 
 
