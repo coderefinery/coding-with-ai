@@ -415,7 +415,7 @@ If you're not sure, either find out or switch to a more transparent approach.
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [Codeium Documentation](https://codeium.com/documentation)
 - [Tabnine Documentation](https://docs.tabnine.com/)
-- <a href="https://marketplace.visualstudio.com/search?term=ai%20code&target=VSCode">[VSCode extensions for AI assistants]</a>
+- <a href="https://marketplace.visualstudio.com/search?term=ai%20code&target=VSCode&category=All%20categories&sortBy=Installs">VSCode extensions for AI assistants</a>
 
 
 :::{keypoints}
