@@ -415,7 +415,7 @@ If you're not sure, either find out or switch to a more transparent approach.
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
 - [Codeium Documentation](https://codeium.com/documentation)
 - [Tabnine Documentation](https://docs.tabnine.com/)
-- [VS Code AI Extensions Comparison](https://marketplace.visualstudio.com/search?term=ai%20code&target=VSCode)
+- [VS Code AI Extensions Comparison](https://marketplace.visualstudio.com/search?term=ai%20code\&target=VSCode)
 
 
 :::{keypoints}
