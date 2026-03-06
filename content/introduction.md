@@ -219,8 +219,7 @@ Tools that integrate directly into your development environment:
 | Tool | Pricing | Key Features |
 |------|---------|--------------|
 | Amazon Q Developer | Free for individuals | AWS expertise, security scanning |
-| Claude Code | ¢XX/mo | Remote processing, large context window(depending on
-how much you will pay) |
+| Claude Code | ¢XX/mo | Remote processing, large context window (depending on tier) |
 | Codeium | Free core features | 70+ languages, Windsurf IDE |
 | Codex | Pay-as-you-go | GPT-4, API access |
 | Gemini Pro 3 | 3 pricing levels | Multimodal, Google integration |
@@ -279,12 +278,12 @@ Before diving into specific scenarios, remember these fundamental limitations:
 A typical generative AI system based on LLMs, without `toolcall` capabilities, cannot:
 
 1. **Verify their own output**: They cannot run code or check if it works.
-2. **Access real-time information**: Knowledge is frozen at training cutoff
+2. **Access real-time information**: Knowledge is frozen at training cutoff.
     Comment: A agent can connect to a process for collecting
     information/debugging. Is that considered "real-time
     information"?
-3. **Understand your specific context**: They don't know your data, infrastructure, or requirements unless you tell them
-4. **Guarantee correctness**: They optimize for "plausible" not "correct"
+3. **Understand your specific context**: They don't know your data, infrastructure, or requirements unless you tell them.
+4. **Guarantee correctness**: They optimize for "plausible", not "correct".
 
 ### Common failure modes
 
@@ -299,7 +298,7 @@ Go to [duck.ai](https://duck.ai) (no account needed) and try the following:
 1. Ask: "Write a Python function to calculate the standard deviation of a list"
 2. Look at the response. Does it:
    - Use a built-in library or implement from scratch?
-   - Handle edge cases (empty list, single element)?
+   - Handle edge-cases (empty list, single element)?
    - Include documentation?
 
 3. Now ask: "What assumptions does this code make? What could go wrong?"

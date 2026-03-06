@@ -19,33 +19,10 @@
 AI coding assistants introduce new attack surfaces to software development.
 Understanding these risks is essential for responsible use.
 
+```{figure} img/security.png
+:alt: The security landscape when using AI for coding with common risks
+:width: 100%
 ```
-+------------------+
-|     You          |
-+--------+---------+
-         |
-         | Prompts, code context
-         v
-+--------+---------+                +-------------------+
-|   AI Service     | - retrieval -> | Attackers:        |
-|                  |                | - Prompt injection|
-|  (processes your |                | - Training data   |
-|   code, returns  | <- response -  |   poisoning       |
-|   suggestions)   |                +-------------------+
-+--------+---------+
-         |
-         | Generated code
-         v
-+--------+---------+     +-------------------+
-|   Your System    | <-- | Risks:            |
-|                  |     | - Hallucinated    |
-|  (runs code,     |     |   packages        |
-|   installs pkgs, |     | - Vulnerable code |
-|   accesses data) |     | - Data exposure   |
-+------------------+     +-------------------+
-```
-*Note: the image was generated with Claude code*
-
 
 ## Risk 1: Hallucinated packages (Slopsquatting)
 
@@ -265,7 +242,7 @@ def ping_host(hostname):
 
 ## Risk 4: Data exposure
 
-When using AI coding tools, your code and data may be exposed to third parties. While sometimes you might not care (it is just your work, all of it on public repository), often you need to work on projects that are considered confidential until publication OR you work with confidential data (e.g. personal data) which usually should never leave the storage/computing systems of your organisation.
+When using AI coding tools, your code and data may be exposed to third parties. While you sometimes might not care (it is just your work, all of it on a public repository), often you need to work on projects that are considered confidential until publication OR you work with confidential data (e.g. personal data) which usually should never leave the storage/computing systems of your organisation.
 
 ### What gets sent to AI providers
 
