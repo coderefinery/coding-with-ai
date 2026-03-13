@@ -191,7 +191,7 @@ this attack surface significantly.
 ### Social risks
 
 - some open source projects have contribution guidelines limiting or excluding use of AI tools. Agents may ignore them. (e.g. [Manyfold tries to counter this with a creative `Agents.md` file](https://github.com/manyfold3d/manyfold/blob/main/AGENTS.md))
-- generated low quality PRs cost maintainers of open source projects time.
+- generated low quality PRs cost maintainers of open source projects time. (e.g. [PR of a lazy agent](https://github.com/JuliaPlots/Plots.jl/pull/5728))
 - Agents may interact with other humans in inappropriate ways (e.g. [agent writing a hitpiece because its PR got closed](https://github.com/matplotlib/matplotlib/pull/31132)) 
 
 
