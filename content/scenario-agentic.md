@@ -188,6 +188,12 @@ can be. Agentic tools that install packages without verification increase
 this attack surface significantly.
 :::
 
+### Social risks
+
+- some open source projects have contribution guidelines limiting or excluding use of AI tools. Agents may ignore them. (e.g. [Manyfold tries to counter this with a creative `Agents.md` file](https://github.com/manyfold3d/manyfold/blob/main/AGENTS.md))
+- generated low quality PRs cost maintainers of open source projects time.
+- Agents may interact with other humans in inappropriate ways (e.g. [agent writing a hitpiece because its PR got closed](https://github.com/matplotlib/matplotlib/pull/31132)) 
+
 
 ## Permission models and controls
 
