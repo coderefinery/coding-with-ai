@@ -87,51 +87,44 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g114655"
-       transform="translate(-0.87615241,11.158432)">
+       id="g943"
+       inkscape:export-filename="/home/quack/Documents/coderefinery/coding-with-ai/full_control.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
       <rect
-         style="fill:#002255;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000;fill-opacity:1"
+         style="fill:#002255;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
          id="rect114328"
          width="48.53046"
          height="48.53046"
-         x="13.950384"
-         y="-1.8866423"
-         rx="3.0000045"
-         ry="3.0000045" />
-      <rect
-         style="fill:#acd01a;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000;fill-opacity:1"
-         id="rect114328-9"
-         width="48.53046"
-         height="48.53046"
-         x="127.43709"
-         y="-1.8866423"
+         x="13.074232"
+         y="9.2717896"
          rx="3.0000045"
          ry="3.0000045" />
       <g
          id="g96015"
-         transform="translate(3.522825,-11.279376)">
+         transform="translate(2.6466726,-0.120944)">
         <text
            xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;stroke-width:0.264583;fill:#ffffff"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
            x="34.599655"
            y="30.93815"
            id="text18860"><tspan
              sodipodi:role="line"
              id="tspan18858"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;stroke-width:0.264583;fill:#ffffff"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
              x="34.599655"
              y="30.93815">AI chatbot</tspan><tspan
              sodipodi:role="line"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;stroke-width:0.264583;fill:#ffffff"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#ffffff;stroke-width:0.264583"
              x="34.599655"
              y="40.46315"
              id="tspan19852">(web UI)</tspan></text>
       </g>
       <g
          id="g95508"
-         transform="translate(38.07192,-19.876457)">
+         transform="translate(37.195768,-8.718025)">
         <rect
-           style="fill:#457b9d;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000;fill-opacity:1"
+           style="fill:#5e95b8;fill-opacity:1;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
            id="rect846-35"
            width="90.550117"
            height="66.33326"
@@ -177,29 +170,14 @@
              y="157.09418"
              id="tspan57250-0">- Debug yourself</tspan></text>
       </g>
-      <g
-         id="g95515"
-         transform="translate(43.78422,-11.098286)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;stroke-width:0.264583;fill:#000000"
-           x="108.23766"
-           y="35.524834"
-           id="text18860-6"><tspan
-             sodipodi:role="line"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;stroke-width:0.264583;fill:#000000"
-             x="108.23766"
-             y="35.524834"
-             id="tspan19852-5">You</tspan></text>
-      </g>
       <path
          style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:6, 3;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#Arrow2Send)"
-         d="M 152.30269,46.635132 V 73.646095"
+         d="M 151.42654,57.793564 V 84.804527"
          id="path95550"
          sodipodi:nodetypes="cc" />
       <g
          id="g96009"
-         transform="translate(57.567983,-47.997473)">
+         transform="translate(56.691831,-36.839041)">
         <path
            style="fill:none;fill-opacity:0;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-6)"
            d="M 70.756487,63.898028 H 9.1697818"
@@ -207,52 +185,79 @@
            sodipodi:nodetypes="cc" />
         <path
            style="fill:none;stroke:#002255;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Send-6-1)"
-           d="m 4.8812551,76.992319 60.1741139,0"
+           d="M 4.8812551,76.992319 H 65.055369"
            id="path95550-6-7"
            sodipodi:nodetypes="cc" />
+      </g>
+      <g
+         id="g910">
+        <rect
+           style="fill:#acd01a;fill-opacity:1;stroke:#000000;stroke-width:0.499999;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+           id="rect114328-9"
+           width="48.53046"
+           height="48.53046"
+           x="126.56094"
+           y="9.2717896"
+           rx="3.0000045"
+           ry="3.0000045" />
+        <g
+           id="g95515"
+           transform="translate(42.908068,0.060146)">
+          <text
+             xml:space="preserve"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.264583"
+             x="108.23766"
+             y="35.524834"
+             id="text18860-6"><tspan
+               sodipodi:role="line"
+               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;stroke-width:0.264583"
+               x="108.23766"
+               y="35.524834"
+               id="tspan19852-5">You</tspan></text>
+        </g>
       </g>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-         x="96.753723"
-         y="12.02324"
+         x="95.877571"
+         y="23.181671"
          id="text18860-6-9"><tspan
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-           x="96.753723"
-           y="12.02324"
+           x="95.877571"
+           y="23.181671"
            id="tspan19852-5-2">your prompts</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#002255;fill-opacity:1;stroke-width:0.264583"
-         x="93.908058"
-         y="36.837551"
+         x="93.031906"
+         y="47.995983"
          id="text18860-6-9-0"><tspan
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#002255;fill-opacity:1;stroke-width:0.264583"
-           x="93.908058"
-           y="36.837551"
+           x="93.031906"
+           y="47.995983"
            id="tspan19852-5-2-2">generated code</tspan></text>
       <text
          xml:space="preserve"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;line-height:1.5;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-         x="168.41847"
-         y="54.198895"
+         x="167.54231"
+         y="65.357323"
          id="text18860-6-9-3"><tspan
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-           x="168.41847"
-           y="54.198895"
+           x="167.54231"
+           y="65.357323"
            id="tspan19852-5-2-7">manual</tspan><tspan
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-           x="168.41847"
-           y="63.723896"
+           x="167.54231"
+           y="74.882324"
            id="tspan105500">copy &amp;</tspan><tspan
            sodipodi:role="line"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.35px;font-family:monospace;-inkscape-font-specification:monospace;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke-width:0.264583"
-           x="168.41847"
-           y="73.248894"
+           x="167.54231"
+           y="84.407326"
            id="tspan105502">paste</tspan></text>
     </g>
   </g>

@@ -50,7 +50,7 @@ Different providers have different policies:
 - Some offer enterprise tiers with data isolation (e.g. Microsoft Azure)
 - Read the terms of service for your chosen tool
 - When in doubt, assume your input may be retained
-- Most providers still retain all your activities for 30 days, even if you opted out.
+- Most providers still retain all your activities for 30 days, even if you opted out
 :::
 
 ### What NOT to share
@@ -82,18 +82,18 @@ Build me an example demonstrating each one."
 
 This helps you understand the landscape before committing to an approach.
 The AI's training cut-off means newer libraries won't be suggested, but
-for established options this is often fine—you want stability anyway.
+for established options this is often fine — you want stability anyway.
 
 
 ### Planning mode: Design the workflow
 
 Once you have explored your options, good planning makes sure you have the workflow sketched out,
 dependencies are considered, and your system has the right setup for starting the actual work
-(folder strcuture, version control, environment and other dependencies).
+(folder structure, version control, environment and other dependencies).
 
 If the first stage was about brainstorming, this is about project management. A good well written plan
-makes it easier later for adding or removing components in your workflow. This is the equivalent
-of writing down all the comments, before writing your code.
+makes it easier to add or remove components in your workflow later. This is the equivalent
+of writing down all the comments before writing your code.
 
 Example of useful prompts:
 
@@ -157,7 +157,7 @@ accurate docstrings, and annotate code with the relevant types."*
 
 ## Managing context effectively
 
-The key skill in AI-assisted coding is managing **context**—the accumulated
+The key skill in AI-assisted coding is managing **context** — the accumulated
 text in your conversation that influences the AI's responses.
 
 ### What goes into context

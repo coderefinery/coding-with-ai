@@ -5,13 +5,13 @@ chatbot interactions to fully autonomous coding agents, these tools offer
 powerful capabilities ... and with great power comes great risks and responsibilities.
 
 This lesson provides a practical framework for researchers who want to use
-AI coding assistants in their day-to-day software work with research.  The framwork stresses on the importance of maintaining control, security, and research integrity. We will explore three  scenarios of increasing automation and decreasing
+AI coding assistants in their day-to-day software work with research.  The framework stresses the importance of maintaining control, security, and research integrity. We will explore three  scenarios of increasing automation and decreasing
 user control, helping you make informed decisions about which approach fits your needs.
 
-We will point out:"The effectiveness of AI-assisted coding is fundamentally constrained by the clarity and completeness
-of what you bring to the interaction."[Ten Simple Rules for AI-assisted Coding
-n Science](https://arxiv.org/abs/2510.22254). In other words, the
-better you under stand your (problem) domain, the more you understand about how these tools work
+We will point out: "The effectiveness of AI-assisted coding is fundamentally constrained by the clarity and completeness
+of what you bring to the interaction." [Ten Simple Rules for AI-assisted Coding
+in Science](https://arxiv.org/abs/2510.22254). In other words, the
+better you understand your (problem) domain, the more you understand about how these tools work
 and what they do with your data, the better you can use them effectively and responsibly. Note that the
 AI-tools are trained on general text and code. They lack true domain expertise.
 
@@ -22,15 +22,15 @@ AI-tools are trained on general text and code. They lack true domain expertise.
 
 
 :::{prereq}
-- Basic familiarity with programming (Python examples used, replace with your favourite language)
-- Access to a code editor (e.g. VS Code) or Jupyter environment
+- Basic familiarity with programming (Python examples used, replace with your favourite language).
+- Access to a code editor (e.g. VS Code) or Jupyter environment.
 - Optional: Accounts for AI tools you want to try (ChatGPT, Claude, GitHub Copilot, etc. Please note that some tools are not free and require a credit card).
 :::
 
 :::{warning}
-This is work in progress. Known limitations
+This is work in progress. Known limitations:
 1. There might be too much content than what can be covered during the CodeRefinery workshop.
-2. Some tools change so fast, this is likely already obsolete in two months from now.
+2. Some tools change so fast; this is likely already obsolete in two months from now.
 3. Many bits here and there need testing and improvement.
 :::
 
@@ -90,13 +90,13 @@ No prior experience with AI coding tools is required.
 
 ## About the course
 
-This course takes a research-integrity-focused approach on AI-assisted coding. **There is no point in trying to optimise deep knowledge for any of these tools** since what works well today, will most likely be replaced by something else in a few months. Rather than
+This course takes a research-integrity-focused approach on AI-assisted coding. **There is no point in trying to optimise deep knowledge for any of these tools** since what works well today will most likely be replaced by something else in a few months. Rather than
 simply teaching you how to use these tools, we help you understand:
 
 - **What happens under the hood**: How do these tools work? What data were they trained on?
 - **What leaves your machine**: When you use these tools, what information is sent to remote servers?
-- **What risks exist**: From hallucinated packages to prompt injection attacks
-- **How to mitigate risks**: Sandboxing, verification strategies, local models and best practices
+- **What risks exist**: From hallucinated packages to prompt injection attacks.
+- **How to mitigate risks**: Sandboxing, verification strategies, local models and best practices.
 
 
 
