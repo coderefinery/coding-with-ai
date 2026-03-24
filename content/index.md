@@ -8,12 +8,12 @@ This lesson provides a practical framework for researchers who want to use
 AI coding assistants in their day-to-day software work with research.  The framework stresses the importance of maintaining control, security, and research integrity. We will explore three  scenarios of increasing automation and decreasing
 user control, helping you make informed decisions about which approach fits your needs.
 
-We will point out: "The effectiveness of AI-assisted coding is fundamentally constrained by the clarity and completeness
-of what you bring to the interaction." [Ten Simple Rules for AI-assisted Coding
-in Science](https://arxiv.org/abs/2510.22254). In other words, the
+We will point out: *"The effectiveness of AI-assisted coding is fundamentally constrained by the clarity and completeness
+of what you bring to the interaction."* (quote from "[Ten Simple Rules for AI-assisted Coding
+in Science](https://arxiv.org/abs/2510.22254)"). In other words, the
 better you understand your (problem) domain, the more you understand about how these tools work
 and what they do with your data, the better you can use them effectively and responsibly. Note that the
-AI-tools are trained on general text and code. They lack true domain expertise.
+AI-tools are trained on general text and code and they lack true domain expertise: there is no actual "intelligence", just very efficient pattern matching generative machines.
 
 ```{figure} img/scenarios.png
 :alt: three scenarios chat-based, IDE integration, and agentic use of AI
@@ -24,7 +24,7 @@ AI-tools are trained on general text and code. They lack true domain expertise.
 :::{prereq}
 - Basic familiarity with programming (Python examples used, replace with your favourite language).
 - Access to a code editor (e.g. VS Code) or Jupyter environment.
-- Optional: Accounts for AI tools you want to try (ChatGPT, Claude, GitHub Copilot, etc. Please note that some tools are not free and require a credit card).
+- Optional: Accounts for AI tools you want to try (ChatGPT, Claude, GitHub Copilot, etc. Please note that some tools are not free and require a credit card) or some tinkering to set up things locally. **We do not endorse any specific provider of AI systems.**
 :::
 
 :::{warning}
@@ -39,7 +39,7 @@ This is work in progress. Known limitations:
 :delim: ;
 :widths: auto
 
-xx min ; {doc}`introduction`
+04 min ; {doc}`introduction`
 xx min ; {doc}`scenario-full-control`
 xx min ; {doc}`scenario-ide-integration`
 xx min ; {doc}`scenario-agentic`
@@ -109,4 +109,5 @@ simply teaching you how to use these tools, we help you understand:
 
 ## Credits
 
-This lesson was developed as part of [CodeRefinery](https://coderefinery.org/) training activities. You can check the list of contributors, submit an issue, or even suggest an edit via pull request, by visiting ADD GITHUB URL HERE.
+This lesson was developed as part of [CodeRefinery](https://coderefinery.org/) training activities. The initial draft of this lesson came from the workshop "AI and Research Work" ([Glerean & Silva, 2024](https://zenodo.org/records/14032261 )). The materials were originally written by Enrico Glerean, and further expanded and discussed by Bjørn Lindi, Ina Pöhner, Jarno Rantaharju, Simon Christ, Ashwin V. Mohanan, Michele Mesiti, Frankie Robertson.
+ ·
