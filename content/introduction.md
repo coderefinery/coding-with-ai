@@ -114,53 +114,47 @@ practical implications:
 
 :::{callout} Key insight
 The training cut-off date is sometimes not known. With chatbots, you can try asking the chatbot.
-What makes it even more challenging is that some AI systems also have "tools" attached to them,
+What makes it even more challenging is that some **AI systems also have *"tools"*** attached to them,
 so they can fetch **some** up-to-date content, while mixing with what they have seen during
-their training. This can be a total success, or total disaster. Pick a stable library, even if it
-is a little bit older. TODO: add link to https://boringtechnology.club/
+their training. This can be a total success... or total disaster. 
+
+Pick a stable library, even if it is a little bit older: [Choose Boring Technology](https://boringtechnology.club/).
 :::
 
 
 **Practical implications:**
 - Check model documentation for training cut-off dates
-- Be skeptical of suggestions for rapidly-evolving libraries
+- Be skeptical of suggestions for rapidly-evolving libraries 
 - Provide recent documentation or examples in prompts when using newer tools
-- Consider library stability as a factor in technology choices
+- Consider library stability as a factor in dependencies choices
 
 
 ## Open datasets for training code LLMs
 
-Understanding what data models are trained on helps us understand their
-capabilities and limitations.
+Understanding what data models are trained on helps us understand their capabilities and limitations.
 
-:::{warning}
-The summaries below were generated with Claude. They need to be manually verified.
-:::
+### Case study: OpenCodeInstruct (NVIDIA)
 
-### The Stack (BigCode Project)
+[OpenCodeInstruct](https://huggingface.co/datasets/nvidia/OpenCodeInstruct) is a large open dataset for instruction-tuning code models.
 
-[The Stack](https://huggingface.co/datasets/bigcode/the-stack) is a major open
-dataset for training code models:
-
-| Version | Size | Languages | Key Features |
-|---------|------|-----------|--------------|
-| v1 | 6.4 TB | 358 | Permissive licenses only |
-| v2 | 67.5 TB | 600+ | Includes PRs, notebooks, docs |
+| Split | Size | Domain | Key Features |
+|-------|------|--------|--------------|
+| train | ~5M samples | Generic + algorithmic coding tasks | Includes prompts, solutions, unit tests, and execution feedback |
 
 **Important characteristics:**
-- Only includes permissively-licensed code (MIT, Apache 2.0, etc.)
-- Copyleft licenses (GPL) are excluded
-- Provides an opt-out mechanism for developers who don't want their code included
-- Built on the Software Heritage archive
+- Released under **CC BY 4.0**
+- Designed for **supervised fine-tuning (SFT)** of coding models
+- Contains both **generic coding instructions** and **algorithmic problem-solving tasks**
+- Includes useful metadata such as **unit tests**, **test execution status**, and **LLM-based quality judgments**
+- Largely built from **synthetic instruction generation** rather than raw repository code
 
 :::{discussion}
-**Why does training data matter?**
+**Why is this dataset useful?**
 
 Consider these implications:
-- Models may reproduce patterns from their training data, including bugs
-- Code style and conventions reflect the average of the training set
-- Rare languages or niche libraries may have poor coverage
-- The model cannot know about code written after its training cutoff
+- It is useful for teaching models to follow **coding instructions**, not just predict the next token
+- Because much of the data is **synthetic**, model behavior may reflect the style and biases of the generator models
+- It complements **large code pretraining corpora such as The Stack** rather than replacing them
 :::
 
 
@@ -170,6 +164,11 @@ AI coding assistants come in many forms. Here's an overview of the major
 categories and tools:
 
 ### Chatbots (Scenario I in this course)
+
+```{figure} img/intro_chatbot.png
+:alt: Concept of coding with AI chatbot
+:width: 100%
+```
 
 General-purpose AI assistants accessed via web interface:
 
@@ -203,16 +202,18 @@ access it via [duckduckgo.com/chat](https://duckduckgo.com/chat) or by typing
 :::
 
 
-**How coding with a chatbot works:**
-```{figure} img/intro_chatbot.png
-:alt: Concept of coding with AI chatbot
+
+### IDE-integrated assistants (Scenario II)
+
+```{figure} img/intro_ide-integ.png
+:alt: Concept of IDE integrated AI assisted coding
 :width: 100%
 ```
 
 
-### IDE-integrated assistants (Scenario II)
-
-**TODO: This section needs expanding with more tools**
+:::{warning}
+To-Do: This section needs expanding with more tools and/or kept up to date with new trends.
+:::
 
 Tools that integrate directly into your development environment:
 
@@ -227,15 +228,18 @@ Tools that integrate directly into your development environment:
 | OpenClaw | ¢XX/mo | Local-first, privacy-focused |
 | Tabnine | Free basic tier | Privacy-focused, local models available |
 
-**How IDE-integrated AI assistant works:**
-```{figure} img/intro_ide-integ.png
-:alt: Concept of IDE integrated AI assisted coding
-:width: 100%
-```
 
 ### Agentic coding tools (Scenario III)
 
-**TODO: this recently changed in early february so it needs to be updated**
+```{figure} img/intro_agentic.png
+:alt: Concept of coding with agentic AI
+:width: 100%
+```
+
+
+:::{warning}
+To-Do: This section needs expanding with more tools and/or kept up to date with new trends.
+:::
 
 Autonomous agents that can write, test, and modify code:
 
@@ -249,12 +253,6 @@ Autonomous agents that can write, test, and modify code:
 | Aider | Open source | Terminal-based, multiple model support |
 
 
-**How coding with agentic tools work:**
-```{figure} img/intro_agentic.png
-:alt: Concept of coding with agentic AI
-:width: 100%
-```
-
 :::{admonition} The full spectrum is actually much broader
 :class: note
 
@@ -267,13 +265,18 @@ for an extended taxonomy.
 
 ## Current adoption and trends
 
-**TODOO: ADD HERE STATS ON ADOPTION AND TRENDS**
+:::{warning}
+To-Do: This section needs expanding and/or kept up to date with data on current adoption trends.
+:::
+
+- From: [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
+
 
 ## Limitations to keep in mind
 
 Before diving into specific scenarios, remember these fundamental limitations:
 
-### What LLMs cannot do
+### What LLMs *cannot* do
 
 A typical generative AI system based on LLMs, without `toolcall` capabilities, cannot:
 
@@ -303,6 +306,7 @@ Go to [duck.ai](https://duck.ai) (no account needed) and try the following:
 
 3. Now ask: "What assumptions does this code make? What could go wrong?"
 4. Finally, ask: "How would you test this function to ensure it's correct?"
+5. Share your reflection in the collaborative note document.
 :::
 
 :::{solution}
@@ -325,7 +329,9 @@ In this section, we covered the foundations of AI-assisted coding:
 
 
 ## See also
-**TODO: THIS NEEDS TO BE REVISED**
+:::{warning}
+To-Do: This section needs expanding with more links and/or kept up to date.
+:::
 
 - [StarCoder: A State-of-the-Art LLM for Code](https://huggingface.co/blog/starcoder) - BigCode project blog
 - [The Stack v2 Paper](https://arxiv.org/abs/2402.19173) - Technical details on training data
