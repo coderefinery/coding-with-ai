@@ -18,28 +18,12 @@
 This course has explored the spectrum of AI-assisted coding, from full manual
 control to autonomous agents.
 
+```{figure} img/scenarios_summary.png
+:alt: three scenarios chat-based, IDE integration, and agentic use of AI
+:width: 100%
 ```
-+------------------------------------------------------------------+
-|                   Control vs. Automation Trade-off               |
-+------------------------------------------------------------------+
-|                                                                  |
-|  HIGH CONTROL                                      LOW CONTROL   |
-|  LOW RISK                                          HIGH RISK     |
-|                                                                  |
-|  +----------------+  +----------------+  +----------------+      |
-|  |  Scenario I    |  |  Scenario II   |  |  Scenario III  |      |
-|  |                |  |                |  |                |      |
-|  |  Chat + paste  |  |  IDE integrate |  |  Agentic AI    |      |
-|  |                |  |                |  |                |      |
-|  |  You control:  |  |  You control:  |  |  You control:  |      |
-|  |  - All context |  |  - Which files |  |  - Task scope  |      |
-|  |  - All code    |  |  - Accept/rej  |  |  - Final review|      |
-|  |  - Execution   |  |  - Execution   |  |                |      |
-|  +----------------+  +----------------+  +----------------+      |
-|                                                                  |
-|  SLOW                                                FAST        |
-+------------------------------------------------------------------+
-```
+
+
 
 ### Key takeaways
 
