@@ -67,7 +67,7 @@ Different providers have different policies:
 Effective AI-assisted coding involves switching between three distinct modes
 depending on where you are in the development process.
 
-### Exploration mode: Ask for options
+### 1. Exploration mode: Ask for options
 
 When starting a project or evaluating approaches, use the AI for research:
 
@@ -85,7 +85,7 @@ The AI's training cut-off means newer libraries won't be suggested, but
 for established options this is often fine — you want stability anyway.
 
 
-### Planning mode: Design the workflow
+### 2. Planning mode: Design the workflow
 
 Once you have explored your options, good planning makes sure you have the workflow sketched out,
 dependencies are considered, and your system has the right setup for starting the actual work
@@ -93,18 +93,14 @@ dependencies are considered, and your system has the right setup for starting th
 
 If the first stage was about brainstorming, this is about project management. A good well written plan
 makes it easier to add or remove components in your workflow later. This is the equivalent
-of writing down all the comments before writing your code.
-
-Example of useful prompts:
-
-**TODO ENRICO TO FINISH THIS**
+of writing down all the comments before writing your code. This is maybe the most important part that can 
+make everything else work perfectly, or fail.
 
 
 
+### 3. Production mode: Tell them exactly what to do
 
-### Production mode: Tell them exactly what to do
-
-Once you've decided on an approach, switch to authoritarian prompting.
+Once you've decided on an approach, switch to "authoritarian prompting".
 Provide precise specifications:
 
 ```
@@ -140,17 +136,6 @@ You act as the function designer; the AI implements to your specification.
 the function designer, the LLM does the work of building the body to my
 specification.*
 
-*If your reaction to this is 'surely typing out the code is faster than
-typing out an English instruction of it', all I can tell you is that it
-really isn't for me any more. Code needs to be correct. English has enormous
-room for shortcuts, and vagaries, and typos, and saying things like 'use
-that popular HTTP library' if you can't remember the name off the top of
-your head.*
-
-*The good coding LLMs are excellent at filling in the gaps. They're also
-much less lazy than me—they'll remember to catch likely exceptions, add
-accurate docstrings, and annotate code with the relevant types."*
-
 — Simon Willison
 :::
 
@@ -178,17 +163,16 @@ text in your conversation that influences the AI's responses.
 1. **Start fresh when stuck**: If a conversation isn't productive, begin a new one
 2. **Build iteratively**: Get simple versions working, then add complexity
 3. **Seed with examples**: Paste working code as context for new but similar tasks
-4. **Provide multiple examples**: "Here are three similar functions I've written.
-   Use them as inspiration for this new one."
+4. **Provide multiple examples**: "Here are three similar functions I've written. Use them as inspiration for this new one."
 
 
 ## Effective prompting strategies
 
 The quality of AI-generated code depends heavily on how you ask for it.
 
-**TODO: this is a collection of promopts in no particilar order from an initial list expanded by claude. It needs refining, citations, sorting, what works well...**
-
-
+:::{warning}
+To-Do: This section needs to be more systematic, adding some references to prompting strategies for coding.
+:::
 
 ### Strategy 1: Start with architecture, not implementation
 
