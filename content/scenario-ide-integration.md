@@ -20,33 +20,13 @@ In this scenario, AI assistance is integrated directly into your development
 environment. As you type, the AI suggests completions, entire functions, or
 even multi-line code blocks.
 
-```
-+----------------------------------------------------+
-|  Your IDE (VS Code, JetBrains, etc.)               |
-|                                                    |
-|  +----------------------------------------------+  |
-|  | def calculate_mean(numbers):                 |  |
-|  |     """Calculate the arithmetic mean."""     |  |
-|  |     return sum(numbers) / len(numbers)       |  | <-- AI suggests this
-|  |            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~      |  |     as you type
-|  |            [Tab to accept] [Esc to dismiss]  |  |
-|  +----------------------------------------------+  |
-|                                                    |
-+------------------------+---------------------------+
-                         |
-                         | Code context sent
-                         | automatically
-                         v
-              +----------+----------+
-              |   Remote AI Server  |
-              |                     |
-              |  - Processes your   |
-              |    file contents    |
-              |  - Returns          |
-              |    suggestions      |
-              +---------------------+
-```
+```{figure} img/vscode_githubcopilot.png
+:alt: VS-code and GitHub copilot
+:width: 100%
 
+Visual Studio code with GitHub copilot plugin. You can see the chat and a suggestion based on a comment that is waiting to be accepted. The AI system runs in a remote end-point most likely in USA GitHub (Microsoft) servers.
+
+```
 
 
 ### How this differs from chat-based coding
@@ -156,9 +136,10 @@ of it could be included in the context sent to the AI server.
 ### Mitigation strategies
 
 1. **Close sensitive tabs** when using AI completion
-2. **Use `.copilotignore`** to exclude sensitive files
+2. **Use sandboxing / containerization** to exclude sensitive files
 3. **Consider workspace separation** - keep sensitive projects in different VS Code windows
 4. **Review your open tabs** before intensive AI-assisted sessions
+5. **Compression of the context** some tools (e.g. Claude code) or some extensions can compress what goes to the context window so that not all the files need to be sent to remote for synthesising new code.
 
 
 ## Features beyond simple completion
@@ -238,51 +219,7 @@ Setup in VS Code:
 
 ## Exercises
 
-:::{exercise} Exercise IDE-1: Configure your tool
-Set up GitHub Copilot (or Windsurf) and:
-
-1. Create a `.copilotignore` or equivalent to exclude:
-   - Any `.env` files
-   - A `secrets/` directory
-   - Data files (`*.csv`, `*.json` in `data/`)
-
-2. Find the setting to disable suggestions for Markdown files
-
-3. Test that suggestions work in a Python file but not in the excluded files
-:::
-
-:::{solution}
-Example `.copilotignore`:
-```
-# Sensitive files
-.env
-.env.*
-secrets/
-credentials.*
-
-# Data files
-data/
-*.csv
-*.json
-*.parquet
-
-# Documentation (disable AI here)
-*.md
-docs/
-```
-
-In VS Code settings:
-```json
-{
-    "github.copilot.enable": {
-        "*": true,
-        "markdown": false
-    }
-}
-```
-:::
-
-:::{exercise} Exercise IDE-2: Critical suggestion review
+:::{exercise} Exercise IDE-1: Critical suggestion review
 With AI suggestions enabled, type the following function signature and
 observe the suggestions:
 
