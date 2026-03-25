@@ -114,6 +114,58 @@ A screenshot to show how the Claude code command line interface (CLI) looks like
 - `!command` to inject shell output directly into context
 :::
 
+:::{exercise} Demo: Iris dataset analysis with Claude Code
+## Setup: project folder and environment
+```bash
+cd agentiris
+mamba create python=3.11 -p ./env
+```
+```bash
+conda activate ./env
+claude
+```
+
+## In Claude Code: switch to plan mode first
+
+Press `Shift+Tab` to enter **plan mode**, then paste this prompt:
+```
+I want to download the Iris dataset for a demonstration of the type of
+visualisation and data analysis that we can do quickly.
+
+Plan a few visualisations, descriptive statistics, and analyses of the
+dataset. Something quick for demonstration, not too many analyses.
+
+Initialise also a local git repository.
+
+Store the iris data inside a subfolder "data" and the python code in a
+subfolder "src". Results will go into a subfolder "results".
+
+For visualisations I like to use Altair as a library. This session is
+running inside a mamba environment so you can use mamba install to add
+packages that are missing.
+```
+
+- Claude will **read your environment, draft a plan, and stop**
+- Review the plan before pressing Enter to approve
+- Only then will it start creating files and running code
+
+## Follow-up prompt: generate a Sphinx report
+
+Once the analysis is done, use this second prompt (still in plan mode):
+```
+Create a "docs" subfolder and initialise a Sphinx documentation project
+using the Read the Docs theme. Then write a report documenting the Iris
+dataset analysis we just performed: describe the methods, include the
+results and any figures produced, and structure it as a readable
+scientific report.
+```
+
+- Claude will wire up Sphinx, write the `.rst` source files, and link the figures from `results/`
+- Review the plan — Sphinx setup touches several config files
+- After approval, you can build the docs with `make html` inside `docs/`
+:::
+
+
 
 :::{admonition} Practitioner's perspective: A real Claude Code session
 :class: tip
