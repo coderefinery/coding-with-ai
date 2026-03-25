@@ -52,6 +52,14 @@ To-Do: This section needs expanding with the recent Claude code + Ollama + local
 
 [Claude code](https://code.claude.com/docs/en/overview) is a terminal-based agent that lives in your shell.
 
+```{figure} img/claude_code.png
+:alt: Claude code
+:width: 100%
+
+A screenshot to show how the Claude code command line interface (CLI) looks like.
+```
+
+
 **Capabilities:**
 - Reads and writes files in your project
 - Executes shell commands
@@ -62,6 +70,50 @@ To-Do: This section needs expanding with the recent Claude code + Ollama + local
 **Safety features:**
 - Asks for permission before potentially dangerous operations
 - Shows proposed changes before applying
+
+:::{admonition} Claude Code: Beginner Cheatsheet
+## Before anything: security mindset
+
+- Claude Code can **read, write, delete files and run shell commands** on your machine
+- By default it asks permission at each step — **do not skip this**
+- Always work inside a **git repo** so you can undo (`git diff`, `git restore`)
+- Never run it on production systems or with credentials in your environment
+
+## Human-in-the-loop: plan mode first ([docs](https://code.claude.com/docs/en/planning))
+
+- Press `Shift+Tab` to enter **plan mode** before Claude does anything
+- Claude reads your codebase, drafts a step-by-step plan, then **stops and waits**
+- You review, edit, or reject the plan before any file is touched
+- This is the recommended default for beginners — **always plan before you execute**
+
+## Key built-in slash commands ([docs](https://code.claude.com/docs/en/overview))
+
+- `/clear` — wipe the conversation, start fresh (saves tokens)
+- `/compact` — compress context when the window fills up
+- `/memory` — edit your `CLAUDE.md` on the fly
+- `/model` — switch between Opus / Sonnet / Haiku mid-session
+- `/cost` — see how many tokens you've spent
+
+## How Claude remembers things: three layers ([docs](https://code.claude.com/docs/en/memory))
+
+- **`CLAUDE.md`** — always loaded; project-wide standards, build commands, coding style. Think of it as the employee handbook Claude reads on day one. Put it in the repo root and commit it.
+- **Rules** (`.claude/rules/`) — loaded only when path matches; domain-specific constraints (e.g. a database rule that only activates when editing `*.sql` files). Good for keeping context lean.
+- **Skills** (`.claude/skills/<name>/SKILL.md`) — reusable procedures Claude can invoke automatically based on context, or you can call with `/skillname`. Share them across projects or with your team.
+
+## Subagents — keeping context clean ([docs](https://code.claude.com/docs/en/sub-agents))
+
+- Claude can spin up isolated sub-instances with their own context window
+- They do the messy reading/searching and return a distilled result — your main thread stays focused
+- Built-in: **Explore** (read-only codebase search), **Plan** (strategy before writing)
+- Still subject to the same permissions — subagents are **not** a security boundary
+
+## Context window tips
+
+- Use `/compact` when context fills up, `/clear` between unrelated tasks
+- `@filename` to include specific files rather than letting Claude scan everything
+- `!command` to inject shell output directly into context
+:::
+
 
 :::{admonition} Practitioner's perspective: A real Claude Code session
 :class: tip
