@@ -39,12 +39,12 @@ This is work in progress. Known limitations:
 :delim: ;
 :widths: auto
 
-04 min ; {doc}`introduction`
-xx min ; {doc}`scenario-full-control`
-xx min ; {doc}`scenario-ide-integration`
-xx min ; {doc}`scenario-agentic`
-xx min ; {doc}`security`
-xx min ; {doc}`conclusion`
+25 min ; {doc}`introduction`
+20 min ; {doc}`scenario-full-control`
+15 min ; {doc}`scenario-ide-integration`
+20 min ; {doc}`scenario-agentic`
+10 min ; {doc}`security`
+05 min ; {doc}`conclusion`
 ```
 
 ```{toctree}
