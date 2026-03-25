@@ -47,7 +47,6 @@ even multi-line code blocks.
               +---------------------+
 ```
 
-**ASCII diagram generated with claude, we should use screenshots here**
 
 
 ### How this differs from chat-based coding
@@ -92,8 +91,9 @@ Each tool has different data collection policies. For example:
 
 ## Setting up GitHub Copilot
 
-**THIS MIGHT HAVE CHANGED IN EARLY FEBRUARY, IT NEEDS VERIFICATION PLUS LINKS**
-
+:::{warning}
+To-Do: The content of this session might not be fully up to date.
+:::
 
 GitHub Copilot is currently the most widely-used IDE-integrated assistant.
 Here's how to set it up with privacy and control in mind.
@@ -102,7 +102,7 @@ Here's how to set it up with privacy and control in mind.
 
 1. Install the "GitHub Copilot" extension from the marketplace
 2. Sign in with your GitHub account
-3. If you have an educational (.edu) email, you may qualify for free access
+3. If you have an educational email, you may qualify for free access
 
 ### Key configuration settings
 
@@ -130,28 +130,13 @@ Open VS Code settings (Ctrl+, or Cmd+,) and search for "Copilot":
 }
 ```
 
-### Disabling for sensitive files
+### Disabling AI assistend coding for sensitive files
 
-You can create a `.copilotignore` file in your project root:
+Ideally, there would be an equivalent of `.gitignore` so that certain files are never sent to remote end-point (e.g. secrets, credentials, sensitive data). Some tools support this type of control, but with GitHub copilot ["Content exclusion is available only with a GitHub Copilot Business or a GitHub Copilot Enterprise subscriptions."](https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-admin?view=vs-2022).
 
-```
-# Don't process these files
-.env
-secrets.py
-config/credentials.yaml
-data/*  # Ignore data directory
-```
+For a recent survey of other tools and their *ignore* settings, [see this link](https://github.com/yjcho9317/aiignore-cli/blob/main/docs/test-report.md).
 
-:::{discussion}
-**When to disable AI suggestions**
-
-Consider disabling inline AI for:
-- Files containing credentials or API keys
-- Proprietary algorithms
-- Files with sensitive personal data
-- Configuration files with internal infrastructure details
-:::
-
+An alternative is to run VScode inside a container so that only certain folders of the file system are visible, and secrets can be separated.
 
 ## The hidden context problem
 
@@ -209,9 +194,7 @@ When tools can modify multiple files:
 With suggestions appearing automatically, it's easy to accept them without
 sufficient review. Build these habits:
 
-### The 3-second rule
-
-**TODO ENrico has a reference for this**
+### Critically assess suggestions
 
 Before pressing Tab to accept:
 1. **Read** the entire suggestion
@@ -237,46 +220,26 @@ Some developers find it faster to:
 This works but requires discipline. Don't skip step 2.
 
 
-## Alternative tools: Codeium and Tabnine
+## Alternative tools: Windsurf
 
 GitHub Copilot isn't your only option. Here's how alternatives compare:
 
-### Codeium
+### Windsurf (previously known as Codeium)
 
 - **Pricing**: Free core features
 - **Privacy**: Claims no training on your code
 - **Features**: 70+ languages, chat interface, Windsurf IDE
 
 Setup in VS Code:
-1. Install "Codeium" extension
-2. Create account at codeium.com
+1. Install ["Windsurf" extension](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium)
+2. Create account at windsurf.com
 3. Authenticate in VS Code
-
-### Tabnine
-
-- **Pricing**: Free basic tier, paid for advanced
-- **Privacy**: Offers local-only models (no cloud transmission)
-- **Features**: Learns from your codebase, SOC 2 compliant
-
-Setup in VS Code:
-1. Install "Tabnine" extension
-2. Create account
-3. Choose cloud or local mode
-
-### Comparison for research settings
-
-| Factor | Copilot | Codeium | Tabnine (Local) |
-|--------|---------|---------|-----------------|
-| Privacy | Cloud-based | Cloud-based | Can run locally |
-| Quality | Excellent | Good | Good |
-| Cost | $10-19/mo | Free | Free basic |
-| Institutional acceptance | Varies | Varies | Often preferred |
 
 
 ## Exercises
 
 :::{exercise} Exercise IDE-1: Configure your tool
-Set up GitHub Copilot (or Codeium/Tabnine) and:
+Set up GitHub Copilot (or Windsurf) and:
 
 1. Create a `.copilotignore` or equivalent to exclude:
    - Any `.env` files
@@ -413,14 +376,12 @@ If you're not sure, either find out or switch to a more transparent approach.
 ## See also
 
 - [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
-- [Codeium Documentation](https://codeium.com/documentation)
-- [Tabnine Documentation](https://docs.tabnine.com/)
 - <a href="https://marketplace.visualstudio.com/search?term=ai%20code&target=VSCode&category=All%20categories&sortBy=Installs">VSCode extensions for AI assistants</a>
 
 
 :::{keypoints}
 - IDE-integrated AI sends code context automatically to remote servers
-- Use configuration files (`.copilotignore`) to exclude sensitive files
+- Make sure you can exclude sensitive files
 - Always review suggestions before accepting, even if they look correct
 - Consider local-model alternatives (Tabnine) for sensitive projects
 - Close sensitive tabs when working with AI-assisted completion
