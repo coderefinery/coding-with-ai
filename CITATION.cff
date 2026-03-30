@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this lesson material, please cite it as below."
+authors:
+- family-names: "Glerean"
+  given-names: "Enrico"
+- family-names: "Lindi"
+  given-names: "Bjørn"
+- family-names: "Pöhner"
+  given-names: "Ina"
+- family-names: "Rantaharju"
+  given-names: "Jarno"
+- family-names: "Christ"
+  given-names: "Simon"
+- family-names: "Mohanan"
+  given-names: "Ashwin"
+- family-names: "Mesiti"
+  given-names: "Michele"
+- family-names: "Robertson"
+  given-names: "Frankie"
+title: "Responsible Use of Generative AI in Assisted Coding"
+version: 2026-03-30
+date-released: 2026-03-25
+doi: 10.5281/zenodo.19335928
+url: "https://github.com/coderefinery/coding-with-ai"
