@@ -1,0 +1,815 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Appendix II: Running Local LLMs for Coding &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Appendix I: The Full Spectrum of AI Coding Tools" href="../appendix-spectrum/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/">Security Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/">Conclusions and Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../appendix-spectrum/">Appendix I: The Full Spectrum of AI Coding Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Appendix II: Running Local LLMs for Coding</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview-the-local-ai-coding-stack">Overview: The local AI coding stack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-requirements">Minimum requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-acceleration-optional-but-recommended">GPU acceleration (optional but recommended)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-1-install-ollama">Step 1: Install Ollama</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verify-installation">Verify installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-2-download-a-coding-model">Step 2: Download a coding model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recommended-models-for-coding">Recommended models for coding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#download-your-chosen-model">Download your chosen model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#test-the-model">Test the model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-3-install-continue-extension-in-vs-code">Step 3: Install Continue extension in VS Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-extension">Install the extension</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-4-configure-continue-for-ollama">Step 4: Configure Continue for Ollama</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-configuration">Basic configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-explained">Configuration explained</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiple-models-configuration">Multiple models configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#step-5-using-continue">Step 5: Using Continue</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#chat-with-your-code-ctrl-cmd-l">Chat with your code (Ctrl/Cmd + L)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-editing-ctrl-cmd-i">Inline editing (Ctrl/Cmd + I)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tab-autocomplete">Tab autocomplete</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connection-refused-or-model-not-responding">“Connection refused” or model not responding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#autocomplete-not-appearing">Autocomplete not appearing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slow-responses">Slow responses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#out-of-memory-errors">Out of memory errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#alternative-setups">Alternative setups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cline-agentic-alternative-to-continue">Cline (agentic alternative to Continue)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lm-studio-gui-alternative-to-ollama">LM Studio (GUI alternative to Ollama)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#llama-cpp-advanced">llama.cpp (advanced)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#comparison-local-vs-cloud-models">Comparison: Local vs. cloud models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model-recommendations-by-use-case">Model recommendations by use case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-resources">Further resources</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-documentation">Official documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorials-and-guides">Tutorials and guides</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-benchmarks-and-comparisons">Model benchmarks and comparisons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Appendix II: Running Local LLMs for Coding</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/appendix-local-llms.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="appendix-ii-running-local-llms-for-coding">
+<h1>Appendix II: Running Local LLMs for Coding<a class="headerlink" href="#appendix-ii-running-local-llms-for-coding" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To-Do: This section needs reviewing and testing on multiple systems. Help us via GitHub issues and pull requests.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Why run models locally?</p>
+<p>Running AI models on your own machine offers significant advantages for
+research computing:</p>
+<ul class="simple">
+<li><p><strong>Privacy</strong>: Your code never leaves your machine</p></li>
+<li><p><strong>Offline capability</strong>: Works without internet connection</p></li>
+<li><p><strong>No API costs</strong>: After initial setup, inference is free</p></li>
+<li><p><strong>Full control</strong>: Choose models, customize behavior, no vendor lock-in</p></li>
+<li><p><strong>Compliance</strong>: May help meet institutional data handling requirements</p></li>
+</ul>
+<p>The trade-off is reduced capability compared to cloud models and hardware
+requirements. This appendix helps you set up a practical local coding
+assistant.</p>
+</div>
+<section id="overview-the-local-ai-coding-stack">
+<h2>Overview: The local AI coding stack<a class="headerlink" href="#overview-the-local-ai-coding-stack" title="Link to this heading"></a></h2>
+<p>A local AI coding setup has three components:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+------------------+</span>     <span class="o">+------------------+</span>     <span class="o">+------------------+</span>
+<span class="o">|</span>   <span class="n">Your</span> <span class="n">Editor</span>    <span class="o">|</span>     <span class="o">|</span>   <span class="n">Model</span> <span class="n">Runner</span>   <span class="o">|</span>     <span class="o">|</span>   <span class="n">Local</span> <span class="n">Model</span>    <span class="o">|</span>
+<span class="o">|</span>   <span class="p">(</span><span class="n">VS</span> <span class="n">Code</span><span class="p">)</span>      <span class="o">|</span> <span class="o">--&gt;</span> <span class="o">|</span>   <span class="p">(</span><span class="n">Ollama</span><span class="p">)</span>       <span class="o">|</span> <span class="o">--&gt;</span> <span class="o">|</span>   <span class="p">(</span><span class="n">Qwen2</span><span class="mf">.5</span><span class="o">-</span><span class="n">Coder</span><span class="p">)</span><span class="o">|</span>
+<span class="o">|</span>                  <span class="o">|</span>     <span class="o">|</span>                  <span class="o">|</span>     <span class="o">|</span>                  <span class="o">|</span>
+<span class="o">|</span>   <span class="o">+</span> <span class="n">Extension</span>    <span class="o">|</span>     <span class="o">|</span>   <span class="n">Serves</span> <span class="n">model</span>   <span class="o">|</span>     <span class="o">|</span>   <span class="n">Runs</span> <span class="n">on</span> <span class="n">your</span>   <span class="o">|</span>
+<span class="o">|</span>   <span class="p">(</span><span class="n">Continue</span><span class="p">)</span>     <span class="o">|</span>     <span class="o">|</span>   <span class="n">via</span> <span class="n">HTTP</span> <span class="n">API</span>   <span class="o">|</span>     <span class="o">|</span>   <span class="n">CPU</span><span class="o">/</span><span class="n">GPU</span>        <span class="o">|</span>
+<span class="o">+------------------+</span>     <span class="o">+------------------+</span>     <span class="o">+------------------+</span>
+</pre></div>
+</div>
+<p><strong>Recommended stack for most users:</strong></p>
+<ul class="simple">
+<li><p><strong>Editor</strong>: VS Code</p></li>
+<li><p><strong>Extension</strong>: Continue (open source, feature-rich)</p></li>
+<li><p><strong>Model runner</strong>: Ollama (easy installation, good performance)</p></li>
+<li><p><strong>Model</strong>: Qwen2.5-Coder (best benchmark performance for size)</p></li>
+</ul>
+</section>
+<section id="hardware-requirements">
+<h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading"></a></h2>
+<p>Local LLMs require significant resources. Here’s what to expect:</p>
+<section id="minimum-requirements">
+<h3>Minimum requirements<a class="headerlink" href="#minimum-requirements" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Minimum</p></th>
+<th class="head"><p>Recommended</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RAM</p></td>
+<td><p>8 GB</p></td>
+<td><p>16+ GB</p></td>
+</tr>
+<tr class="row-odd"><td><p>Storage</p></td>
+<td><p>10 GB free</p></td>
+<td><p>50+ GB free</p></td>
+</tr>
+<tr class="row-even"><td><p>CPU</p></td>
+<td><p>Modern multi-core</p></td>
+<td><p>Apple Silicon / Recent Intel/AMD</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gpu-acceleration-optional-but-recommended">
+<h3>GPU acceleration (optional but recommended)<a class="headerlink" href="#gpu-acceleration-optional-but-recommended" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>GPU Type</p></th>
+<th class="head"><p>VRAM</p></th>
+<th class="head"><p>What you can run</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>None (CPU only)</p></td>
+<td><p>-</p></td>
+<td><p>1-3B models, slow</p></td>
+</tr>
+<tr class="row-odd"><td><p>6-8 GB</p></td>
+<td><p>NVIDIA/AMD</p></td>
+<td><p>7B models comfortably</p></td>
+</tr>
+<tr class="row-even"><td><p>12-16 GB</p></td>
+<td><p>NVIDIA/AMD</p></td>
+<td><p>14B models, some 32B quantized</p></td>
+</tr>
+<tr class="row-odd"><td><p>24+ GB</p></td>
+<td><p>NVIDIA/AMD</p></td>
+<td><p>32B+ models</p></td>
+</tr>
+<tr class="row-even"><td><p>Apple Silicon</p></td>
+<td><p>Unified</p></td>
+<td><p>7-14B models well, larger with patience</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">Apple Silicon note</p>
+<p>Apple Silicon Macs (M1/M2/M3/M4) work well for local LLMs because they use
+unified memory—the same RAM serves both CPU and GPU. A Mac with 16GB unified
+memory can comfortably run 7B models and handle 14B models reasonably well.</p>
+</div>
+</section>
+</section>
+<section id="step-1-install-ollama">
+<h2>Step 1: Install Ollama<a class="headerlink" href="#step-1-install-ollama" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://ollama.ai">Ollama</a> is the easiest way to run local models. It handles
+downloading, quantization, and serving models via a simple API.</p>
+<section id="macos">
+<h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Option 1: Download from website</span>
+<span class="c1"># Visit https://ollama.ai and download the app</span>
+
+<span class="c1"># Option 2: Homebrew</span>
+brew<span class="w"> </span>install<span class="w"> </span>ollama
+</pre></div>
+</div>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://ollama.ai/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+</section>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
+<p>Download the installer from <a class="reference external" href="https://ollama.ai">ollama.ai</a>.</p>
+</section>
+<section id="verify-installation">
+<h3>Verify installation<a class="headerlink" href="#verify-installation" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start Ollama (may start automatically)</span>
+ollama<span class="w"> </span>serve
+
+<span class="c1"># In another terminal, test it</span>
+ollama<span class="w"> </span>--version
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-2-download-a-coding-model">
+<h2>Step 2: Download a coding model<a class="headerlink" href="#step-2-download-a-coding-model" title="Link to this heading"></a></h2>
+<section id="recommended-models-for-coding">
+<h3>Recommended models for coding<a class="headerlink" href="#recommended-models-for-coding" title="Link to this heading"></a></h3>
+<p>Based on current benchmarks (2025), here are the best local coding models:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Best for</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>qwen2.5-coder:7b</strong></p></td>
+<td><p>~4.5 GB</p></td>
+<td><p>Best balance of quality/speed</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">qwen2.5-coder:7b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>qwen2.5-coder:1.5b</strong></p></td>
+<td><p>~1 GB</p></td>
+<td><p>Fast autocomplete</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">qwen2.5-coder:1.5b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>qwen2.5-coder:14b</strong></p></td>
+<td><p>~9 GB</p></td>
+<td><p>Higher quality, slower</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">qwen2.5-coder:14b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>deepseek-coder:6.7b</strong></p></td>
+<td><p>~4 GB</p></td>
+<td><p>Good alternative</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">deepseek-coder:6.7b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>codellama:7b</strong></p></td>
+<td><p>~4 GB</p></td>
+<td><p>Meta’s coding model</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">codellama:7b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>starcoder2:3b</strong></p></td>
+<td><p>~2 GB</p></td>
+<td><p>Lightweight, good for autocomplete</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">ollama</span> <span class="pre">pull</span> <span class="pre">starcoder2:3b</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">Model recommendation: Start with Qwen2.5-Coder</p>
+<p><a class="reference external" href="https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct">Qwen2.5-Coder</a> currently
+leads open-source coding benchmarks, scoring 88.4% on HumanEval with the 7B
+model—higher than GPT-4’s 87.1%. It significantly outperforms alternatives
+like StarCoder2 and DeepSeek-Coder at similar sizes.</p>
+<p>For most users, start with <code class="docutils literal notranslate"><span class="pre">qwen2.5-coder:7b</span></code> for chat/assistance and
+<code class="docutils literal notranslate"><span class="pre">qwen2.5-coder:1.5b</span></code> for fast autocomplete.</p>
+</div>
+</section>
+<section id="download-your-chosen-model">
+<h3>Download your chosen model<a class="headerlink" href="#download-your-chosen-model" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Download the recommended model (takes a few minutes)</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>qwen2.5-coder:7b
+
+<span class="c1"># Optionally, also get a small model for autocomplete</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>qwen2.5-coder:1.5b
+</pre></div>
+</div>
+</section>
+<section id="test-the-model">
+<h3>Test the model<a class="headerlink" href="#test-the-model" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interactive test</span>
+ollama<span class="w"> </span>run<span class="w"> </span>qwen2.5-coder:7b<span class="w"> </span><span class="s2">&quot;Write a Python function to calculate fibonacci numbers&quot;</span>
+</pre></div>
+</div>
+<p>If this works, your model is ready.</p>
+</section>
+</section>
+<section id="step-3-install-continue-extension-in-vs-code">
+<h2>Step 3: Install Continue extension in VS Code<a class="headerlink" href="#step-3-install-continue-extension-in-vs-code" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://continue.dev">Continue</a> is an open-source AI coding assistant that
+integrates with VS Code and JetBrains IDEs. It supports local models via Ollama.</p>
+<section id="install-the-extension">
+<h3>Install the extension<a class="headerlink" href="#install-the-extension" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Open VS Code</p></li>
+<li><p>Go to Extensions (Ctrl/Cmd + Shift + X)</p></li>
+<li><p>Search for “Continue”</p></li>
+<li><p>Click Install on “Continue - Codestral, Claude, and more”</p></li>
+</ol>
+<p>Alternatively, from the command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>code<span class="w"> </span>--install-extension<span class="w"> </span>Continue.continue
+</pre></div>
+</div>
+</section>
+<section id="initial-setup">
+<h3>Initial setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h3>
+<p>After installation:</p>
+<ol class="arabic simple">
+<li><p>Continue will appear in the sidebar (look for the Continue icon)</p></li>
+<li><p>Click on it to open the Continue panel</p></li>
+<li><p>It will prompt you to configure a model</p></li>
+</ol>
+</section>
+</section>
+<section id="step-4-configure-continue-for-ollama">
+<h2>Step 4: Configure Continue for Ollama<a class="headerlink" href="#step-4-configure-continue-for-ollama" title="Link to this heading"></a></h2>
+<p>Continue uses a <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file for configuration. Open it via:</p>
+<ol class="arabic simple">
+<li><p>Open Command Palette (Ctrl/Cmd + Shift + P)</p></li>
+<li><p>Type “Continue: Open Config”</p></li>
+<li><p>Select it to open the configuration file</p></li>
+</ol>
+<section id="basic-configuration">
+<h3>Basic configuration<a class="headerlink" href="#basic-configuration" title="Link to this heading"></a></h3>
+<p>Replace the contents with this configuration:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qwen2.5 Coder 7B (Local)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-coder:7b&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;tabAutocompleteModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qwen2.5 Coder 1.5B (Autocomplete)&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-coder:1.5b&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;tabAutocompleteOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;multilineCompletions&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="configuration-explained">
+<h3>Configuration explained<a class="headerlink" href="#configuration-explained" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">models</span></code></p></td>
+<td><p>Models available for chat (Ctrl/Cmd + L)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tabAutocompleteModel</span></code></p></td>
+<td><p>Model used for inline code completion</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tabAutocompleteOptions</span></code></p></td>
+<td><p>Settings for autocomplete behavior</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multiple-models-configuration">
+<h3>Multiple models configuration<a class="headerlink" href="#multiple-models-configuration" title="Link to this heading"></a></h3>
+<p>You can configure multiple models and switch between them:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qwen2.5 Coder 7B&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-coder:7b&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Qwen2.5 Coder 14B (Slower)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-coder:14b&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DeepSeek Coder&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deepseek-coder:6.7b&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;tabAutocompleteModel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Fast Autocomplete&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2.5-coder:1.5b&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="step-5-using-continue">
+<h2>Step 5: Using Continue<a class="headerlink" href="#step-5-using-continue" title="Link to this heading"></a></h2>
+<section id="chat-with-your-code-ctrl-cmd-l">
+<h3>Chat with your code (Ctrl/Cmd + L)<a class="headerlink" href="#chat-with-your-code-ctrl-cmd-l" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Select some code in your editor</p></li>
+<li><p>Press Ctrl/Cmd + L</p></li>
+<li><p>Type your question: “Explain this code” or “Add error handling”</p></li>
+<li><p>The response appears in the Continue panel</p></li>
+</ol>
+</section>
+<section id="inline-editing-ctrl-cmd-i">
+<h3>Inline editing (Ctrl/Cmd + I)<a class="headerlink" href="#inline-editing-ctrl-cmd-i" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Select code you want to modify</p></li>
+<li><p>Press Ctrl/Cmd + I</p></li>
+<li><p>Describe the change: “Add type hints” or “Convert to async”</p></li>
+<li><p>Review and accept/reject the changes</p></li>
+</ol>
+</section>
+<section id="tab-autocomplete">
+<h3>Tab autocomplete<a class="headerlink" href="#tab-autocomplete" title="Link to this heading"></a></h3>
+<p>Once configured, you’ll see ghost text suggestions as you type. Press Tab
+to accept, or keep typing to ignore.</p>
+<div class="note admonition">
+<p class="admonition-title">First-run slowness</p>
+<p>Local models are slow on the first prompt while they load into memory. After
+the initial “warm-up,” responses are much faster. Don’t judge performance
+until after the first response.</p>
+</div>
+</section>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="connection-refused-or-model-not-responding">
+<h3>“Connection refused” or model not responding<a class="headerlink" href="#connection-refused-or-model-not-responding" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Make sure Ollama is running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>serve
+</pre></div>
+</div>
+</li>
+<li><p>Check that the model is downloaded:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>list
+</pre></div>
+</div>
+</li>
+<li><p>Test the model directly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ollama<span class="w"> </span>run<span class="w"> </span>qwen2.5-coder:7b<span class="w"> </span><span class="s2">&quot;Hello&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="autocomplete-not-appearing">
+<h3>Autocomplete not appearing<a class="headerlink" href="#autocomplete-not-appearing" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Check VS Code settings: <code class="docutils literal notranslate"><span class="pre">editor.inlineSuggest.enabled</span></code> must be <code class="docutils literal notranslate"><span class="pre">true</span></code></p></li>
+<li><p>Disable other completion extensions (GitHub Copilot, etc.) that might conflict</p></li>
+<li><p>Ensure <code class="docutils literal notranslate"><span class="pre">tabAutocompleteModel</span></code> is configured in Continue config</p></li>
+</ol>
+</section>
+<section id="slow-responses">
+<h3>Slow responses<a class="headerlink" href="#slow-responses" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use a smaller model (1.5b or 3b) for autocomplete</p></li>
+<li><p>Ensure you have enough RAM (close other applications)</p></li>
+<li><p>On NVIDIA GPUs, verify CUDA is being used (check Ollama logs)</p></li>
+<li><p>Consider using quantized models (Ollama does this automatically)</p></li>
+</ul>
+</section>
+<section id="out-of-memory-errors">
+<h3>Out of memory errors<a class="headerlink" href="#out-of-memory-errors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use a smaller model</p></li>
+<li><p>Close memory-intensive applications</p></li>
+<li><p>On systems with dedicated GPU, ensure model fits in VRAM</p></li>
+</ul>
+</section>
+</section>
+<section id="alternative-setups">
+<h2>Alternative setups<a class="headerlink" href="#alternative-setups" title="Link to this heading"></a></h2>
+<section id="cline-agentic-alternative-to-continue">
+<h3>Cline (agentic alternative to Continue)<a class="headerlink" href="#cline-agentic-alternative-to-continue" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://github.com/cline/cline">Cline</a> is a VS Code extension that offers
+more autonomous capabilities—it can edit files and run commands, not just
+suggest code.</p>
+<p>Install from VS Code marketplace, then configure for Ollama:</p>
+<ol class="arabic simple">
+<li><p>Open Cline settings</p></li>
+<li><p>Select Ollama as provider</p></li>
+<li><p>Choose your model</p></li>
+</ol>
+<p>Cline is more powerful but also higher risk (it can modify files). Use with
+appropriate caution.</p>
+</section>
+<section id="lm-studio-gui-alternative-to-ollama">
+<h3>LM Studio (GUI alternative to Ollama)<a class="headerlink" href="#lm-studio-gui-alternative-to-ollama" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://lmstudio.ai">LM Studio</a> provides a graphical interface for running
+local models. It’s easier for beginners but less scriptable.</p>
+<ol class="arabic simple">
+<li><p>Download from lmstudio.ai</p></li>
+<li><p>Search for and download coding models</p></li>
+<li><p>Start the local server</p></li>
+<li><p>Configure Continue to use the LM Studio endpoint:</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;LM Studio Model&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local-model&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;apiBase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:1234/v1&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="llama-cpp-advanced">
+<h3>llama.cpp (advanced)<a class="headerlink" href="#llama-cpp-advanced" title="Link to this heading"></a></h3>
+<p>For maximum control and efficiency, you can run <a class="reference external" href="https://github.com/ggml-org/llama.cpp">llama.cpp</a>
+directly. This is more complex but offers the best performance tuning.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Clone and build</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ggml-org/llama.cpp
+<span class="nb">cd</span><span class="w"> </span>llama.cpp
+make
+
+<span class="c1"># Download a model (GGUF format) from HuggingFace</span>
+<span class="c1"># Then run the server</span>
+./llama-server<span class="w"> </span>-m<span class="w"> </span>path/to/model.gguf<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span>
+</pre></div>
+</div>
+<p>Configure Continue to use it:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;models&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;llama.cpp Model&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openai&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;apiBase&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:8080/v1&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="comparison-local-vs-cloud-models">
+<h2>Comparison: Local vs. cloud models<a class="headerlink" href="#comparison-local-vs-cloud-models" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Aspect</p></th>
+<th class="head"><p>Local (Ollama + Qwen2.5)</p></th>
+<th class="head"><p>Cloud (GPT-4, Claude)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Privacy</strong></p></td>
+<td><p>Complete</p></td>
+<td><p>Code sent to servers</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Cost</strong></p></td>
+<td><p>Free after setup</p></td>
+<td><p>Per-token charges</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Quality</strong></p></td>
+<td><p>Good (88% HumanEval)</p></td>
+<td><p>Better (90%+ HumanEval)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Speed</strong></p></td>
+<td><p>Depends on hardware</p></td>
+<td><p>Generally faster</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Offline</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Setup</strong></p></td>
+<td><p>Required</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Context window</strong></p></td>
+<td><p>Model-dependent (4K-32K typical)</p></td>
+<td><p>Often larger (128K+)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">When to use local vs. cloud</p>
+<p><strong>Use local models when:</strong></p>
+<ul class="simple">
+<li><p>Working with sensitive/proprietary code</p></li>
+<li><p>Need offline capability</p></li>
+<li><p>Want to avoid API costs</p></li>
+<li><p>Institutional policy restricts cloud AI</p></li>
+</ul>
+<p><strong>Use cloud models when:</strong></p>
+<ul class="simple">
+<li><p>Maximum quality is critical</p></li>
+<li><p>Working with very large codebases (need big context)</p></li>
+<li><p>Hardware is insufficient for local models</p></li>
+<li><p>Quick tasks where setup time isn’t justified</p></li>
+</ul>
+</div>
+</section>
+<section id="model-recommendations-by-use-case">
+<h2>Model recommendations by use case<a class="headerlink" href="#model-recommendations-by-use-case" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Use case</p></th>
+<th class="head"><p>Recommended model</p></th>
+<th class="head"><p>Why</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>General coding chat</strong></p></td>
+<td><p>qwen2.5-coder:7b</p></td>
+<td><p>Best quality/speed balance</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Fast autocomplete</strong></p></td>
+<td><p>qwen2.5-coder:1.5b</p></td>
+<td><p>Snappy tab completion</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Complex problems</strong></p></td>
+<td><p>qwen2.5-coder:14b or 32b</p></td>
+<td><p>Higher quality, needs more RAM</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Limited hardware</strong></p></td>
+<td><p>starcoder2:3b</p></td>
+<td><p>Runs on minimal resources</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Research/multilingual</strong></p></td>
+<td><p>deepseek-coder:6.7b</p></td>
+<td><p>Good multilingual support</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="security-considerations">
+<h2>Security considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Running local models is safer from a data privacy perspective, but introduces
+other considerations:</p>
+<ol class="arabic simple">
+<li><p><strong>Model provenance</strong>: Only download models from trusted sources (Ollama
+library, HuggingFace official repos)</p></li>
+<li><p><strong>System resources</strong>: Models can consume significant CPU/GPU/RAM</p></li>
+<li><p><strong>Network exposure</strong>: By default, Ollama only listens on localhost. Don’t
+expose it to the network without authentication</p></li>
+<li><p><strong>Model output</strong>: Local models can still generate insecure code—verification
+practices from the main course still apply</p></li>
+</ol>
+</div>
+</section>
+<section id="further-resources">
+<h2>Further resources<a class="headerlink" href="#further-resources" title="Link to this heading"></a></h2>
+<section id="official-documentation">
+<h3>Official documentation<a class="headerlink" href="#official-documentation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ollama.ai">Ollama documentation</a></p></li>
+<li><p><a class="reference external" href="https://docs.continue.dev">Continue documentation</a></p></li>
+<li><p><a class="reference external" href="https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct">Qwen2.5-Coder model card</a></p></li>
+</ul>
+</section>
+<section id="tutorials-and-guides">
+<h3>Tutorials and guides<a class="headerlink" href="#tutorials-and-guides" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ollama.com/blog/continue-code-assistant">Ollama Blog: Continue code assistant</a></p></li>
+<li><p><a class="reference external" href="https://docs.continue.dev/customize/deep-dives/autocomplete">Continue: Tab Autocomplete setup</a></p></li>
+<li><p><a class="reference external" href="https://keyholesoftware.com/ollama-vs-code-your-guide-to-local-llm-development/">Local AI coding assistant guide</a></p></li>
+</ul>
+</section>
+<section id="model-benchmarks-and-comparisons">
+<h3>Model benchmarks and comparisons<a class="headerlink" href="#model-benchmarks-and-comparisons" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard">Open LLM Leaderboard</a></p></li>
+<li><p><a class="reference external" href="https://localllm.in/blog/best-local-llm-for-coding-2025">Best local coding LLMs (2025)</a></p></li>
+</ul>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Local AI coding requires: model runner (Ollama) + IDE extension (Continue) + model (Qwen2.5-Coder)</p></li>
+<li><p>Qwen2.5-Coder currently leads open-source coding benchmarks</p></li>
+<li><p>Use smaller models (1.5b-3b) for autocomplete, larger (7b+) for chat</p></li>
+<li><p>First response is slow while model loads; subsequent responses are faster</p></li>
+<li><p>Local models trade some quality for privacy, offline capability, and zero API costs</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../appendix-spectrum/" class="btn btn-neutral float-left" title="Appendix I: The Full Spectrum of AI Coding Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
