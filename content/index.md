@@ -75,6 +75,15 @@ appendix-spectrum
 appendix-local-llms
 ```
 
+```{toctree}
+:caption: Workshops
+:maxdepth: 1
+
+workshop-data-viz
+workshop-jupyter-basics
+workshop-datasets
+```
+
 (learner-personas)=
 
 ## Who is the course for?
