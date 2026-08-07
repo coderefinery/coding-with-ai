@@ -84,6 +84,15 @@ workshop-jupyter-basics
 workshop-datasets
 ```
 
+```{toctree}
+:maxdepth: 1
+:caption: About
+
+All lessons <https://coderefinery.org/lessons/core/>
+CodeRefinery <https://coderefinery.org/>
+reusing.md
+```
+
 (learner-personas)=
 
 ## Who is the course for?
