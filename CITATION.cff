@@ -1,44 +1,31 @@
 cff-version: 1.2.0
-message: "If you use this lesson material, please cite it using these metadata."
+message: If you use this lesson material, please cite it using these metadata.
 authors:
-- name: "CodeRefinery"
-- family-names: "Glerean"
-  given-names: "Enrico"
-  orcid: "https://orcid.org/0000-0003-0624-675X"
-  affiliation: "Aalto University"
-- family-names: "Lindi"
-  given-names: "Bjørn"
-  affiliation: "NTNU"
-- family-names: "Pöhner"
-  given-names: "Ina"
-  affiliation: "University of Eastern Finland"
-- family-names: "Rantaharju"
-  given-names: "Jarno"
-  affiliation: "Aalto University"
-- family-names: "Christ"
-  given-names: "Simon"
-  affiliation: "Leibniz University Hannover"
-- family-names: "Pfau"
-  given-names: "Thomas"
-  affiliation: "Aalto University"
-title: "Responsible Use of Generative AI in Assisted Coding"
-type: "data"
-abstract: "A CodeRefinery lesson providing a practical framework for researchers who
-  want to use AI coding assistants responsibly. The lesson covers three scenarios of
-  increasing automation (chat-based coding, IDE integration, and agentic coding),
+- name: CodeRefinery
+- family-names: Glerean
+  given-names: Enrico
+  orcid: https://orcid.org/0000-0003-0624-675X
+- family-names: Lindi
+  given-names: Bjørn
+- family-names: Pöhner
+  given-names: Ina
+- family-names: Rantaharju
+  given-names: Jarno
+- family-names: Christ
+  given-names: Simon
+- family-names: Pfau
+  given-names: Thomas
+title: Responsible Use of Generative AI in Assisted Coding - CodeRefinery lesson
+type: dataset
+abstract: A CodeRefinery lesson providing a practical framework for researchers who
+  want to use AI coding assistants responsibly. The lesson covers three scenarios
+  of increasing automation (chat-based coding, IDE integration, and agentic coding),
   security considerations including hallucinated packages and prompt injection, and
-  mitigation strategies. Includes a hands-on workshop on data exploration and
-  visualisation with Python and generative AI."
-version: 2026-04-22
-date-released: 2026-04-22
-url: "https://coderefinery.github.io/coding-with-ai/"
+  mitigation strategies. Includes a hands-on workshop on data exploration and visualisation
+  with Python and generative AI.
+version: '2026-08-10'
+doi: 10.5281/zenodo.19335927
+date-released: '2026-08-10'
+url: https://coderefinery.github.io/coding-with-ai
 license: CC-BY-4.0
-repository-code: "https://github.com/coderefinery/coding-with-ai"
-keywords:
-  - "generative AI"
-  - "coding"
-  - "research software"
-  - "responsible AI"
-  - "data visualisation"
-  - "CodeRefinery"
-  - "reproducibility"
+repository-code: https://github.com/coderefinery/coding-with-ai

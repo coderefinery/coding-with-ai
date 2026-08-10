@@ -1,0 +1,51 @@
+{
+    "@context": "https://schema.org/",
+    "@type": "LearningResource",
+    "@id": "https://coderefinery.github.io/coding-with-ai",
+    "description": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.",
+    "keywords": "generative AI, coding, research software, responsible AI, data visualisation, CodeRefinery, reproducibility",
+    "name": "Responsible Use of Generative AI in Assisted Coding - CodeRefinery lesson",
+    "author": [
+        {
+            "@type": "Organization",
+            "name": "CodeRefinery"
+        },
+        {
+            "@type": "Person",
+            "name": "Enrico Glerean"
+        },
+        {
+            "@type": "Person",
+            "name": "Bj\u00f8rn Lindi"
+        },
+        {
+            "@type": "Person",
+            "name": "Ina P\u00f6hner"
+        },
+        {
+            "@type": "Person",
+            "name": "Jarno Rantaharju"
+        },
+        {
+            "@type": "Person",
+            "name": "Simon Christ"
+        },
+        {
+            "@type": "Person",
+            "name": "Thomas Pfau"
+        }
+    ],
+    "about": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.",
+    "audience": "",
+    "competencyRequired": "",
+    "educationalLevel": "Beginner",
+    "identifier": "https://doi.org/10.5281/zenodo.19335927",
+    "inLanguage": "en-UK",
+    "learningResourceType": "lesson",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "teaches": "",
+    "url": "https://coderefinery.github.io/coding-with-ai",
+    "accessibilitySummary": "",
+    "isPartOf": "https://coderefinery.org",
+    "version": "2026-08-10"
+}
