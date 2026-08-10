@@ -26,7 +26,7 @@ abstract: "A CodeRefinery lesson providing a practical framework for researchers
 # YAML date. Used in CITATION.cff, bioschemas.yml, and the Zenodo
 # deposit. Also used as CITATION.cff's date-released, since for this
 # lesson the two always match - there's no separate date-released field.
-version: "2026-08-07"
+version: "2026-08-10"
 
 # Text. The concept DOI, which stays constant across all versions -
 # Zenodo assigns the version-specific DOI itself. Used in bioschemas.yml
