@@ -10,9 +10,9 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -36,6 +36,7 @@ extensions = [
     "sphinx_lesson",
     # remove once sphinx_rtd_theme updated for contrast and accessibility:
     "sphinx_rtd_theme_ext_color_contrast",
+    "lesson_metadata",
 ]
 
 # Settings for myst_nb:
