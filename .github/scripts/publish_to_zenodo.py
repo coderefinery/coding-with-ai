@@ -180,7 +180,7 @@ tag = os.environ["GITHUB_REF_NAME"]
 repo_name = os.environ['GITHUB_REPOSITORY']
 owner, repo = repo_name.split("/", 1)
 
-pdf_source_name = f"{owner}-{repo}.pdf"
+pdf_source_name = f"lesson.pdf"
 pdf_name = f"{owner}-{repo}-{tag}.pdf"
 
 pdf_url = (
