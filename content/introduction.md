@@ -33,7 +33,7 @@ code in the way humans do, but it has learned enough patterns to generate
 syntactically correct and often semantically meaningful code.
 
 :::{callout} Key insight
-LLMs are sophisticated pattern-matching systems, not reasoning engines. They
+LLMs are sophisticated pattern-matching systems that can perform multi-step reasoning, but their reasoning is fallible and outputs must be verified. They
 excel at common patterns but can confidently produce incorrect code for novel
 or complex problems. **Always verify AI-generated code**.
 :::
@@ -82,7 +82,7 @@ to learn general programming patterns:
 | StarCoder | 1 trillion tokens | 80+ languages |
 | StarCoder2 | 3.3-4.3 trillion tokens | 600+ languages |
 | CodeLlama | Llama 2 base + code | Multiple |
-| GPT-4 / Claude | Undisclosed | Multiple |
+| GPT-5.6 / Claude | Undisclosed | Multiple |
 
 During pre-training, the model learns:
 - Syntax rules for various programming languages
@@ -175,7 +175,7 @@ General-purpose AI assistants accessed via web interface:
 | Tool | Provider | Key Features |
 |------|----------|--------------|
 | [Duck.ai](https://duck.ai) | DuckDuckGo | Privacy-focused, no account needed, free |
-| [ChatGPT](https://chat.openai.com) | OpenAI | GPT-4, web browsing, code interpreter |
+| [ChatGPT](https://chat.openai.com) | OpenAI | GPT-5.6, web browsing, code interpreter |
 | [Claude](https://claude.ai) | Anthropic | Large context window, artifacts |
 | [Gemini](https://gemini.google.com) | Google | Multimodal, Google integration |
 
@@ -191,7 +191,7 @@ engine doesn't track users, and this extends to their AI chat service.
 - **Privacy by design**: Your IP address is hidden from AI providers, chats
   are not used for training, and conversations are stored locally on your
   device (not on remote servers)
-- **Free access**: Includes Claude, GPT-4o mini, Llama, and Mistral models
+- **Free access**: Includes Claude 4.5 Haiku, GPT-5.4 mini, GPT-5.4 nano, Gamma 4, and Mistral models
 - **Anonymous**: DuckDuckGo proxies your requests so AI providers never see
   your identity
 
@@ -210,10 +210,11 @@ access it via [duckduckgo.com/chat](https://duckduckgo.com/chat) or by typing
 :width: 100%
 ```
 
-
+<!--
 :::{warning}
 To-Do: This section needs expanding with more tools and/or kept up to date with new trends.
 :::
+-->
 
 Tools that integrate directly into your development environment:
 
@@ -221,10 +222,13 @@ Tools that integrate directly into your development environment:
 |------|---------|--------------|
 | Amazon Q Developer | Free for individuals | AWS expertise, security scanning |
 | Claude Code | ¢XX/mo | Remote processing, large context window (depending on tier) |
-| Codeium | Free core features | 70+ languages, Windsurf IDE |
-| Codex | Pay-as-you-go | GPT-4, API access |
-| Gemini Pro 3 | 3 pricing levels | Multimodal, Google integration |
+| Windsurf | Free core features | 70+ languages, Windsurf IDE |
+| Codex | Pay-as-you-go | GPT-5.6, API access |
+| Gemini Code Assist | 3 pricing levels | Multimodal, Google integration |
 | GitHub Copilot | €XX/mo (free tier available) | Most mature, broad language support |
+| Cursor | Free tier available | AI-native IDE, agent mode, multi-file editing |
+| Cline | Free / BYO API | VS Code agent, multiple model providers |
+| JetBrains AI / Junie | Free/paid tiers | JetBrains IDE integration, coding agent |
 | OpenClaw | ¢XX/mo | Local-first, privacy-focused |
 | Tabnine | Free basic tier | Privacy-focused, local models available |
 
@@ -236,21 +240,24 @@ Tools that integrate directly into your development environment:
 :width: 100%
 ```
 
-
+<!--
 :::{warning}
 To-Do: This section needs expanding with more tools and/or kept up to date with new trends.
 :::
-
+-->
 Autonomous agents that can write, test, and modify code:
 
 | Tool | Provider | Key Features |
 |------|----------|--------------|
 | Claude Code | Anthropic | CLI-based, git integration, sandboxing |
 | OpenAI Codex | OpenAI | CLI-based, git integration, sandboxing |
-| Gemini Pro 3 | Google | Multimodal, Google integration |
+| Gemini CLI | Google | Multimodal, Google integration |
 | GitHub Copilot Workspace | GitHub | PR-based workflow |
 | Cursor | Cursor Inc. | AI-native IDE with agent mode |
+| Cline | Cline | IDE/CLI agent, file editing, command execution, multiple models |
 | Aider | Open source | Terminal-based, multiple model support |
+| Devin | Cognition | Autonomous software engineer, testing, debugging, pull requests |
+| OpenHands | Open source | Autonomous coding agent, terminal and repository interaction |
 
 
 :::{admonition} The full spectrum is actually much broader
