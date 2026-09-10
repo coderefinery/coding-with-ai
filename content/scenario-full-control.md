@@ -154,7 +154,7 @@ text in your conversation that influences the AI's responses.
 | Code you paste | Provides examples and patterns |
 | Error messages shared | Help with debugging |
 
-![Contex Windows sizes 2026](llm_context_windows_2026.png)
+![Context Windows sizes 2026](llm_context_windows_2026.png)
 
 ### Practical context management
 
