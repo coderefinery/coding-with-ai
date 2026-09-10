@@ -191,7 +191,7 @@ engine doesn't track users, and this extends to their AI chat service.
 - **Privacy by design**: Your IP address is hidden from AI providers, chats
   are not used for training, and conversations are stored locally on your
   device (not on remote servers)
-- **Free access**: Includes Claude 4.5 Haiku, GPT-5.4 mini, GPT-5.4 nano, Gamma 4, and Mistral models
+- **Free access**: Includes Claude 4.5 Haiku, GPT-5.4 mini, GPT-5.6 Luna, Gemma 4, gpt-oss and Mistral models
 - **Anonymous**: DuckDuckGo proxies your requests so AI providers never see
   your identity
 
