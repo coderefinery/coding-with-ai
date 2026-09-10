@@ -50,7 +50,7 @@ Different providers have different policies:
 - Some offer enterprise tiers with data isolation (e.g. Microsoft Azure)
 - Read the terms of service for your chosen tool
 - When in doubt, assume your input may be retained
-- Most providers still retain all your activities for 30 days, even if you opted out
+- Most providers still retain all your activities for a period of time, even if you opted out. Retention periods vary by provider, product, and privacy settings.
 :::
 
 ### What NOT to share
@@ -154,7 +154,7 @@ text in your conversation that influences the AI's responses.
 | Code you paste | Provides examples and patterns |
 | Error messages shared | Help with debugging |
 
-![Contex Windows sizes 2025](llm_context_windows_2025.png)
+![Context Windows sizes 2026](llm_context_windows_2026.png)
 
 ### Practical context management
 
