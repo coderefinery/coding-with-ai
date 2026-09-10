@@ -1,0 +1,538 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Exploration and Visualization with Python and Generative AI &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=ad66008b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=b8b12719"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="JupyterLab: A Quick Introduction" href="../workshop-jupyter-basics/" />
+    <link rel="prev" title="Appendix II: Running Local LLMs for Coding" href="../appendix-local-llms/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security/">Security Considerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/">Conclusions and Next Steps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-spectrum/">Appendix I: The Full Spectrum of AI Coding Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix-local-llms/">Appendix II: Running Local LLMs for Coding</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Workshops</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Exploration and Visualization with Python and Generative AI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-data-visualisation-happens">How data visualisation happens</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ready-made-tools-vs-writing-code">Ready-made tools vs writing code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checklist-before-you-start">Checklist before you start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-geography-of-computing">The geography of computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-your-environment">Setting up your environment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#the-jupyterlab-interface">The JupyterLab interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#two-approaches-to-writing-code">Two approaches to writing code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-a-genai-assistant">Choosing a GenAI assistant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#your-first-genai-coding-prompt">Your first GenAI coding prompt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hands-on-exercises">Hands-on exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../workshop-jupyter-basics/">JupyterLab: A Quick Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../workshop-datasets/">Reference Datasets for the Workshop</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/lessons/core/">All lessons</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://coderefinery.org/">CodeRefinery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reusing/">Reusing</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Data Exploration and Visualization with Python and Generative AI</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/workshop-data-viz.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-exploration-and-visualization-with-python-and-generative-ai">
+<h1>Data Exploration and Visualization with Python and Generative AI<a class="headerlink" href="#data-exploration-and-visualization-with-python-and-generative-ai" title="Link to this heading"></a></h1>
+<p>This workshop is designed for beginners who have little or no prior coding experience. Over the course of the session you will learn how to explore and visualise a dataset using Python, with generative AI as your coding companion. By the end you will have produced at least one chart from real data — and you will understand a bit better what is actually happening when you let an AI write code for you.</p>
+<p>The workshop was developed at Aalto University as part of the <a class="reference external" href="https://scicomp.aalto.fi/">Aalto Scientific Computing</a> training activities.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Recommended reading:</strong> <a class="reference external" href="https://clauswilke.com/dataviz/">Fundamentals of Data Visualization</a> by Claus O. Wilke (O’Reilly, freely available online). A practical, code-free guide to what makes a chart work — covers choosing the right chart type, handling colour, dealing with overplotting, and communicating uncertainty. Worth bookmarking even if you only read one chapter at a time.</p>
+</div>
+<div class="admonition-prerequisites prerequisites admonition" id="prerequisites-0">
+<p class="admonition-title">Prerequisites</p>
+<ul class="simple">
+<li><p>No prior coding experience required</p></li>
+<li><p>Access to a computer with an internet connection</p></li>
+<li><p>A computing environment set up (see <a class="reference internal" href="#workshop-setup"><span class="std std-ref">The geography of computing</span></a> below)</p></li>
+</ul>
+</div>
+<section id="how-data-visualisation-happens">
+<h2>How data visualisation happens<a class="headerlink" href="#how-data-visualisation-happens" title="Link to this heading"></a></h2>
+<p>Data visualisation is not a single action. It is a process with four steps that you will repeat many times, going back and forth between them:</p>
+<ol class="arabic simple">
+<li><p><strong>Find and load data</strong> — identify a dataset relevant to your question and get it into your coding environment as a table or array.</p></li>
+<li><p><strong>Explore the data structure</strong> — look at what columns exist, what data types they are, how many rows, whether there are missing values.</p></li>
+<li><p><strong>Process the data</strong> — clean it up: handle missing values, filter rows you don’t need, rename columns, create derived variables.</p></li>
+<li><p><strong>Visualise</strong> — make a chart that communicates something meaningful about the data.</p></li>
+</ol>
+<div class="admonition-these-steps-are-not-linear callout admonition" id="callout-0">
+<p class="admonition-title">These steps are not linear</p>
+<p>You will almost always go back to step 2 or 3 after you make your first chart and realise something looks wrong or unexpected. That is normal and expected — it is how data exploration works.</p>
+</div>
+<div class="admonition-exercise-0-share-a-data-visualisation-you-like exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise 0: Share a data visualisation you like</p>
+<p>Before we dive into code, let’s take a moment to think about what good data visualisation looks like.</p>
+<ol class="arabic simple">
+<li><p>Think of a data visualisation you have seen and liked — it could be from a newspaper, a scientific paper, a website, a social media post, or anywhere else.</p></li>
+<li><p>Find the image or a link to it.</p></li>
+<li><p>Add it to the shared notes document with a one-sentence explanation of why you liked it.</p></li>
+<li><p>Have a look at what others have shared. Is there a common theme in what people find appealing?</p></li>
+</ol>
+</div>
+</section>
+<section id="ready-made-tools-vs-writing-code">
+<h2>Ready-made tools vs writing code<a class="headerlink" href="#ready-made-tools-vs-writing-code" title="Link to this heading"></a></h2>
+<p>There are two broad approaches to data visualisation:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Examples</p></th>
+<th class="head"><p>Strengths</p></th>
+<th class="head"><p>Limitations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Ready-made GUI tools</p></td>
+<td><p>Tableau, Datawrapper, Google Sheets, MS Excel</p></td>
+<td><p>No coding needed; fast to produce standard charts</p></td>
+<td><p>Limited customisation; hard to fully automate or reproduce; tied to one vendor</p></td>
+</tr>
+<tr class="row-odd"><td><p>Custom code</p></td>
+<td><p>Python, R, Julia</p></td>
+<td><p>Full control over every visual detail; reproducible; automatable</p></td>
+<td><p>Requires learning a programming language and its libraries</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-why-we-use-python-in-this-workshop callout admonition" id="callout-1">
+<p class="admonition-title">Why we use Python in this workshop</p>
+<p>Python has a large ecosystem of free, open-source data and visualisation libraries (pandas, matplotlib, seaborn, altair, plotly, …). The skill transfers directly to research computing, data analysis pipelines, and publication-quality figures. And with a GenAI assistant, the initial learning curve is much lower than it used to be.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A fourth option: GenAI-generated visualisations
+A newer category of tool lets you skip code entirely and ask an AI to produce a chart directly from your data — for example <a class="reference external" href="https://paperbanana.run/">paperbanana</a> and similar services. You upload a file or paste some numbers and receive an image of a chart.</p>
+<p>This is genuinely promising for quick exploratory views, but it comes with serious limitations that matter in a research context:</p>
+<ul class="simple">
+<li><p><strong>Hallucination</strong> — the AI may invent values, mislabel axes, or silently exclude data points without warning you.</p></li>
+<li><p><strong>Text distortions</strong> — axis labels, legends, and annotations in AI-generated images are often garbled, misspelled, or nonsensical, because image-generation models do not “understand” text.</p></li>
+<li><p><strong>No reproducibility</strong> — you cannot share, version, or re-run the code that produced the chart, because there is no code.</p></li>
+<li><p><strong>Difficult to iterate</strong> — asking for a small change (different colour, different axis range, add a trend line) often means regenerating from scratch with no guarantee of consistency.</p></li>
+<li><p><strong>Not grounded in the data</strong> — unlike a Python script where you can inspect every transformation step, you have no way to verify that the chart accurately reflects the underlying data.</p></li>
+</ul>
+<p>For research work, any visualisation that appears in a paper, report, or presentation must be reproducible and verifiable. Code-based visualisation satisfies both requirements; AI-generated image visualisation currently does not.</p>
+</div>
+</section>
+<section id="checklist-before-you-start">
+<h2>Checklist before you start<a class="headerlink" href="#checklist-before-you-start" title="Link to this heading"></a></h2>
+<p>Before you write a single line of code, make three explicit decisions:</p>
+<ul class="simple">
+<li><p><strong>Which programming language?</strong> — Python (this workshop). The most popular language for data science; enormous library ecosystem; runs everywhere.</p></li>
+<li><p><strong>Where will the computation run?</strong> — Your laptop, your organisation’s cloud, or an external cloud service. See the next section.</p></li>
+<li><p><strong>Where does your data live?</strong> — Local disk, institutional storage, or a public URL. This matters especially if the data is sensitive or personal.</p></li>
+</ul>
+<p>The “where” question is more important than it first appears. It affects data confidentiality, ease of setup, and whether your workflow will still work in six months when a cloud service changes its terms.</p>
+</section>
+<section id="the-geography-of-computing">
+<span id="workshop-setup"></span><h2>The geography of computing<a class="headerlink" href="#the-geography-of-computing" title="Link to this heading"></a></h2>
+<p>Every time you run code, the computation happens <em>somewhere</em>. There are three broad categories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  ◄──────── more private, more setup ─────────────── less private, less setup ────────►
+
+  ┌────────────────────────┐    ┌────────────────────────┐    ┌────────────────────────┐
+  │                        │    │                        │    │                        │
+  │      Your laptop       │    │    Your org cloud      │    │    External cloud      │
+  │        (local)         │    │   Aalto, CSC, etc.     │    │   Colab, Kaggle, etc.  │
+  │                        │    │                        │    │                        │
+  │  data stays with you   │    │  data stays in-house   │    │  data leaves your org  │
+  │  you manage installs   │    │  software pre-installed│    │  zero setup needed     │
+  │                        │    │                        │    │                        │
+  └────────────────────────┘    └────────────────────────┘    └────────────────────────┘
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Environment</p></th>
+<th class="head"><p>Examples</p></th>
+<th class="head"><p>Advantages</p></th>
+<th class="head"><p>Considerations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Local laptop</strong></p></td>
+<td><p>Your own machine, Python installed</p></td>
+<td><p>Data never leaves your hands; works offline; full control</p></td>
+<td><p>Risk if device is lost/stolen; requires manual installation; limited RAM/CPU</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Organisation cloud</strong></p></td>
+<td><p>Aalto JupyterHub (<code class="docutils literal notranslate"><span class="pre">jupyter.cs.aalto.fi</span></code>), CSC Noppe (<code class="docutils literal notranslate"><span class="pre">noppe.csc.fi</span></code>)</p></td>
+<td><p>Institutional data protection; software pre-installed; no personal hardware risk</p></td>
+<td><p>Depends on institution’s uptime and quota; requires account</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>External cloud</strong></p></td>
+<td><p>Google Colab, Kaggle Notebooks</p></td>
+<td><p>Zero installation; free tier available; easy to share</p></td>
+<td><p>Unclear or unfavourable terms of service; data uploaded to third party; may not be suitable for sensitive data</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are working with real research data — especially personal data, clinical data, or anything covered by your institution’s data management plan — check with your data protection officer or IT security team before choosing an environment. External cloud services (including Google Colab and GenAI tools) are generally <strong>not</strong> suitable for sensitive or personal data.</p>
+</div>
+<section id="setting-up-your-environment">
+<h3>Setting up your environment<a class="headerlink" href="#setting-up-your-environment" title="Link to this heading"></a></h3>
+<p><strong>On your own laptop:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>jupyterlab<span class="w"> </span>pandas<span class="w"> </span>matplotlib<span class="w"> </span>seaborn<span class="w"> </span>altair<span class="w"> </span>vega_datasets
+jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+<p><strong>Aalto University or CSC (Finland):</strong></p>
+<ul class="simple">
+<li><p>Aalto JupyterHub: <a class="reference external" href="https://jupyter.cs.aalto.fi">https://jupyter.cs.aalto.fi</a> (requires Aalto account)</p></li>
+<li><p>CSC Noppe: <a class="reference external" href="https://noppe.csc.fi">https://noppe.csc.fi</a> (open to Finnish researchers and students)</p></li>
+</ul>
+<p><strong>External cloud (easiest to start, least private):</strong></p>
+<ul class="simple">
+<li><p>Google Colab: <a class="reference external" href="https://colab.research.google.com">https://colab.research.google.com</a> (Google account required)</p></li>
+</ul>
+<p>To test that your environment is working, run this in a notebook cell:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+<p>If it prints a version number without an error, you are ready to go.</p>
+</section>
+</section>
+<section id="the-jupyterlab-interface">
+<h2>The JupyterLab interface<a class="headerlink" href="#the-jupyterlab-interface" title="Link to this heading"></a></h2>
+<p>JupyterLab is the interactive coding environment we use in this workshop. It runs in your browser and lets you write code, run it, and see the output — all in the same document called a <em>notebook</em>.</p>
+<p>If you have never used JupyterLab before, read the short introduction at <a class="reference internal" href="../workshop-jupyter-basics/"><span class="doc">JupyterLab: A Quick Introduction</span></a> before continuing.</p>
+</section>
+<section id="two-approaches-to-writing-code">
+<h2>Two approaches to writing code<a class="headerlink" href="#two-approaches-to-writing-code" title="Link to this heading"></a></h2>
+<p>Once your environment is set up, you have two broad strategies for actually writing Python:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  ┌──────────────────────────────────┐              ┌──────────────────────────────────┐
+  │                                  │              │                                  │
+  │      Your brain + search         │              │        GenAI assistant           │
+  │                                  │    v s .     │                                  │
+  │  - You write every line          │              │  - You describe the goal         │
+  │  - You look up the docs          │              │  - AI writes the code            │
+  │  - You understand it all         │              │  - You read and verify           │
+  │  - Nothing leaves your machine   │              │  - Code may contain errors       │
+  │                                  │              │                                  │
+  └──────────────────────────────────┘              └──────────────────────────────────┘
+        slow to start, resilient                          fast, but verify always!
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Approach</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Strengths</p></th>
+<th class="head"><p>Risks</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Brain + search</strong></p></td>
+<td><p>Write code yourself; look up what you don’t know in documentation or via Google</p></td>
+<td><p>Builds real understanding; no data shared externally; works offline; you learn</p></td>
+<td><p>Slower, especially at the beginning</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>GenAI assistant</strong></p></td>
+<td><p>Describe what you want in plain language; receive code from the AI</p></td>
+<td><p>Fast; low barrier for beginners; good for boilerplate</p></td>
+<td><p>Loss of understanding and autonomy; hallucination risk; cybersecurity concerns; ethical/legal open questions about training data</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition-using-genai-with-eyes-open callout admonition" id="callout-2">
+<p class="admonition-title">Using GenAI with eyes open</p>
+<p>This workshop uses a GenAI assistant as a tool — not as a shortcut to avoid understanding. The goal is always to <strong>read the code you receive</strong>, understand what it does (or ask the AI to explain it), and only run code you are reasonably confident about.</p>
+<p>A GenAI assistant can:</p>
+<ul class="simple">
+<li><p>Save time on boilerplate (loading data, formatting a chart)</p></li>
+<li><p>Help you discover libraries and functions you didn’t know existed</p></li>
+<li><p>Explain error messages in plain language</p></li>
+</ul>
+<p>A GenAI assistant will sometimes:</p>
+<ul class="simple">
+<li><p>Invent function names or library versions that do not exist (<a class="reference external" href="https://en.wikipedia.org/wiki/Hallucination_(artificial_intelligence)">hallucination</a>)</p></li>
+<li><p>Produce code that runs but does the wrong thing</p></li>
+<li><p>Use a library you don’t have installed</p></li>
+<li><p>Give subtly different results each time you ask the same question</p></li>
+</ul>
+<p>Always verify: does the code run? Does the output look correct? Do you understand what it is doing?</p>
+</div>
+</section>
+<section id="choosing-a-genai-assistant">
+<h2>Choosing a GenAI assistant<a class="headerlink" href="#choosing-a-genai-assistant" title="Link to this heading"></a></h2>
+<p>There are three categories of GenAI coding assistant, differing mainly in where the computation runs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  ◄──────── more private, more setup ─────────────── less private, less setup ────────►
+
+  ┌────────────────────────┐    ┌────────────────────────┐    ┌────────────────────────┐
+  │                        │    │                        │    │                        │
+  │      Your laptop       │    │   Your org's GenAI     │    │    External cloud      │
+  │      llama.cpp         │    │    ai.aalto.fi, ...    │    │  ChatGPT, Gemini,      │
+  │      Ollama, ...       │    │                        │    │  Claude, ...           │
+  │                        │    │  follows institutional │    │                        │
+  │  fully private,        │    │  data policies         │    │  easy, but data goes   │
+  │  runs on your CPU/GPU  │    │                        │    │  to third party        │
+  │                        │    │                        │    │                        │
+  └────────────────────────┘    └────────────────────────┘    └────────────────────────┘
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Local (on your machine)</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/ggerganov/llama.cpp">llama.cpp</a></p></td>
+<td><p>Fully private; no data leaves your computer; requires a capable GPU or CPU; setup is non-trivial. See <a class="reference internal" href="../appendix-local-llms/"><span class="doc">Appendix II: Running Local LLMs for Coding</span></a>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Organisation’s GenAI</strong></p></td>
+<td><p><a class="reference external" href="https://ai.aalto.fi">ai.aalto.fi</a> (Aalto only)</p></td>
+<td><p>Complies with institutional data policy; recommended for sensitive work</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>External cloud</strong></p></td>
+<td><p>ChatGPT, Gemini, Claude</p></td>
+<td><p>Easy to access; generally free tier available; review the provider’s privacy terms before use</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do <strong>not</strong> paste real personal data, clinical data, or any data covered by a confidentiality agreement into an external GenAI tool. The text you submit is typically used to improve the model or stored on the provider’s servers.</p>
+</div>
+<p>For a local laptop option without any cloud dependency, you can run a small coding model with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>llama-server<span class="w"> </span>--hf-repo<span class="w"> </span>ggml-org/Qwen2.5-Coder-1.5B-Q8_0-GGUF<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>--hf-file<span class="w"> </span>qwen2.5-coder-1.5b-q8_0.gguf<span class="w"> </span>-c<span class="w"> </span><span class="m">2048</span>
+</pre></div>
+</div>
+<p>This downloads and runs a compact coding model entirely on your machine. The quality is lower than large cloud models but it is completely private.</p>
+</section>
+<section id="your-first-genai-coding-prompt">
+<h2>Your first GenAI coding prompt<a class="headerlink" href="#your-first-genai-coding-prompt" title="Link to this heading"></a></h2>
+<p>Let’s start with a concrete example. Copy the following prompt and paste it into your GenAI assistant:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>I need a Python script that loads the Titanic dataset and shows the first
+rows of the data. Can you load it from an internet URL?
+</pre></div>
+</div>
+<div class="admonition-what-to-look-for-in-the-response callout admonition" id="callout-3">
+<p class="admonition-title">What to look for in the response</p>
+<ul class="simple">
+<li><p>Does it use the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library? (<code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>)</p></li>
+<li><p>Does it provide a URL to download the CSV from?</p></li>
+<li><p>Is the URL real? (You can paste it in your browser to check.)</p></li>
+<li><p>Does it use <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>?</p></li>
+<li><p>Does it call <code class="docutils literal notranslate"><span class="pre">.head()</span></code> or <code class="docutils literal notranslate"><span class="pre">.head(10)</span></code> to show the first rows?</p></li>
+</ul>
+<p>A working response should look roughly like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">"https://raw.githubusercontent.com/pandas-dev/pandas/master/doc/data/titanic.csv"</span>
+<span class="n">titanic</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>If the AI gives you a URL that returns a 404 error, ask it to provide an alternative source or give it the correct URL yourself.</p>
+</div>
+</section>
+<section id="hands-on-exercises">
+<h2>Hands-on exercises<a class="headerlink" href="#hands-on-exercises" title="Link to this heading"></a></h2>
+<p>Work through these exercises at your own pace. For each one, use your GenAI assistant to generate the code, then copy it into a notebook cell and run it. Read the code before running it.</p>
+<div class="admonition-exercise-1-load-the-titanic-dataset exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise 1: Load the Titanic dataset</p>
+<ol class="arabic simple">
+<li><p>Use the prompt from the previous section with your chosen GenAI assistant.</p></li>
+<li><p>Copy the generated code into a new Jupyter notebook cell.</p></li>
+<li><p>Run the cell (Shift+Enter). Do you see a table with the first rows of the data?</p></li>
+<li><p>If it fails, read the error message and ask the GenAI to fix it — paste the error back into the chat.</p></li>
+<li><p>Ask the GenAI: “What do the column names in this dataset mean?”</p></li>
+</ol>
+</div>
+<div class="admonition-exercise-2-make-your-first-chart exercise important admonition" id="exercise-2">
+<p class="admonition-title">Exercise 2: Make your first chart</p>
+<ol class="arabic">
+<li><p>In the same chat session, ask:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Can you add a bar chart showing how many passengers survived versus
+did not survive? Use the 'Survived' column.
+</pre></div>
+</div>
+</li>
+<li><p>Copy the code and run it. Is the chart readable?</p></li>
+<li><p>Ask the GenAI to improve it: add a title, change the x-axis labels from 0/1 to “Did not survive”/”Survived”, and add the count as a number above each bar.</p></li>
+<li><p>How many prompts did it take to get a chart you are happy with?</p></li>
+</ol>
+</div>
+<div class="admonition-exercise-3-a-different-dataset exercise important admonition" id="exercise-3">
+<p class="admonition-title">Exercise 3: A different dataset</p>
+<ol class="arabic simple">
+<li><p>Go to <a class="reference internal" href="../workshop-datasets/"><span class="doc">Reference Datasets for the Workshop</span></a> and choose any dataset that interests you (the Iris, Palmer Penguins, or Gapminder datasets are good starting points).</p></li>
+<li><p>Load the dataset using the code provided on that page.</p></li>
+<li><p>Ask the GenAI to make one visualisation of your choice. Let it suggest something if you’re not sure.</p></li>
+<li><p>Iterate: ask for at least two improvements (different colours, better axis labels, adding a trend line, etc.).</p></li>
+<li><p>Can you explain to a neighbour what the chart shows?</p></li>
+</ol>
+</div>
+<div class="admonition-exercise-4-independent-exploration exercise important admonition" id="exercise-4">
+<p class="admonition-title">Exercise 4: Independent exploration</p>
+<ol class="arabic simple">
+<li><p>Pick a question you find genuinely interesting in one of the datasets.</p></li>
+<li><p>Design your own analysis — you decide what to look at and how to show it.</p></li>
+<li><p>Use GenAI to help you code each step.</p></li>
+<li><p>Be ready to share your chart with the group and explain: what question were you asking, and what does the chart tell you?</p></li>
+</ol>
+<p>Some starter questions if you need inspiration:</p>
+<ul class="simple">
+<li><p>Titanic: Is the survival rate different for men vs women in the same passenger class?</p></li>
+<li><p>Penguins: Which island has the heaviest penguins on average?</p></li>
+<li><p>Gapminder: Which ten countries had the biggest increase in life expectancy between 1952 and 2007?</p></li>
+</ul>
+</div>
+<div class="admonition-exercise-5-explore-the-altair-and-seaborn-galleries exercise important admonition" id="exercise-5">
+<p class="admonition-title">Exercise 5: Explore the Altair and Seaborn galleries</p>
+<p>The best way to discover what a visualisation library can do is to browse its example gallery, find a chart you like, and run it yourself.</p>
+<ol class="arabic simple">
+<li><p>Open the <a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Altair example gallery</a> in your browser. Browse through the categories (bar charts, scatter plots, maps, interactive charts, …). Pick one example that looks interesting or useful to you.</p></li>
+<li><p>Click on the example to see its full code. Copy the code into a new notebook cell and run it. Does it work as shown?</p></li>
+<li><p>Now do the same with the <a class="reference external" href="https://seaborn.pydata.org/examples/index.html">Seaborn example gallery</a>. Pick one plot you like, copy its code into a new cell, and run it.</p></li>
+<li><p>For either chart, ask your GenAI assistant to adapt it to one of the datasets from <a class="reference internal" href="../workshop-datasets/"><span class="doc">Reference Datasets for the Workshop</span></a>. For example: <em>“Can you adapt this Altair heatmap example to work with the Titanic dataset?”</em></p></li>
+<li><p>What did you notice about the difference in style and syntax between Altair and Seaborn?</p></li>
+</ol>
+</div>
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Data visualisation follows four iterative steps: find data, explore structure, process, visualise.</p></li>
+<li><p>Before you start, decide explicitly: which language, where will computation run, where does your data live.</p></li>
+<li><p>The computing environment you choose affects data privacy — external cloud services are not appropriate for sensitive data.</p></li>
+<li><p>GenAI is a fast coding companion but is not a reliable expert: always read the code it gives you before running it.</p></li>
+<li><p>Iteration is the method: the first chart is rarely the final chart. Use the GenAI conversation to refine step by step.</p></li>
+<li><p>For real research data, prefer local or institutional environments over external cloud GenAI tools.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../appendix-local-llms/" class="btn btn-neutral float-left" title="Appendix II: Running Local LLMs for Coding" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../workshop-jupyter-basics/" class="btn btn-neutral float-right" title="JupyterLab: A Quick Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
