@@ -50,7 +50,7 @@ Different providers have different policies:
 - Some offer enterprise tiers with data isolation (e.g. Microsoft Azure)
 - Read the terms of service for your chosen tool
 - When in doubt, assume your input may be retained
-- Most providers still retain all your activities even if you opted out. Retention periods vary by provider, product, and privacy settings.
+- Most providers still retain all your activities for a period of time, even if you opted out. Retention periods vary by provider, product, and privacy settings.
 :::
 
 ### What NOT to share
