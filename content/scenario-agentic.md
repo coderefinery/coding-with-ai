@@ -44,77 +44,89 @@ on the level of automation, you might not even see any of the code that is gener
 
 There are a few options to go fully agentic. The level of risk can be proportional to the performance of the AI model, with larger proprietary models performing better than smaller ones. This means that a paid subscription is needed to use powerful remote AI models.
 
-:::{warning}
-To-Do: This section needs expanding with the recent Claude code + Ollama + local LLMs.
-:::
+### OpenCode
 
-### Claude Code (Anthropic)
+[OpenCode](https://opencode.ai/), an open-source terminal-based coding
+agent.
 
-[Claude code](https://code.claude.com/docs/en/overview) is a terminal-based agent that lives in your shell.
-
-```{figure} img/claude_code.png
-:alt: Claude code
+```{figure} img/open_code.png
+:alt: OpenCode
 :width: 100%
 
-A screenshot to show how the Claude code command line interface (CLI) looks like.
+A screenshot to show how the OpenCode command line interface (CLI) looks like.
 ```
-
-
 **Capabilities:**
-- Reads and writes files in your project
-- Executes shell commands
-- Understands git workflows
-- Can work across multiple files
-- It can also be integrated to VScode or other IDEs.
+- read and write project files
+- execute shell commands
+- install packages
+- work across multiple files
+- use different AI model providers
 
 **Safety features:**
-- Asks for permission before potentially dangerous operations
-- Shows proposed changes before applying
+- Review the agent's plan before allowing it to make changes.
+- OpenCode can read and write files and run shell commands, so only give it
+  access to the files and environment you intend to use.
+- For demonstrations and experiments, consider running OpenCode inside a
+  sandbox such as Docker.
+- Avoid running agentic tools with access to production systems, secrets, or
+  sensitive credentials.
 
-:::{admonition} Claude Code: Beginner Cheatsheet
+:::{admonition} OpenCode: Beginner Cheatsheet
 ## Before anything: security mindset
 
-- Claude Code can **read, write, delete files and run shell commands** on your machine
+- OpenCode can **read, write, delete files and run shell commands** on your machine
 - By default it asks permission at each step — **do not skip this**
 - Always work inside a **git repo** so you can undo (`git diff`, `git restore`)
 - Never run it on production systems or with credentials in your environment
 
-## Human-in-the-loop: plan mode first ([docs](https://code.claude.com/docs/en/planning))
+## Human-in-the-loop: plan mode first ([docs](https://opencode.ai/docs/))
 
-- Press `Shift+Tab` to enter **plan mode** before Claude does anything
-- Claude reads your codebase, drafts a step-by-step plan, then **stops and waits**
+- Press `Tab` to enter **plan mode** before OpenCode does anything
+- OpenCode reads your codebase, drafts a step-by-step plan, then **stops and waits**
 - You review, edit, or reject the plan before any file is touched
 - This is the recommended default for beginners — **always plan before you execute**
 
-## Key built-in slash commands ([docs](https://code.claude.com/docs/en/overview))
+## Key built-in slash commands ([docs](https://opencode.ai/docs/tui/?utm_source=chatgpt.com))
+- `/connect` — connect a model provider
+- `/init` — initialize project instructions in AGENTS.md
+- `/undo` and `/redo` — undo/redo agent changes
+- `/share` — share a conversation
+- `/help` — show commands
+- `/exit` — quit OpenCode
 
-- `/clear` — wipe the conversation, start fresh (saves tokens)
-- `/compact` — compress context when the window fills up
-- `/memory` — edit your `CLAUDE.md` on the fly
-- `/model` — switch between Opus / Sonnet / Haiku mid-session
-- `/cost` — see how many tokens you've spent
+## How OpenCode remembers things: three layers ([docs](https://opencode.ai/docs/rules/))
 
-## How Claude remembers things: three layers ([docs](https://code.claude.com/docs/en/memory))
+- **`AGENTS.md`** — persistent project guidance; coding standards, build commands, architecture notes, and team conventions. Put it in the repo root and commit it.
+- **Instructions** (opencode.json) — additional instruction sources for more specialized project guidance. Useful for keeping the main AGENTS.md focused. ([docs](https://opencode.ai/v2/docs/instructions))
+- **Skills** (`.opencode/skills/<name>/SKILL.md`) — reusable procedures OpenCode can discover and load when relevant, such as releases, migrations, testing, or code review. ([docs](https://opencode.ai/docs/skills/))
 
-- **`CLAUDE.md`** — always loaded; project-wide standards, build commands, coding style. Think of it as the employee handbook Claude reads on day one. Put it in the repo root and commit it.
-- **Rules** (`.claude/rules/`) — loaded only when path matches; domain-specific constraints (e.g. a database rule that only activates when editing `*.sql` files). Good for keeping context lean.
-- **Skills** (`.claude/skills/<name>/SKILL.md`) — reusable procedures Claude can invoke automatically based on context, or you can call with `/skillname`. Share them across projects or with your team.
+## Subagents — keeping context clean ([docs](https://opencode.ai/docs/agents/))
 
-## Subagents — keeping context clean ([docs](https://code.claude.com/docs/en/sub-agents))
+- OpenCode can launch subagents in separate child sessions with fresh context
+- They handle focused research/search tasks and return results — keeping the main agent’s context cleaner
+- Built-in subagents include **Explore** and **General**
+- Permissions can be configured per agent — subagents are **not** a security boundary
 
-- Claude can spin up isolated sub-instances with their own context window
-- They do the messy reading/searching and return a distilled result — your main thread stays focused
-- Built-in: **Explore** (read-only codebase search), **Plan** (strategy before writing)
-- Still subject to the same permissions — subagents are **not** a security boundary
-
-## Context window tips
+## Context window tips ([docs](https://opencode.ai/docs/tui/))
 
 - Use `/compact` when context fills up, `/clear` between unrelated tasks
-- `@filename` to include specific files rather than letting Claude scan everything
+- `@filename` to include specific files directly in context
 - `!command` to inject shell output directly into context
 :::
 
-:::{exercise} Demo: Iris dataset analysis with Claude Code
+## Sandboxing and permission control
+
+- Coding with agentic agents can potentially affect more of the system than intended.
+
+- Sandboxing means running the agent inside an isolated environment with limited
+access to the host computer. For example, a Docker container can expose only
+the project directory that the agent needs.
+
+:::{exercise} Demo: Iris dataset analysis with OpenCode
+in this excersize we consider two setups:
+
+1. **Without sandboxing** — OpenCode runs directly on the local machine and
+   can use the tools and files available to the current user.
 ## Setup: project folder and environment
 ```bash
 cd agentiris
@@ -122,10 +134,49 @@ mamba create python=3.11 -p ./env
 ```
 ```bash
 conda activate ./env
-claude
+curl -fsSL https://opencode.ai/install | bash
+```
+```bash
+opencode 
+```
+2. **With sandboxing** — OpenCode runs inside a Docker container with access
+   only to the project directory and the tools installed in that container.
+
+The non-sandboxed setup is simpler, while the sandboxed setup provides better
+isolation and more control over what the agent can access.
+## Setup: project folder and environment
+```bash
+cd agentiris
+
+cat > Dockerfile <<'EOF'
+FROM python:3.11-slim
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    make \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://opencode.ai/install | bash
+
+ENV PATH="/root/.opencode/bin:$PATH"
+
+WORKDIR /project
+EOF
+```
+```bash
+docker build -t irisagent-demo .
+
+docker run -it --rm \
+  -p 8000:8000 \
+  -v "$(pwd):/project" \
+  -w /project \
+  irisagent-demo bash
+```
+```bash
+opencode 
 ```
 
-## In Claude Code: switch to plan mode first
+## In OpenCode: switch to plan mode first
 
 Press `Shift+Tab` to enter **plan mode**, then paste this prompt:
 ```
@@ -145,7 +196,7 @@ running inside a mamba environment so you can use mamba install to add
 packages that are missing.
 ```
 
-- Claude will **read your environment, draft a plan, and stop**
+- OpenCode will **read your environment, draft a plan, and stop**
 - Review the plan before pressing Enter to approve
 - Only then will it start creating files and running code
 
@@ -160,12 +211,14 @@ results and any figures produced, and structure it as a readable
 scientific report.
 ```
 
-- Claude will wire up Sphinx, write the `.rst` source files, and link the figures from `results/`
+- OpenCode will wire up Sphinx, write the `.rst` source files, and link the figures from `results/`
 - Review the plan — Sphinx setup touches several config files
 - After approval, you can build the docs with `make html` inside `docs/`
 :::
 
+### More agentic tools
 
+[Claude code](https://claude.com/) and [Codex](https://openai.com/codex/) are the OpenAI alternative to OpenCode, which need subscriptions. 
 
 :::{admonition} Practitioner's perspective: A real Claude Code session
 :class: tip
@@ -199,10 +252,6 @@ Key observations:
 
 Even experienced practitioners reach points where they need to take over.
 :::
-
-### OpenAI Codex
-
-[Codex](https://openai.com/codex/) is the OpenAI alternative to Claude code. 
 
 ### Other tools
 
