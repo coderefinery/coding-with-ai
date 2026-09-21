@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instructor’s guide &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="prev" title="Quick Reference" href="../quick-reference/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instructor’s guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#why-we-teach-this-lesson">Why we teach this lesson</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#intended-learning-outcomes">Intended learning outcomes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#timing">Timing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-exercises">Preparing exercises</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#before-the-workshop">Before the workshop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exercise-preparation">Exercise preparation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#other-practical-aspects">Other practical aspects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#audience-considerations">Audience considerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tools-needed">Tools needed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-sensitive-topics">Handling sensitive topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-realistic-expectations">Setting realistic expectations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#llms-amplify-existing-expertise">LLMs amplify existing expertise</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frame-the-benefit-correctly">Frame the benefit correctly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-testing-imperative">The testing imperative</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interesting-questions-you-might-get">Interesting questions you might get</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#typical-pitfalls">Typical pitfalls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#teaching-pitfalls">Teaching pitfalls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#learner-pitfalls">Learner pitfalls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adapting-the-material">Adapting the material</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#for-shorter-workshops-1-hour">For shorter workshops (1 hour)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-longer-courses-half-day-or-more">For longer courses (half day or more)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-online-delivery">For online delivery</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#resources-for-instructors">Resources for instructors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#training-and-pedagogy">Training and pedagogy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#practitioner-perspectives-valuable-for-examples-and-discussion">Practitioner perspectives (valuable for examples and discussion)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#security">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#note-on-using-practitioners-quotes">Note on using practitioners’ quotes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Instructor’s guide</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/guide.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="instructor-s-guide">
+<h1>Instructor’s guide<a class="headerlink" href="#instructor-s-guide" title="Link to this heading"></a></h1>
+<section id="why-we-teach-this-lesson">
+<h2>Why we teach this lesson<a class="headerlink" href="#why-we-teach-this-lesson" title="Link to this heading"></a></h2>
+<p>AI coding assistants are already part of the daily workflow used by researchers and developers,
+but many users lack awareness of the security risks and best practices. This
+lesson fills a critical gap by:</p>
+<ul class="simple">
+<li><p>Providing a risk-aware framework rather than just tool tutorials</p></li>
+<li><p>Helping researchers make informed decisions about AI tool adoption</p></li>
+<li><p>Teaching security practices specific to AI-assisted coding</p></li>
+<li><p>Addressing the unique needs of researchers (data sensitivity,
+reproducibility, institutional policies)</p></li>
+</ul>
+</section>
+<section id="intended-learning-outcomes">
+<h2>Intended learning outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Link to this heading"></a></h2>
+<p>After this lesson, learners should be able to:</p>
+<ol class="arabic simple">
+<li><p><strong>Explain</strong> how LLMs generate code and their fundamental limitations</p></li>
+<li><p><strong>Compare</strong> the three scenarios (chat, IDE, agentic) in terms of control and risk</p></li>
+<li><p><strong>Configure</strong> AI coding tools with appropriate privacy and security settings</p></li>
+<li><p><strong>Verify</strong> AI-suggested packages and review code for common vulnerabilities</p></li>
+<li><p><strong>Implement</strong> sandboxing strategies for agentic tools</p></li>
+<li><p><strong>Develop</strong> a personal policy for responsible AI-assisted coding</p></li>
+</ol>
+</section>
+<section id="timing">
+<h2>Timing<a class="headerlink" href="#timing" title="Link to this heading"></a></h2>
+<p>TODO: this needs actual timing</p>
+<p>Estimated total time: XXX hours</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Section</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Introduction to LLMs</p></td>
+<td><p>30 min</p></td>
+<td><p>Can be shortened for technical audiences</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scenario I: Full control</p></td>
+<td><p>30 min</p></td>
+<td><p>Core concepts, many exercises</p></td>
+</tr>
+<tr class="row-even"><td><p>Scenario II: IDE integration</p></td>
+<td><p>30 min</p></td>
+<td><p>Hands-on setup possible</p></td>
+</tr>
+<tr class="row-odd"><td><p>Scenario III: Agentic</p></td>
+<td><p>30 min</p></td>
+<td><p>Discussion-heavy</p></td>
+</tr>
+<tr class="row-even"><td><p>Security</p></td>
+<td><p>30 min</p></td>
+<td><p>Critical section, don’t rush</p></td>
+</tr>
+<tr class="row-odd"><td><p>Conclusion</p></td>
+<td><p>15 min</p></td>
+<td><p>Reflection and planning</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>For a 2-hour workshop</strong>: Skip some exercises, focus on Scenarios I and II,
+and the security section.</p>
+<p><strong>For a half-day workshop</strong>: Include all exercises and add hands-on setup time.</p>
+</section>
+<section id="preparing-exercises">
+<h2>Preparing exercises<a class="headerlink" href="#preparing-exercises" title="Link to this heading"></a></h2>
+<section id="before-the-workshop">
+<h3>Before the workshop<a class="headerlink" href="#before-the-workshop" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Check institutional policies</strong>: Some institutions restrict AI tool use.
+Know the local rules before teaching or make sure learners are aware of their university’s rules..</p></li>
+<li><p><strong>Test tool access</strong>: Verify that learners can access at least one AI
+chatbot. We recommend <a class="reference external" href="https://duck.ai">Duck.ai</a> as it requires no account
+and is privacy-focused. Alternatives include ChatGPT/Copilot, Claude, or Gemini.
+Some Universities might provide some local implementation of these tools, and those can also be used.</p></li>
+<li><p><strong>Prepare fallback examples</strong>: If learners can’t install (and don’t want to install) IDE extensions or agents,
+have screenshots or recordings ready.</p></li>
+<li><p>??? DO WE NEED THIS ??? <strong>Create a test repository</strong>: Set up a simple Python project for sandbox
+exercises if using Docker.</p></li>
+</ol>
+</section>
+<section id="exercise-preparation">
+<h3>Exercise preparation<a class="headerlink" href="#exercise-preparation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Chat exercises (Scenario I)</strong>: Work with any AI chatbot, no special setup</p></li>
+<li><p><strong>IDE exercises (Scenario II)</strong>: Requires VS Code and extension installation
+(may take 10-15 minutes for setup + accounts)</p></li>
+<li><p><strong>Security exercises</strong>: Can be done as discussion if time is short</p></li>
+<li><p><strong>Sandboxing exercises</strong>: Require Docker (optional, can demonstrate instead or leave it for self-learning)</p></li>
+</ul>
+</section>
+</section>
+<section id="other-practical-aspects">
+<h2>Other practical aspects<a class="headerlink" href="#other-practical-aspects" title="Link to this heading"></a></h2>
+<section id="audience-considerations">
+<h3>Audience considerations<a class="headerlink" href="#audience-considerations" title="Link to this heading"></a></h3>
+<p><strong>For researchers/scientists:</strong></p>
+<ul class="simple">
+<li><p>Emphasize data sensitivity and reproducibility</p></li>
+<li><p>Connect to research integrity discussions</p></li>
+<li><p>Discuss publication and funding agency requirements</p></li>
+</ul>
+<p><strong>For developers/RSEs:</strong></p>
+<ul class="simple">
+<li><p>Can move faster through basics</p></li>
+<li><p>Emphasize security and code review practices</p></li>
+<li><p>Discuss team workflow integration</p></li>
+</ul>
+<p><strong>For mixed audiences:</strong></p>
+<ul class="simple">
+<li><p>Start with common ground (everyone uses or will use these tools)</p></li>
+<li><p>Use research examples but acknowledge varied backgrounds</p></li>
+</ul>
+</section>
+<section id="tools-needed">
+<h3>Tools needed<a class="headerlink" href="#tools-needed" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Learners need laptops with:</p>
+<ul>
+<li><p>Web browser (for chatbots)</p></li>
+<li><p>VS Code (for IDE integration section)</p></li>
+<li><p>Docker (optional, for sandboxing)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="handling-sensitive-topics">
+<h3>Handling sensitive topics<a class="headerlink" href="#handling-sensitive-topics" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Privacy concerns</strong>: Acknowledge that data handling varies by tool and tier.
+Don’t dismiss concerns.</p></li>
+<li><p><strong>Job security fears</strong>: Frame AI as a tool that augments, not replaces.
+Emphasize the importance of human judgment.</p></li>
+<li><p><strong>Institutional restrictions</strong>: Some learners may not be allowed to use
+certain tools. Provide alternatives (local models, chat-only approaches).</p></li>
+<li><p><strong>Sustainability</strong>: Sustainability it is not only about the environment, but also
+the fact that the most used tools are controlled by few private entities and their goal
+is to maximise their profits (more tokens might mean better performance, but also more revenue).
+Long-term use of such tool might erode critical thinking capabilities of the user.</p></li>
+</ul>
+</section>
+</section>
+<section id="setting-realistic-expectations">
+<h2>Setting realistic expectations<a class="headerlink" href="#setting-realistic-expectations" title="Link to this heading"></a></h2>
+<p>One of the most important things instructors can do is set realistic
+expectations about what learners will experience.</p>
+<section id="llms-amplify-existing-expertise">
+<h3>LLMs amplify existing expertise<a class="headerlink" href="#llms-amplify-existing-expertise" title="Link to this heading"></a></h3>
+<p>Experienced developers get dramatically better results from AI coding
+assistants than beginners (TODO: enrico to add the citation). This is because they:</p>
+<ul class="simple">
+<li><p>Know what to ask for (have a mental model of the solution)</p></li>
+<li><p>Can evaluate whether output is correct</p></li>
+<li><p>Know which follow-up questions to ask</p></li>
+<li><p>Recognize when the AI is confidently wrong</p></li>
+<li><p>Understand the ecosystem (libraries, patterns, best practices)</p></li>
+</ul>
+<p><strong>Instructor note</strong>: Be explicit that a learner with basic Python skills
+won’t get the same results as someone with years of experience. This isn’t
+a failure of the tools or the learner—it’s the nature of amplification.</p>
+</section>
+<section id="frame-the-benefit-correctly">
+<h3>Frame the benefit correctly<a class="headerlink" href="#frame-the-benefit-correctly" title="Link to this heading"></a></h3>
+<p>The real benefit isn’t “coding faster”—it’s <strong>enabling projects that
+wouldn’t otherwise exist</strong>. For researchers, this might mean:</p>
+<ul class="simple">
+<li><p>Building a quick visualization they wouldn’t have time to code manually</p></li>
+<li><p>Prototyping approaches before committing</p></li>
+<li><p>Creating small utilities that improve workflow</p></li>
+</ul>
+<p>Use this framing to avoid disappointment when AI doesn’t instantly solve
+complex problems.</p>
+</section>
+<section id="the-testing-imperative">
+<h3>The testing imperative<a class="headerlink" href="#the-testing-imperative" title="Link to this heading"></a></h3>
+<p>One thing that cannot be outsourced: <strong>verifying that code actually works</strong>.</p>
+<blockquote>
+<div><p><em>“Your responsibility as a software developer is to deliver working
+systems. If you haven’t seen it run, it’s not a working system. You need
+to invest in strengthening those manual QA habits.”</em>
+— Simon Willison</p>
+</div></blockquote>
+<p>Emphasize this repeatedly. The most common failure mode is accepting code
+that looks right but hasn’t been tested.</p>
+</section>
+</section>
+<section id="interesting-questions-you-might-get">
+<h2>Interesting questions you might get<a class="headerlink" href="#interesting-questions-you-might-get" title="Link to this heading"></a></h2>
+<p><strong>“Is AI-generated code plagiarism?”</strong></p>
+<ul class="simple">
+<li><p>As usually, it depends (e.g. on your institution’s policies and the context)</p></li>
+<li><p>Disclosure is generally recommended (see ALLEA principles for researchers in EU)</p></li>
+<li><p>Check your journal’s/funder’s requirements</p></li>
+<li><p>The code itself is typically not copyrighted, but be aware of licensing
+issues with training data</p></li>
+</ul>
+<p><strong>“What about code completion I’ve been using for years (IntelliSense, etc.)?”</strong></p>
+<ul class="simple">
+<li><p>Traditional autocomplete uses static analysis, not LLMs</p></li>
+<li><p>It doesn’t send your code to external servers</p></li>
+<li><p>Modern AI completion is fundamentally different in capability and risk</p></li>
+</ul>
+<p><strong>“Can I use AI for my thesis/dissertation code?”</strong></p>
+<ul class="simple">
+<li><p>Check with your supervisor and institution</p></li>
+<li><p>Disclose AI use in your methods section</p></li>
+<li><p>Be prepared to explain and defend all code</p></li>
+<li><p>Document your verification process</p></li>
+</ul>
+<p><strong>“Which tool is best?”</strong></p>
+<ul class="simple">
+<li><p>Depends on your use case, risk tolerance, and institutional policies</p></li>
+<li><p>There’s no single “best” tool AND the landscape changes very fast</p></li>
+<li><p>We recommend starting with chat-based approaches, take notes of what
+worked well for you, improvise and adapt to changes.</p></li>
+</ul>
+<p><strong>“What about local/offline models?”</strong></p>
+<ul class="simple">
+<li><p>There are options (Ollama, LM Studio, etc.)</p></li>
+<li><p>Quality gap has narrowed significantly (Qwen2.5-Coder rivals GPT-4 on benchmarks <strong>CITATION NEEDED</strong>)</p></li>
+<li><p>Good option for sensitive work and offline use</p></li>
+<li><p>See <span class="xref std std-doc">appendix-local-llms</span> for setup instructions</p></li>
+</ul>
+</section>
+<section id="typical-pitfalls">
+<h2>Typical pitfalls<a class="headerlink" href="#typical-pitfalls" title="Link to this heading"></a></h2>
+<section id="teaching-pitfalls">
+<h3>Teaching pitfalls<a class="headerlink" href="#teaching-pitfalls" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Tool-specific focus</strong>: Don’t spend too much time on one tool’s UI.
+Focus on principles that transfer.</p></li>
+<li><p><strong>Overselling or underselling</strong>: Neither “AI will replace programmers”
+nor “AI is useless” is accurate. Stay balanced.</p></li>
+<li><p><strong>Skipping security</strong>: Security section is often rushed. Don’t skip it,
+it’s the most important practical content.</p></li>
+<li><p><strong>Assuming access</strong>: Not everyone can sign up for or afford AI tools.
+Have free alternatives ready.</p></li>
+<li><p><strong>Ethicality of technology</strong>: only a handful of AI models have been trained
+according to pricinples of responsible AI (e.g. SSAFE-D framework: Sustainability,
+Safety, Accountability, Fairness, Explainability, and Data-Stewardship). Make
+informed decisions based on your ethical principles.</p></li>
+</ol>
+</section>
+<section id="learner-pitfalls">
+<h3>Learner pitfalls<a class="headerlink" href="#learner-pitfalls" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Uncritical acceptance</strong>: Learners may start accepting all suggestions
+without review. Emphasize verification repeatedly.</p></li>
+<li><p><strong>Over-reliance</strong>: Some learners want AI to do everything. Stress that
+understanding code is still essential.</p></li>
+<li><p><strong>Privacy complacency</strong>: “I have nothing to hide” attitude toward data
+sharing. Use concrete examples of sensitive data.</p></li>
+<li><p><strong>Skipping verification</strong>: Learners may skip package verification steps.
+Make this a graded exercise if possible.</p></li>
+</ol>
+</section>
+</section>
+<section id="adapting-the-material">
+<h2>Adapting the material<a class="headerlink" href="#adapting-the-material" title="Link to this heading"></a></h2>
+<p>TODO: this needs rewrite.</p>
+<section id="for-shorter-workshops-1-hour">
+<h3>For shorter workshops (1 hour)<a class="headerlink" href="#for-shorter-workshops-1-hour" title="Link to this heading"></a></h3>
+<p>Focus on:</p>
+<ul class="simple">
+<li><p>Brief intro (10 min)</p></li>
+<li><p>Scenario I with one exercise (20 min)</p></li>
+<li><p>Security highlights (20 min)</p></li>
+<li><p>Conclusion and resources (10 min)</p></li>
+</ul>
+</section>
+<section id="for-longer-courses-half-day-or-more">
+<h3>For longer courses (half day or more)<a class="headerlink" href="#for-longer-courses-half-day-or-more" title="Link to this heading"></a></h3>
+<p>Add:</p>
+<ul class="simple">
+<li><p>Hands-on IDE setup with troubleshooting time</p></li>
+<li><p>Docker sandbox setup and testing</p></li>
+<li><p>Group discussion on institutional policies</p></li>
+<li><p>Peer code review of AI-generated code</p></li>
+</ul>
+</section>
+<section id="for-online-delivery">
+<h3>For online delivery<a class="headerlink" href="#for-online-delivery" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Use breakout rooms for exercises</p></li>
+<li><p>Have a shared document for collecting questions</p></li>
+<li><p>Consider asynchronous components (pre-reading, post-workshop exercises)</p></li>
+<li><p>Test screen sharing of IDE and terminal beforehand</p></li>
+</ul>
+</section>
+</section>
+<section id="resources-for-instructors">
+<h2>Resources for instructors<a class="headerlink" href="#resources-for-instructors" title="Link to this heading"></a></h2>
+<section id="training-and-pedagogy">
+<h3>Training and pedagogy<a class="headerlink" href="#training-and-pedagogy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://coderefinery.github.io/instructor-training/">CodeRefinery instructor training</a></p></li>
+<li><p><a class="reference external" href="https://carpentries.github.io/instructor-training/">The Carpentries instructor training</a></p></li>
+</ul>
+</section>
+<section id="practitioner-perspectives-valuable-for-examples-and-discussion">
+<h3>Practitioner perspectives (valuable for examples and discussion)<a class="headerlink" href="#practitioner-perspectives-valuable-for-examples-and-discussion" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://simonwillison.net/2025/Mar/11/using-llms-for-code/">Simon Willison: How I use LLMs to help me write code</a> - Detailed practical workflow from an experienced developer</p></li>
+<li><p><a class="reference external" href="https://simonwillison.net/series/ai-assisted-programming/">Simon Willison’s AI-assisted programming series</a> - Ongoing collection of posts</p></li>
+<li><p><a class="reference external" href="https://addyosmani.com/blog/ai-coding-workflow/">Addy Osmani: My LLM coding workflow</a> - Best practices from a software engineering lead</p></li>
+</ul>
+</section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions">OpenSSF Security Guide</a> - Good source for security examples</p></li>
+</ul>
+</section>
+<section id="note-on-using-practitioners-quotes">
+<h3>Note on using practitioners’ quotes<a class="headerlink" href="#note-on-using-practitioners-quotes" title="Link to this heading"></a></h3>
+<p>The course materials include quotes from practitioners like Simon Willison.
+These serve several purposes:</p>
+<ul class="simple">
+<li><p><strong>Credibility</strong>: Showing that experienced developers use these tools thoughtfully</p></li>
+<li><p><strong>Nuance</strong>: Practitioners often capture subtleties better than abstract principles</p></li>
+<li><p><strong>Accessibility</strong>: Conversational language can be more memorable than formal statements</p></li>
+</ul>
+<p>When teaching, you can expand on these quotes with your own experience or
+invite learners to discuss whether they agree with the perspectives shared.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../quick-reference/" class="btn btn-neutral float-left" title="Quick Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
