@@ -25,13 +25,14 @@ and your development environment.
 :width: 100%
 ```
 
-### Why this is the lowest-risk approach
+:::{admonition} Why this is the lowest-risk approach
+:class: dropdown  
 
 1. **You see everything**: Every piece of code goes through your eyes and clipboard
 2. **Nothing runs automatically**: You decide when and how to execute code
 3. **Clear boundaries**: The AI cannot access your files, run commands, or modify anything
 4. **Explicit data sharing**: You control exactly what context the AI receives
-
+:::
 
 ## What information leaves your machine?
 
@@ -76,8 +77,8 @@ When starting a project or evaluating approaches, use the AI for research:
 
 "What approaches could I use for parallelizing this computation?"
 
-"What are some useful drag-and-drop libraries in JavaScript?
-Build me an example demonstrating each one."
+"What are some useful drag-and-drop libraries in JavaScript? 
+"Build me an example demonstrating each one.
 ```
 
 This helps you understand the landscape before committing to an approach.
@@ -168,12 +169,12 @@ text in your conversation that influences the AI's responses.
 
 ## Effective prompting strategies
 
-The quality of AI-generated code depends heavily on how you ask for it.
-
+The quality of AI-generated code depends heavily on how you ask for it. For coding tasks, effective prompting is usually an iterative process: define the task clearly, provide relevant context and constraints, generate a manageable piece of code, test the result, and refine the prompt based on what you observe.
+<!--
 :::{warning}
 To-Do: This section needs to be more systematic, adding some references to prompting strategies for coding.
 :::
-
+-->
 ### Strategy 1: Start with architecture, not implementation
 
 Instead of asking for 500 lines of code at once, begin with structure:
@@ -197,7 +198,7 @@ Instead of asking for 500 lines of code at once, begin with structure:
 
 Help the AI understand your constraints:
 
-```
+```text
 I'm working on:
 - Python 3.11
 - Ubuntu 22.04
@@ -219,6 +220,7 @@ Write a function to perform bootstrap resampling. Please:
 
 ### Strategy 4: Iterate incrementally
 
+ After each step, run or test the generated code before moving on. If something fails, include the error message, failing input, or unexpected output in the next prompt.
 ```
 Session flow:
 1. "Write a function to load CSV data with error handling"
@@ -244,7 +246,7 @@ The first response is rarely the final answer. Use follow-up prompts freely:
 
 - "Break that repetitive code out into a function"
 - "Use string manipulation methods rather than a regular expression"
-- "Write that better!"
+- "improve the readability and structure while keeping the same behavior!"
 - "Now write tests for this using pytest"
 - "Can you explain what line 15 does?"
 
@@ -590,12 +592,14 @@ transparency support reproducibility and scientific integrity.
 
 
 ## See also
-
+ 
 - [Prompting Guide](https://www.promptingguide.ai/) - General prompting techniques
 - [Google: Best Practices for AI Coding Assistants](https://cloud.google.com/blog/topics/developers-practitioners/five-best-practices-for-using-ai-coding-assistants)
 - [Simon Willison: How I use LLMs to help me write code](https://simonwillison.net/2025/Mar/11/using-llms-for-code/) - Detailed practical workflow
 - [Zero To Mastery: How to Use ChatGPT to 10x Your Coding](https://zerotomastery.io/blog/how-to-use-chatgpt-for-coding/) - Prompt engineering techniques
-
+- [Prompt engineering best practices for ChatGPT](https://help.openai.com/en/articles/10032626-prompt-engineering-best-practices-for-chatgpt) 
+- [GitHub Copilot Prompt Engineering](https://docs.github.com/en/copilot/concepts/prompting/prompt-engineering) 
+- [GitHub Copilot Writing Tests](https://docs.github.com/en/copilot/tutorials/write-tests)
 
 :::{keypoints}
 - Chat-based AI coding gives you maximum control over data and execution

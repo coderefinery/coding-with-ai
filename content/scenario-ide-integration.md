@@ -70,11 +70,11 @@ Each tool has different data collection policies. For example:
 
 
 ## Setting up GitHub Copilot
-
+<!--
 :::{warning}
 To-Do: The content of this session might not be fully up to date.
 :::
-
+-->
 GitHub Copilot is currently the most widely-used IDE-integrated assistant.
 Here's how to set it up with privacy and control in mind.
 
@@ -160,7 +160,9 @@ Some tools (like Cursor, Copilot Workspace) can:
 - Apply changes across your codebase
 - Suggest refactoring patterns
 
-:::{callout} Increased risk with automated edits
+:::{admonition} Increased risk with automated edits
+:class: dropdown 
+
 When tools can modify multiple files:
 - Changes may have unintended consequences
 - Harder to review all modifications
@@ -201,18 +203,19 @@ Some developers find it faster to:
 This works but requires discipline. Don't skip step 2.
 
 
-## Alternative tools: Windsurf
+## Alternative tools: 
 
-GitHub Copilot isn't your only option. Here's how alternatives compare:
+GitHub Copilot isn't your only option. [JetBrains AI Assistant](https://www.jetbrains.com/help/ai-assistant/code-completion.html), [Tabnine](https://www.tabnine.com/), and [Windsurf Plugin](https://docs.devin.ai/windsurf/plugins/getting-started) (previously Codeium) offer different trade-offs in terms of privacy, features, and pricing.
+Here's how alternatives compare:
 
-### Windsurf (previously known as Codeium)
+### Windsurf Plugin
 
 - **Pricing**: Free core features
 - **Privacy**: Claims no training on your code
 - **Features**: 70+ languages, chat interface, Windsurf IDE
 
 Setup in VS Code:
-1. Install ["Windsurf" extension](https://marketplace.visualstudio.com/items?itemName=Codeium.codeium)
+1. Install [Windsurf plugin](https://docs.devin.ai/windsurf/plugins/getting-started)
 2. Create account at windsurf.com
 3. Authenticate in VS Code
 
@@ -251,7 +254,7 @@ For many applications, using a well-tested library (like Python's
 :::
 
 
-:::{exercise} Exercise IDE-3: Context awareness experiment
+:::{exercise} Exercise IDE-2: Context awareness experiment
 Test what context your AI tool uses:
 
 1. Open two Python files in VS Code:
