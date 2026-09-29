@@ -7,7 +7,7 @@
 :::
 
 :::{objectives}
-- Risks when using AI in resarch work: research integrity, confidentiality, and cybersecurity
+- Risks when using AI in research work: research integrity, confidentiality, and cybersecurity
 - Translate the ALLEA principles (reliability, honesty, respect, accountability) into AI-assisted coding practice
 - Recognise which information an AI tool can see in the chat, IDE, and agent scenarios
 - Recognise the main ways AI coding tools create cybersecurity risk, and how to reduce the "blast radius"
@@ -357,7 +357,6 @@ session when the tool does something you did not ask for.
 - **Repository files**: [CVE-2025-53773](https://security-tracker.debian.org/tracker/CVE-2025-53773)
   (August 2025) covered a prompt injection in which GitHub Copilot could be made to edit the
   project's `.vscode/settings.json` to auto-approve its own tool use, and then run commands.
-- **Pull request titles and issues**: several 2026 reports showed coding agents running in CI being
   hijacked through PR or issue text and leaking repository secrets.
 
 For current cases, community lists such as
