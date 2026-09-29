@@ -20,13 +20,13 @@ In this scenario, AI assistance is integrated directly into your development
 environment. As you type, the AI suggests completions, entire functions, or
 even multi-line code blocks.
 
-```{figure} img/vscode_githubcopilot.png
-:alt: VS-code and GitHub copilot
-:width: 100%
-
-Visual Studio code with GitHub copilot plugin. You can see the chat and a suggestion based on a comment that is waiting to be accepted. The AI system runs in a remote end-point most likely in USA GitHub (Microsoft) servers.
-
+```{raw} html
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 84%">
+<iframe src="https://aalto.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=3589f5fe-d43c-4cb3-854b-b4d400626a9a&autoplay=false&offerviewer=true&showtitle=true&showbrand=true&captions=true&interactivity=all" style="border: 1px solid #464646; position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-sizing: border-box;" allowfullscreen allow="autoplay" aria-label="Panopto Embedded Video Player" aria-description="CodeRefinery-IDE_with_AI"></iframe>
+</div>
 ```
+
+*Visual Studio Code with the GitHub Copilot plugin. You can see the chat window on the right. The user types new features as comments (e.g. change the line plot to red), or edits some parameters directly (changing the number of time points to 1500). GitHub copilot suggests changes and waits for the user to press TAB to accept them. The AI system runs in a remote end-point most likely in USA GitHub (Microsoft) servers. This demo was done with a free GitHub account (a small amount of tokens are given for free to GitHub users).*
 
 
 ### How this differs from chat-based coding
