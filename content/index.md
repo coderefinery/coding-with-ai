@@ -43,7 +43,7 @@ This is work in progress. Known limitations:
 20 min ; {doc}`scenario-full-control`
 15 min ; {doc}`scenario-ide-integration`
 20 min ; {doc}`scenario-agentic`
-10 min ; {doc}`security`
+20 min ; {doc}`security`
 05 min ; {doc}`conclusion`
 ```
 
