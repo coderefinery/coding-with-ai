@@ -38,33 +38,35 @@ excel at common patterns but can confidently produce incorrect code for novel
 or complex problems. **Always verify AI-generated code**.
 :::
 
-:::{admonition} Richard Stallman's view on "AI"
+:::{admonition} Stochastic parrots
 :class: tip
 
-"So I've come up with the term Pretend Intelligence. We could call it PI. And if we start saying this more often, we might help overcome this marketing hype campaign that wants people to trust those systems, and trust their lives and all their activities to the control of those systems and the big companies that develop and control them."
+{attribution="Emily M. Bender and Timnit Gebru"}
+>  LM \[Language Model\] is a system for haphazardly stitching together sequences of linguistic forms it has observed in its vast training data, according to probabilistic information about how they combine, but without any reference to meaning: a stochastic parrot.
 
-- [Dr. Richard Stallman cited in Slashdot](https://news.slashdot.org/story/26/01/25/1930244/richard-stallman-critiques-ai-connected-cars-smartphones-and-drm)
+Source: <https://doi.org/10.1145/3442188.3445922>
 :::
 
 :::{admonition} Practitioner's perspective: Simon Willison
 :class: tip
 
 
-*"My current favorite mental model is to think of them as an over-confident
+{attribution="Simon Willison"}
+> My current favorite mental model is to think of them as an over-confident
 pair programming assistant who's lightning fast at looking things up, can
 churn out relevant examples at a moment's notice and can execute on tedious
-tasks without complaint.*
-
-*Over-confident is important. They'll absolutely make mistakes—sometimes
-subtle, sometimes huge. These mistakes can be deeply inhuman—if a human
+tasks without complaint.
+>
+> **Over-confident** is important. They'll absolutely make mistakes --- sometimes
+subtle, sometimes huge. These mistakes can be deeply inhuman --- if a human
 collaborator hallucinated a non-existent library or method you would
-instantly lose trust in them.*
-
-*Don't fall into the trap of anthropomorphizing LLMs and assuming that
+instantly lose trust in them.
+>
+> **Don't fall into the trap of anthropomorphizing LLMs and assuming that
 failures which would discredit a human should discredit the machine in the
-same way."*
+same way.**"
 
-— [Simon Willison, "How I use LLMs to help me write code"](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)
+Source: ["How I use LLMs to help me write code"](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)
 :::
 
 
