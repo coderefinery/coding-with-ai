@@ -92,6 +92,12 @@ During pre-training, the model learns:
 - Relationships between code and comments/documentation
 - How different parts of a codebase relate to each other
 
+The size of typical datasets also implies that to train a model from the scratch
+is a heavy commitment. It is expensive, both in terms of time (person-hours) and
+compute. Which in turn means that very few actors do this and most users rely on
+such pre-trained "frontier" models for their specific use cases, such as
+coding.
+
 ### 2. Fine-tuning and instruction tuning
 
 After pre-training, models are often further refined:
