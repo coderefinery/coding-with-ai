@@ -1,0 +1,6 @@
+/* Override RTD theme's white-space: nowrap on table cells so long content
+   wraps vertically instead of forcing horizontal scrolling. */
+.wy-table-responsive table td,
+.wy-table-responsive table th {
+    white-space: normal !important;
+}
