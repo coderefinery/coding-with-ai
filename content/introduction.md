@@ -191,7 +191,8 @@ Understanding what data models are trained on helps us understand their capabili
 Consider these implications:
 - It is useful for teaching models to follow **coding instructions**, not just predict the next token
 - Because much of the data is **synthetic**, model behavior may reflect the style and biases of the generator models
-- It complements **large code pretraining corpora such as The Stack** rather than replacing them
+- It complements **large code pretraining corpora** such as [The Stack](https://huggingface.co/datasets/bigcode/the-stack) rather than replacing them
+- In the future maybe there might more alternate datasets such as [CodeCommons](https://codecommons.org/) which respect creators' rights.
 :::
 
 
