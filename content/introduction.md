@@ -307,14 +307,6 @@ for an extended taxonomy.
 :::
 
 
-## Current adoption and trends
-
-:::{warning}
-To-Do: This section needs expanding and/or kept up to date with data on current adoption trends.
-:::
-
-- From: [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
-
 
 ## Limitations: what LLMs *cannot* do
 
@@ -376,15 +368,17 @@ In this section, we covered the foundations of AI-assisted coding:
 
 
 ## See also
-:::{warning}
-To-Do: This section needs expanding with more links and/or kept up to date.
-:::
 
 - [StarCoder: A State-of-the-Art LLM for Code](https://huggingface.co/blog/starcoder) - BigCode project blog
 - [The Stack v2 Paper](https://arxiv.org/abs/2402.19173) - Technical details on training data
 - [BigCode Project](https://www.bigcode-project.org/) - Open scientific collaboration on code LLMs
 - [Awesome-Code-LLM](https://github.com/codefuse-ai/Awesome-Code-LLM) - Curated list of code LLM resources
 - [Simon Willison: How I use LLMs to help me write code](https://simonwillison.net/2025/Mar/11/using-llms-for-code/) - Practical insights from an experienced practitioner
+
+Current adoption and trends
+
+- [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
+
 
 
 :::{keypoints}
