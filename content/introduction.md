@@ -216,8 +216,8 @@ General-purpose AI assistants accessed via web interface:
 | [Claude](https://claude.ai) | Anthropic | Large context window, artifacts |
 | [Gemini](https://gemini.google.com) | Google | Multimodal, Google integration |
 
-:::{admonition} Recommended for exercises: Duck.ai
-:class: tip
+:::{admonition} Recommended tool for exercises: Duck.ai
+:class: note
 
 For the exercises in this course, we recommend [Duck.ai](https://duck.ai) by
 DuckDuckGo. DuckDuckGo is known for its privacy-first philosophy—their search
