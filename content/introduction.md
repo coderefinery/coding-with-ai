@@ -17,14 +17,43 @@
 ## What is a Large Language Model?
 
 A Large Language Model (LLM) is a type of artificial intelligence trained on
-vast amounts of text data to predict and generate human-like text. At their
-core, these models learn statistical patterns in language: given a sequence of
-words (or better *tokens*: fragments of words, commas, and anything in text), 
-they predict what comes next.
+vast amounts of text data to predict and generate human-like text. 
+
 
 ```{figure} img/llm.png
 :alt: general concept of LLM for code generation
 :width: 100%
+```
+
+<!--
+:::{admonition} A more accurate mental model
+:class: tip, dropdown
+-->
+
+At their core, these models learn statistical patterns in language: given a
+sequence of words (or better *tokens*: fragments of words, commas, and anything
+in text), they predict what comes next. In order to do so, text must first be
+converted into numerical representations, then transformer layers update those
+representations using the surrounding context and finally back to text.
+
+```text
+text
+  -> tokens
+  -> token IDs
+  -> embeddings
+  -> transformer blocks
+  -> output logits
+  -> next-token probabilities
+  -> tokens
+  -> text
+```
+
+```{figure} img/llm_blocks.png
+:alt: Input tokens ->  Model -> Input tokens + output token
+:width: 100%
+
+A simplistic mental model for an LLM performing probabilistic next token prediction.
+Source: [Simo Tuomisto](https://simo-tuomisto.github.io/understanding-ai-landscape-lecture/#3)
 ```
 
 When applied to code, LLMs benefit from the fact that programming languages are
@@ -287,13 +316,10 @@ To-Do: This section needs expanding and/or kept up to date with data on current 
 - From: [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
 
 
-## Limitations to keep in mind
+## Limitations: what LLMs *cannot* do
 
-Before diving into specific scenarios, remember these fundamental limitations:
-
-### What LLMs *cannot* do
-
-A typical generative AI system based on LLMs, without `toolcall` capabilities, cannot:
+Before diving into specific scenarios, remember  fundamental limitations.
+A typical generative AI system based on LLMs, without *tool-calling* capabilities, cannot:
 
 1. **Verify their own output**: They cannot run code or check if it works.
 2. **Access real-time information**: Knowledge is frozen at training cutoff.
@@ -303,12 +329,18 @@ A typical generative AI system based on LLMs, without `toolcall` capabilities, c
 3. **Understand your specific context**: They don't know your data, infrastructure, or requirements unless you tell them.
 4. **Guarantee correctness**: They optimize for "plausible", not "correct".
 
-### Common failure modes
+An LLM with *tool-calling* can alleviate some of these limitations, but does not
+necessarily solve it.
+
+:::{admonition} Common failure modes
+:class: dropdown
 
 - **Hallucinated packages**: Suggesting libraries that don't exist
 - **Outdated APIs**: Using deprecated functions or old syntax
 - **Subtle bugs**: Code that looks right but has edge-case failures
 - **Security vulnerabilities**: Not considering injection, authentication, etc.
+
+:::
 
 :::{exercise} Exercise: Explore an AI chatbot
 Go to [duck.ai](https://duck.ai) (no account needed) and try the following:
