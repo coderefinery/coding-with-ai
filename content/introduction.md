@@ -17,14 +17,43 @@
 ## What is a Large Language Model?
 
 A Large Language Model (LLM) is a type of artificial intelligence trained on
-vast amounts of text data to predict and generate human-like text. At their
-core, these models learn statistical patterns in language: given a sequence of
-words (or better *tokens*: fragments of words, commas, and anything in text), 
-they predict what comes next.
+vast amounts of text data to predict and generate human-like text. 
+
 
 ```{figure} img/llm.png
 :alt: general concept of LLM for code generation
 :width: 100%
+```
+
+<!--
+:::{admonition} A more accurate mental model
+:class: tip, dropdown
+-->
+
+At their core, these models learn statistical patterns in language: given a
+sequence of words (or better *tokens*: fragments of words, commas, and anything
+in text), they predict what comes next. In order to do so, text must first be
+converted into numerical representations, then transformer layers update those
+representations using the surrounding context and finally back to text.
+
+```text
+text
+  -> tokens
+  -> token IDs
+  -> embeddings
+  -> transformer blocks
+  -> output logits
+  -> next-token probabilities
+  -> tokens
+  -> text
+```
+
+```{figure} img/llm_blocks.png
+:alt: Input tokens ->  Model -> Input tokens + output token
+:width: 100%
+
+A simplistic mental model for an LLM performing probabilistic next token prediction.
+Source: [Simo Tuomisto](https://simo-tuomisto.github.io/understanding-ai-landscape-lecture/#3)
 ```
 
 When applied to code, LLMs benefit from the fact that programming languages are
@@ -38,33 +67,35 @@ excel at common patterns but can confidently produce incorrect code for novel
 or complex problems. **Always verify AI-generated code**.
 :::
 
-:::{admonition} Richard Stallman's view on "AI"
+:::{admonition} Stochastic parrots
 :class: tip
 
-"So I've come up with the term Pretend Intelligence. We could call it PI. And if we start saying this more often, we might help overcome this marketing hype campaign that wants people to trust those systems, and trust their lives and all their activities to the control of those systems and the big companies that develop and control them."
+{attribution="Emily M. Bender and Timnit Gebru"}
+>  LM \[Language Model\] is a system for haphazardly stitching together sequences of linguistic forms it has observed in its vast training data, according to probabilistic information about how they combine, but without any reference to meaning: a stochastic parrot.
 
-- [Dr. Richard Stallman cited in Slashdot](https://news.slashdot.org/story/26/01/25/1930244/richard-stallman-critiques-ai-connected-cars-smartphones-and-drm)
+Source: <https://doi.org/10.1145/3442188.3445922>
 :::
 
 :::{admonition} Practitioner's perspective: Simon Willison
 :class: tip
 
 
-*"My current favorite mental model is to think of them as an over-confident
+{attribution="Simon Willison"}
+> My current favorite mental model is to think of them as an over-confident
 pair programming assistant who's lightning fast at looking things up, can
 churn out relevant examples at a moment's notice and can execute on tedious
-tasks without complaint.*
-
-*Over-confident is important. They'll absolutely make mistakes—sometimes
-subtle, sometimes huge. These mistakes can be deeply inhuman—if a human
+tasks without complaint.
+>
+> **Over-confident** is important. They'll absolutely make mistakes --- sometimes
+subtle, sometimes huge. These mistakes can be deeply inhuman --- if a human
 collaborator hallucinated a non-existent library or method you would
-instantly lose trust in them.*
-
-*Don't fall into the trap of anthropomorphizing LLMs and assuming that
+instantly lose trust in them.
+>
+> **Don't fall into the trap of anthropomorphizing LLMs and assuming that
 failures which would discredit a human should discredit the machine in the
-same way."*
+same way.**"
 
-— [Simon Willison, "How I use LLMs to help me write code"](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)
+Source: ["How I use LLMs to help me write code"](https://simonwillison.net/2025/Mar/11/using-llms-for-code/)
 :::
 
 
@@ -89,6 +120,12 @@ During pre-training, the model learns:
 - Common coding patterns and idioms
 - Relationships between code and comments/documentation
 - How different parts of a codebase relate to each other
+
+The size of typical datasets also implies that to train a model from the scratch
+is a heavy commitment. It is expensive, both in terms of time (person-hours) and
+compute. Which in turn means that very few actors do this and most users rely on
+such pre-trained "frontier" models for their specific use cases, such as
+coding.
 
 ### 2. Fine-tuning and instruction tuning
 
@@ -154,7 +191,8 @@ Understanding what data models are trained on helps us understand their capabili
 Consider these implications:
 - It is useful for teaching models to follow **coding instructions**, not just predict the next token
 - Because much of the data is **synthetic**, model behavior may reflect the style and biases of the generator models
-- It complements **large code pretraining corpora such as The Stack** rather than replacing them
+- It complements **large code pretraining corpora** such as [The Stack](https://huggingface.co/datasets/bigcode/the-stack) rather than replacing them
+- In the future maybe there might more alternate datasets such as [CodeCommons](https://codecommons.org/) which respect creators' rights.
 :::
 
 
@@ -179,8 +217,8 @@ General-purpose AI assistants accessed via web interface:
 | [Claude](https://claude.ai) | Anthropic | Large context window, artifacts |
 | [Gemini](https://gemini.google.com) | Google | Multimodal, Google integration |
 
-:::{admonition} Recommended for exercises: Duck.ai
-:class: tip
+:::{admonition} Recommended tool for exercises: Duck.ai
+:class: note
 
 For the exercises in this course, we recommend [Duck.ai](https://duck.ai) by
 DuckDuckGo. DuckDuckGo is known for its privacy-first philosophy—their search
@@ -270,22 +308,11 @@ for an extended taxonomy.
 :::
 
 
-## Current adoption and trends
 
-:::{warning}
-To-Do: This section needs expanding and/or kept up to date with data on current adoption trends.
-:::
+## Limitations: what LLMs *cannot* do
 
-- From: [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
-
-
-## Limitations to keep in mind
-
-Before diving into specific scenarios, remember these fundamental limitations:
-
-### What LLMs *cannot* do
-
-A typical generative AI system based on LLMs, without `toolcall` capabilities, cannot:
+Before diving into specific scenarios, remember  fundamental limitations.
+A typical generative AI system based on LLMs, without *tool-calling* capabilities, cannot:
 
 1. **Verify their own output**: They cannot run code or check if it works.
 2. **Access real-time information**: Knowledge is frozen at training cutoff.
@@ -295,12 +322,18 @@ A typical generative AI system based on LLMs, without `toolcall` capabilities, c
 3. **Understand your specific context**: They don't know your data, infrastructure, or requirements unless you tell them.
 4. **Guarantee correctness**: They optimize for "plausible", not "correct".
 
-### Common failure modes
+An LLM with *tool-calling* can alleviate some of these limitations, but does not
+necessarily solve it.
+
+:::{admonition} Common failure modes
+:class: dropdown
 
 - **Hallucinated packages**: Suggesting libraries that don't exist
 - **Outdated APIs**: Using deprecated functions or old syntax
 - **Subtle bugs**: Code that looks right but has edge-case failures
 - **Security vulnerabilities**: Not considering injection, authentication, etc.
+
+:::
 
 :::{exercise} Exercise: Explore an AI chatbot
 Go to [duck.ai](https://duck.ai) (no account needed) and try the following:
@@ -336,15 +369,17 @@ In this section, we covered the foundations of AI-assisted coding:
 
 
 ## See also
-:::{warning}
-To-Do: This section needs expanding with more links and/or kept up to date.
-:::
 
 - [StarCoder: A State-of-the-Art LLM for Code](https://huggingface.co/blog/starcoder) - BigCode project blog
 - [The Stack v2 Paper](https://arxiv.org/abs/2402.19173) - Technical details on training data
 - [BigCode Project](https://www.bigcode-project.org/) - Open scientific collaboration on code LLMs
 - [Awesome-Code-LLM](https://github.com/codefuse-ai/Awesome-Code-LLM) - Curated list of code LLM resources
 - [Simon Willison: How I use LLMs to help me write code](https://simonwillison.net/2025/Mar/11/using-llms-for-code/) - Practical insights from an experienced practitioner
+
+Current adoption and trends
+
+- [Jellyfish AI Engineering Trends](https://jellyfish.co/newsroom/jellyfish-reveals-ais-real-impact-on-engineering-teams/) (17 March 2026) survey on 700 companies, 200K engineers, 20M pull requests: more than half use AI assisted coding, 64% generate a majority of their code with AI assistance. 
+
 
 
 :::{keypoints}

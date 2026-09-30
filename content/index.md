@@ -122,7 +122,6 @@ simply teaching you how to use these tools, we help you understand:
 ## See also
 
 - [OpenSSF Security Guide for AI Code Assistants](https://best.openssf.org/Security-Focused-Guide-for-AI-Code-Assistant-Instructions)
-- TODO Add more references here
 
 
 ## Credits

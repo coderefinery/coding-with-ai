@@ -326,7 +326,10 @@ Once satisfied with data loading, move to summary statistics:
 > for reaction_time and accuracy, grouped by condition."
 
 
-## Common pitfalls and how to avoid them
+:::{admonition} Common pitfalls and how to avoid them
+:class: warning, dropdown
+
+Some of the following will be covered and revisited in the [episode on risks](./security.md).
 
 ### Pitfall 1: Accepting code without understanding it
 
@@ -359,6 +362,7 @@ explain the code to a colleague, you shouldn't use it.
 - Search GitHub for the repository
 - Be especially suspicious of packages you've never heard of
 
+:::
 
 ## When to relax the rules: Learning and exploration
 
