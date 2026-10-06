@@ -38,7 +38,10 @@ extensions = [
     "sphinx_rtd_theme_ext_color_contrast",
     "sphinx_coderefinery_branding",
     "lesson_metadata",
+    "sphinx_bioschemas"
 ]
+
+bioschemas = ["../bioschemas.yml"]
 
 # Settings for myst_nb:
 # https://myst-nb.readthedocs.io/en/latest/use/execute.html#triggering-notebook-execution
