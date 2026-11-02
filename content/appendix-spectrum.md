@@ -367,6 +367,7 @@ This is a consolidated reference of all tools mentioned in this appendix.
 - [aider documentation](https://aider.chat/docs/) - Excellent resource on CLI agent workflows
 - [Cursor documentation](https://cursor.com/features) - AI-native editor patterns
 - [Continue documentation](https://continue.dev/docs) - Open-source IDE integration
+- [Coding AI Agents](https://aiagentsearch.ai/coding-ai-agents.html) (AIAgentSearch.ai) - Independent overview of AI coding agents (editor, terminal and cloud agents) and what to check before adopting one
 
 
 :::{keypoints}
