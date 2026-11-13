@@ -2,7 +2,7 @@
     "@context": "https://schema.org/",
     "@type": "LearningResource",
     "@id": "https://coderefinery.github.io/coding-with-ai",
-    "description": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.",
+    "description": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.\n",
     "keywords": "generative AI, coding, research software, responsible AI, data visualisation, CodeRefinery, reproducibility",
     "name": "Responsible Use of Generative AI in Assisted Coding - CodeRefinery lesson",
     "author": [
@@ -33,11 +33,19 @@
         {
             "@type": "Person",
             "name": "Thomas Pfau"
+        },
+        {
+            "@type": "Person",
+            "name": "Bahareh Tasdighi"
+        },
+        {
+            "@type": "Person",
+            "name": "Ashwin Mohanan"
         }
     ],
-    "about": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.",
-    "audience": "",
-    "competencyRequired": "",
+    "about": "A CodeRefinery lesson providing a practical framework for researchers who want to use AI coding assistants responsibly. The lesson covers three scenarios of increasing automation (chat-based coding, IDE integration, and agentic coding), security considerations including hallucinated packages and prompt injection, and mitigation strategies. Includes a hands-on workshop on data exploration and visualisation with Python and generative AI.\n",
+    "audience": "Researcher",
+    "competencyRequired": "Some programming language",
     "educationalLevel": "Beginner",
     "identifier": "https://doi.org/10.5281/zenodo.19335927",
     "inLanguage": "en-UK",
@@ -45,7 +53,7 @@
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "teaches": "",
     "url": "https://coderefinery.github.io/coding-with-ai",
-    "accessibilitySummary": "",
+    "accessibilitySummary": "Short image descriptions are present",
     "isPartOf": "https://coderefinery.org",
-    "version": "2026-08-10"
+    "version": "2026-11-13"
 }
