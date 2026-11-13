@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codex installation &mdash; Responsible Use of Generative AI in Assisted Coding  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=35a8b989"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Responsible Use of Generative AI in Assisted Coding
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">The lesson</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/">Introduction to LLMs for Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-full-control/">Scenario I: Full Control (Chat-Based Coding)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-ide-integration/">Scenario II: IDE Integration (Tab Completion and Inline Suggestions)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scenario-agentic/">Scenario III: Full Agentic Code Development</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../quick-reference/">Quick Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/">Instructor’s guide</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Responsible Use of Generative AI in Assisted Coding</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Codex installation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/coding-with-ai/blob/main/content/codex-install.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="codex-installation">
+<h1>Codex installation<a class="headerlink" href="#codex-installation" title="Link to this heading"></a></h1>
+<section id="codex-is-a-cli-based-ai-agent-by-openai-licensed-under-apache-2-0-license">
+<h2>Codex is a CLI -based AI agent by OpenAI, licensed under Apache 2.0 license.<a class="headerlink" href="#codex-is-a-cli-based-ai-agent-by-openai-licensed-under-apache-2-0-license" title="Link to this heading"></a></h2>
+<section id="first-install-codex">
+<h3>First, install codex:<a class="headerlink" href="#first-install-codex" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Open https://github.com/openai/codex/</p></li>
+<li><p>Install codex according to the instructions on the page above</p></li>
+<li><p>WSL/Linux: npm install -g &#64;openai/codex</p></li>
+<li><p>Mac: brew install –cask codex</p></li>
+</ul>
+</section>
+<section id="optional-set-up-non-basic-model-use-requires-api-endpoints-to-be-openai-compatible">
+<h3>(optional) Set up non basic Model use (requires API endpoints to be openai compatible)<a class="headerlink" href="#optional-set-up-non-basic-model-use-requires-api-endpoints-to-be-openai-compatible" title="Link to this heading"></a></h3>
+<ul>
+<li><p>Add the following to $HOME/.codex/config.toml – change the API key part</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="s2">&quot;&lt;model_name&gt;&quot;</span> 
+<span class="n">model_provider</span> <span class="o">=</span> <span class="s2">&quot;nonopenai&quot;</span> 
+<span class="n">model_reasoning_effort</span> <span class="o">=</span> <span class="s2">&quot;medium&quot;</span>  <span class="c1">#(can be low medium or high)</span>
+
+<span class="p">[</span><span class="n">model_providers</span><span class="o">.</span><span class="n">nonopenai</span><span class="p">]</span> 
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Non Open AI model&quot;</span> 
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://your.base.api/endpoint&quot;</span>  <span class="c1"># the model needs to be served using /responses or /chat/completions under this endpoint.</span>
+<span class="c1"># the API to use (chat or responses)</span>
+<span class="n">wire_api</span> <span class="o">=</span> <span class="s2">&quot;responses&quot;</span> 
+<span class="c1"># Additional headers, e.g. for different auth scheme (otherwise the api key needs to be in the OPENAI_API_KEY environment variable)</span>
+<span class="n">http_headers</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;Your-Auth-Header&quot;</span> <span class="o">=</span> <span class="s2">&quot;YOUR_API_KEY_HERE&quot;</span> <span class="p">}</span> 
+<span class="p">[</span><span class="n">analytics</span><span class="p">]</span> 
+<span class="n">enabled</span> <span class="o">=</span> <span class="n">false</span> <span class="c1"># disables use of request for analytics</span>
+<span class="p">[</span><span class="n">feedback</span><span class="p">]</span> 
+<span class="n">enabled</span> <span class="o">=</span> <span class="n">false</span> <span class="c1"># Disables use for feedback</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Finally, launch the codex installation,</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Launch codex by $ codex in a folder that you want to edit. 
+
+Answer NO to the automatic edit mode (or whatever is in your folder WILL be modified)
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Enrico Glerean, ....</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
